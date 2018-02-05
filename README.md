@@ -12,3 +12,5 @@ ATTENTION : Télécharger les modules suivant :
   ionic cordova plugin add cordova-sqlite-storage
 
   npm install --save @ionic/storage
+
+ -alexis
