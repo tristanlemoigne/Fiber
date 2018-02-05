@@ -1,1 +1,11 @@
-### :point_right: This starter repo has moved to the [ionic-team/starters](https://github.com/ionic-team/starters/tree/master/ionic-angular/official/blank) repo! :point_left:
+ATTENTION : Télécharger les modules suivant : 
+
+- Caméra : 
+  ionic cordova plugin add cordova-plugin-camera
+  npm install --save @ionic-native/camera
+  
+- Storage : 
+  ionic cordova plugin add cordova-sqlite-storage
+  npm install --save @ionic/storage
+  
+ 

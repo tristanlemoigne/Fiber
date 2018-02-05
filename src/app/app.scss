@@ -1,5 +1,22 @@
 // http://ionicframework.com/docs/theming/
 
+.toolbar-background {
+  background-color: white;
+}
+
+.toolbar-title{
+  display: flex;
+  justify-content: center;
+}
+
+.button{
+  margin: 7vh 0;
+}
+
+.button:nth-child(5){
+  opacity: 0.3;
+}
+
 
 // App Global Sass
 // --------------------------------------------------

@@ -1,38 +1,74 @@
 {
-  "name": "fiber",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
-  "private": true,
-  "scripts": {
-    "clean": "ionic-app-scripts clean",
-    "build": "ionic-app-scripts build",
-    "lint": "ionic-app-scripts lint",
-    "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
-  },
-  "dependencies": {
-    "@angular/common": "5.0.0",
-    "@angular/compiler": "5.0.0",
-    "@angular/compiler-cli": "5.0.0",
-    "@angular/core": "5.0.0",
-    "@angular/forms": "5.0.0",
-    "@angular/http": "5.0.0",
-    "@angular/platform-browser": "5.0.0",
-    "@angular/platform-browser-dynamic": "5.0.0",
-    "@ionic-native/core": "4.3.2",
-    "@ionic-native/splash-screen": "4.3.2",
-    "@ionic-native/status-bar": "4.3.2",
-    "@ionic/storage": "2.1.3",
-    "ionic-angular": "3.9.2",
-    "ionicons": "3.0.0",
-    "rxjs": "5.5.2",
-    "sw-toolbox": "3.6.0",
-    "zone.js": "0.8.18"
-  },
-  "devDependencies": {
-    "@ionic/app-scripts": "3.1.0",
-    "typescript": "2.4.2"
-  },
-  "description": "An Ionic project"
+    "name": "citation",
+    "version": "0.0.1",
+    "author": "Ionic Framework",
+    "homepage": "http://ionicframework.com/",
+    "private": true,
+    "scripts": {
+        "clean": "ionic-app-scripts clean",
+        "build": "ionic-app-scripts build",
+        "lint": "ionic-app-scripts lint",
+        "ionic:build": "ionic-app-scripts build",
+        "ionic:serve": "ionic-app-scripts serve"
+    },
+    "dependencies": {
+        "@angular/common": "4.4.4",
+        "@angular/compiler": "4.4.4",
+        "@angular/compiler-cli": "4.4.4",
+        "@angular/core": "4.4.4",
+        "@angular/forms": "4.4.4",
+        "@angular/http": "4.4.4",
+        "@angular/platform-browser": "4.4.4",
+        "@angular/platform-browser-dynamic": "4.4.4",
+        "@ionic-native/camera": "^4.5.3",
+        "@ionic-native/core": "4.3.3",
+        "@ionic-native/email-composer": "^4.5.3",
+        "@ionic-native/in-app-browser": "^4.5.3",
+        "@ionic-native/native-storage": "^4.5.3",
+        "@ionic-native/splash-screen": "4.3.3",
+        "@ionic-native/status-bar": "4.3.3",
+        "@ionic/storage": "^2.1.1",
+        "cordova-android": "7.0.0",
+        "cordova-ios": "4.5.4",
+        "cordova-plugin-camera": "^3.0.0",
+        "cordova-plugin-device": "^1.1.4",
+        "cordova-plugin-email-composer": "^0.8.14",
+        "cordova-plugin-inappbrowser": "^2.0.2",
+        "cordova-plugin-ionic-webview": "^1.1.16",
+        "cordova-plugin-ios-camera-permissions": "^1.2.0",
+        "cordova-plugin-nativestorage": "^2.2.2",
+        "cordova-plugin-splashscreen": "^4.0.3",
+        "cordova-plugin-whitelist": "^1.3.1",
+        "cordova-sqlite-storage": "^2.2.0",
+        "ionic-angular": "3.8.0",
+        "ionic-plugin-keyboard": "^2.2.1",
+        "ionicons": "3.0.0",
+        "rxjs": "5.4.3",
+        "sw-toolbox": "3.6.0",
+        "zone.js": "0.8.18"
+    },
+    "devDependencies": {
+        "@ionic/app-scripts": "3.0.1",
+        "typescript": "2.3.4"
+    },
+    "description": "An Ionic project",
+    "cordova": {
+        "plugins": {
+            "cordova-plugin-camera": {},
+            "cordova-plugin-ios-camera-permissions": {},
+            "ionic-plugin-keyboard": {},
+            "cordova-plugin-whitelist": {},
+            "cordova-plugin-device": {},
+            "cordova-plugin-splashscreen": {},
+            "cordova-plugin-ionic-webview": {},
+            "cordova-plugin-inappbrowser": {},
+            "cordova-plugin-nativestorage": {},
+            "cordova-plugin-email-composer": {},
+            "cordova-sqlite-storage": {}
+        },
+        "platforms": [
+            "android",
+            "ios"
+        ]
+    }
 }

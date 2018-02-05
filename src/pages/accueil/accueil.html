@@ -1,0 +1,37 @@
+<ion-header>
+<!-- <ion-header no-border> -->
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <img alt="menu" height="23" src="assets/imgs/menu_icon.png">
+      </button>
+    </ion-buttons>
+
+    <ion-title>
+      <img alt="fiber" height="15" src="assets/imgs/fiber_title.png">
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="load(filtresPage)">
+        <img alt="filters" height="23" src="assets/imgs/filter_icon.png">
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="content">
+
+  <ion-card id="card" no-shadow  class="card" >
+    <button ion-button round class="card-title" (click)="clickProfile()">
+      <button ion-button round class="border">
+        <b>{{this.authorPhoto}}</b>
+      </button>
+    </button>
+
+    <img id="imaage" class="margin" (swipe)="swipeEvent($event)" src={{this.currentPhoto}} />
+
+    <!-- <img id="card" class="margin" (swipe)="swipeEvent($event)" (mousemove)="move($event)" src="assets/imgs/photo1.jpg" /> -->
+  </ion-card>
+</ion-content>
