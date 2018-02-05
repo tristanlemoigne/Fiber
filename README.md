@@ -7,5 +7,3 @@ ATTENTION : Télécharger les modules suivant :
 - Storage :
   ionic cordova plugin add cordova-sqlite-storage
   npm install --save @ionic/storage
-
-- Petit changement sur le readme 
