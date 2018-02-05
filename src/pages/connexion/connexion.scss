@@ -1,0 +1,29 @@
+page-connexion {
+  ion-content{
+    font-size: 1.2em;
+  }
+
+  .back{
+    width: 20px;
+  }
+
+  .landing{
+    height: 60px;
+    display: block;
+    margin: 15vh auto 0;
+  }
+  //
+  // .button{
+  //   border-radius: 50px;
+  //   width: 40vw;
+  //   color: rgba(0, 0, 0, 0.3);
+  //   background-color: #f8f8f8;
+  // }
+
+  .button{
+    display: block;
+    border-radius: 50px;
+    box-shadow: none;
+    margin: 0 auto;
+  }
+}

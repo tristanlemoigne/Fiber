@@ -1,1 +1,41 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<div *ngIf="tokenExist">
+  <ion-menu  [content]="nav">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>
+          <img alt="fiber" height="15" src="assets/imgs/menu_title.png">
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+
+        <button class="button" ion-item no-lines detail-none text-center (click)="onLoad(tabsPage)">
+          Accueil
+        </button>
+
+        <button class="button" ion-item no-lines detail-none text-center onclick="window.open('http://fiber-app.com/index-blog.html', '_system', 'location=yes')">
+          Blog
+        </button>
+
+        <button class="button" ion-item no-lines detail-none text-center onclick="window.open('http://fiber-app.com/index-presentation.html', '_system', 'location=yes')">
+          Dernières nouvelles
+        </button>
+
+        <button class="button" ion-item no-lines detail-none text-center (click)="onLoad(supportPage)">
+          Support technique
+        </button>
+
+        <button class="button" ion-item no-lines detail-none text-center (click)="onLoad(connexionInscriptionPage)">
+          Se déconnecter
+        </button>
+
+
+    </ion-content>
+  </ion-menu>
+
+  <ion-nav [root]="tabsPage" #nav></ion-nav>
+</div>
+<ion-nav #myNav [root]="rootPage" *ngIf="!tokenExist">
+
+</ion-nav>
