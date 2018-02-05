@@ -14,4 +14,7 @@ ATTENTION : Télécharger les modules suivant :
   npm install --save @ionic/storage
 
 
-Bonjour je m'appelle Tristan 
+
+Bonjour je m'appelle Tristan
+
+ -alexis
