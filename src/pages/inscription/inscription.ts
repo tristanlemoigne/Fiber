@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, AlertController, LoadingController } from 'ionic-angular';
 import { PostDataProvider } from '../../providers/post-data/post-data';
 import { Storage } from '@ionic/storage';
 import { TabsPage } from '../tabs/tabs';
@@ -19,7 +19,8 @@ import { MyApp } from '../../app/app.component';
 })
 export class InscriptionPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public postDataProvider:PostDataProvider, private storage:Storage) {
+  constructor(public navCtrl: NavController, public alert:AlertController, public postDataProvider:PostDataProvider, private storage:Storage,
+  public loading:LoadingController) {
   }
   public mdp:string = "";
   public mail:string = "";
@@ -31,22 +32,51 @@ export class InscriptionPage {
                                  mail: this.mail,
                                  mdp: this.mdp});
     let link = "http://fiber-app.com/SERVER/inscription_verif.php";
-    this.postDataProvider.postData(link,mydata).subscribe(data => {
+    let req = this.postDataProvider.postData(link,mydata);
+    var loading = this.loading.create({
+      content: "Envoi des données"
+    });
+    loading.present();
+    req.subscribe(data => {
+
       //PAREIL GERER ERREURS EN PHP VIA CODE POUR EVITER QUE LE TOKEN VAILLE AUTRE CHOSE QUE NULL MEME SI Y A UNE ERREUR
       this.response=data;
-      this.storage.set("token",data);
-      this.storage.get("token").then((val) => {
-          console.log('Your token is', val);
-        });
+      if(typeof this.response == "string"){
+        this.storage.set("token",data);
+        this.storage.get("token").then((val) => {
+            console.log('Your token is', val);
+          });
+      }
      },
      (err) => {
-	      console.log("Oooops!");
+       let alert = this.alert.create({
+          title: 'Erreur',
+          subTitle: 'Erreur de connexion',
+          buttons: ['OK']
+        });
+        alert.present();
 	   },
      () => {
-       if(this.response != ""){
+       loading.dismiss();
+       if(typeof this.response == "string"){
          this.navCtrl.push(MyApp);
        } else{
-         this.navCtrl.push(MyApp);
+         if(this.response == 1){
+           let alert = this.alert.create({
+              title: 'Erreur',
+              subTitle: 'Login ou mail déjà enregistré!',
+              buttons: ['OK']
+            });
+            alert.present();
+
+         } else{
+           let alert = this.alert.create({
+              title: 'Erreur',
+              subTitle: 'Erreur de connexion',
+              buttons: ['OK']
+            });
+            alert.present();
+         }
        }
      });
   }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AccueilPage } from '../accueil/accueil';
+import { ProfilePage } from '../profile/profile';
 
 import { NavController, AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
@@ -9,6 +10,7 @@ import { FiltresPage } from '../filtres/filtres';
   selector: 'page-tabs',
   template: `
      <ion-tabs class="tabs-icon-top tabs-positive">
+
        <ion-tab [root]="accueilPage" tabIcon="profile"></ion-tab>
        <ion-tab (ionSelect)="takePhoto()" tabIcon="photo" ></ion-tab>
      </ion-tabs>
@@ -18,7 +20,7 @@ import { FiltresPage } from '../filtres/filtres';
 export class TabsPage {
   accueilPage = AccueilPage;
   filtresPage = FiltresPage;
-
+  profilePage = ProfilePage;
   public photos: any;
   public base64Image: string;
 
