@@ -16,13 +16,13 @@
 <ion-content padding>
   <form #myform="ngForm" (ngSubmit)="inscription()">
     <ion-item>
-      <ion-input placeholder="Nom d'utilisateur" [(ngModel)]="login" name="login"></ion-input>
+      <ion-input placeholder="Nom d'utilisateur" [(ngModel)]="login" name="login" required></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Email" [(ngModel)]="mail" name="mail"></ion-input>
+      <ion-input placeholder="Email" [(ngModel)]="mail" name="mail" required></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input placeholder="Mot de passe" [(ngModel)]="mdp" name="mdp"></ion-input>
+      <ion-input placeholder="Mot de passe" [(ngModel)]="mdp" name="mdp" required></ion-input>
     </ion-item>
     <button ion-button> S'inscrire </button>
 

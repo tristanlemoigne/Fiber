@@ -11,6 +11,7 @@ import { ConnexionInscriptionPage } from '../pages/connexion-inscription/connexi
 import { NavController} from 'ionic-angular';
 import { MenuController} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { AccueilPage } from '../pages/accueil/accueil';
 
 @Component({
   templateUrl: 'app.html'

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, AlertController, LoadingController } from 'ionic-angular';
 import { PostDataProvider } from '../../providers/post-data/post-data';
 import { Storage } from '@ionic/storage';
 import { MyApp } from '../../app/app.component';
@@ -19,29 +19,54 @@ export class ConnexionPage {
   public login:string="";
   public mdp:string="";
   public response:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private postDataProvider:PostDataProvider, private storage:Storage) {
+  constructor(public navCtrl: NavController,  public alert:AlertController , private postDataProvider:PostDataProvider, private storage:Storage,
+  public loading:LoadingController) {
   }
 
   connexion(){
     let myData = JSON.stringify({login:this.login,
                                  mdp:this.mdp});
     let link = "http://fiber-app.com/SERVER/connexion.php";
-    this.postDataProvider.postData(link,myData).subscribe(data=>{
-      //GERER LES ERREURS EN PHP POUR EVITER DE PUSH QUAND MEME LA PAGE LORSQUE DATA VAUT UNE ERREUR, UTILISER DES CODES MAYBE
+    let req = this.postDataProvider.postData(link,myData);
+    var loading = this.loading.create({
+      content: "Envoi des données"
+    });
+    loading.present();
+    req.subscribe(data=>{
       this.response=data;
-      this.storage.set("token",data);
-      this.storage.get("token").then((val) => {
-          console.log('Your token is', val);
-        });
+      if(typeof this.response == "string"){
+        this.storage.set("token",data);
+        this.storage.get("token").then((val) => {
+            console.log('Your token is', val);
+          });
+      }
     },
     (err) => {
- 	      console.log("Oooops!");
+      let alert = this.alert.create({
+         title: 'Erreur',
+         subTitle: 'Erreur de connexion',
+         buttons: ['OK']
+       });
+       alert.present();
  	  },
     () => {
-      if(this.response != ""){
-        this.navCtrl.push(MyApp);
+      loading.dismiss();
+      console.log(this.response);
+      if(this.response == 1){
+
+        let alert = this.alert.create({
+           title: 'Erreur',
+           subTitle: 'Login ou mail inexsitant!',
+           buttons: ['OK']
+         });
+         alert.present();
       } else{
-        this.navCtrl.push(MyApp);
+        let alert = this.alert.create({
+           title: 'Erreur',
+           subTitle: 'Mot de passe incorrect',
+           buttons: ['OK']
+         });
+         alert.present();
       }
     });
   }
