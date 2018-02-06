@@ -26,16 +26,23 @@
 
   <img class="landing" src="assets/imgs/fiber_landing.png" />
 
-  <form #myform="ngForm" (ngSubmit)="connexion()">
-    <ion-item no-lines>
-      <ion-input class="input" placeholder="Nom d'utilisateur ou email" [(ngModel)]="login" name="login"></ion-input>
-    </ion-item>
+  <form #myform="ngForm" (ngSubmit)="connexion()" novalidate>
+    <!-- <ion-item no-lines>
+
+    </ion-item> -->
 
     <ion-item no-lines>
-      <ion-input class="input" placeholder="Mot de passe" [(ngModel)]="mdp" name="mdp"></ion-input>
+
+      <input class="test" type="text" placeholder="Nom d'utilisateur ou email" [(ngModel)]="login" name="login">
+
+      <!-- <ion-input id="show-password" type="password" placeholder="Mot de passe" [(ngModel)]="mdp" name="mdp"><ion-icon name="ios-eye-outline" (click)="test()"></ion-icon></ion-input> -->
+      <input id="show-password" type="password" placeholder="Mot de passe" [(ngModel)]="mdp" name="mdp">
     </ion-item>
+
+    <ion-icon name="ios-eye" (click)="togglePassword()"> &nbsp;Afficher le mot de passe</ion-icon>
+    <!-- <label><input type="checkbox" (click)="togglePassword()">Afficher le mot de passe</label> -->
+
 
     <button ion-button class="button"> Connexion </button>
-
   </form>
 </ion-content>

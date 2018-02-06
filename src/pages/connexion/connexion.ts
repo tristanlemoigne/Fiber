@@ -49,4 +49,15 @@ export class ConnexionPage {
   popView(){
      this.navCtrl.pop();
    }
+
+  togglePassword(){
+     let passwordInput = document.getElementById("show-password");
+
+     if(passwordInput.getAttribute("type") == "password"){
+       passwordInput.removeAttribute("type");
+
+     } else {
+       passwordInput.setAttribute("type", "password");
+     }
+   }
 }

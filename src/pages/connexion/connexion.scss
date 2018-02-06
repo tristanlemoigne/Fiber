@@ -1,24 +1,17 @@
 page-connexion {
-  ion-content{
-    font-size: 1.2em;
-  }
-
   .back{
-    width: 20px;
-  }
+    display: block;
+    width: 25px;
+    // margin: 5vh auto 0;
+    margin-top: 3vh;
+    margin-left: 16vw;
+    }
 
   .landing{
     height: 60px;
     display: block;
-    margin: 15vh auto 0;
+    margin: 10vh auto 7vh;
   }
-  //
-  // .button{
-  //   border-radius: 50px;
-  //   width: 40vw;
-  //   color: rgba(0, 0, 0, 0.3);
-  //   background-color: #f8f8f8;
-  // }
 
   .button{
     display: block;
@@ -26,4 +19,93 @@ page-connexion {
     box-shadow: none;
     margin: 0 auto;
   }
+
+
+  // INPUT
+  ion-input, input{
+    display: block;
+    background-color: #f8f8f8;
+    border-radius: 50px;
+
+    width: 70vw;
+    margin: 0 auto;
+    border: none;
+    height: 50px;
+    padding-left: 20px;
+
+    margin-bottom: 5vh;
+  }
+
+  input:nth-of-type(2){
+    margin-bottom: 0;
+  }
+
+  .input-wrapper{
+    display: block;
+    margin: 0;
+  }
+
+  input::-webkit-input-placeholder {
+    color: #cacaca !important;
+  }
+
+  ion-icon{
+    display: block;
+    text-align: center;
+    margin: 3vh auto 10vh;
+  }
+
+  .button{
+    border: solid 2px #cacaca;
+    text-transform: none;
+    color: #cacaca;
+    font-size: 1.7em;
+    font-weight: normal;
+    width: 70vw;
+    height: 50px;
+  }
+
+
+
+
+  .item-md.item-input.input-has-focus .item-inner {
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .list-md .item-input.input-has-focus:last-child {
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .list-md .item-input.input-has-focus:last-child .item-inner {
+    box-shadow: none;
+  }
+
+  .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child {
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child .item-inner {
+    box-shadow: none;
+  }
+
+  .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus) .item-inner {
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .list-md .item-input.ng-invalid.ng-touched:not(.input-has-focus):last-child {
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+
+
 }
