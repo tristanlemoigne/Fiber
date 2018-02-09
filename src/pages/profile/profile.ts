@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { GetDataProvider } from '../../providers/get-data/get-data';
 
 /**
  * Generated class for the ProfilePage page.
@@ -13,13 +14,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-profile',
   templateUrl: 'profile.html',
 })
-export class ProfilePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+export class ProfilePage implements OnInit {
+  public user:string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private getDataProvider:GetDataProvider) {
+    this.user = this.navParams.get('user');
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
+  ngOnInit(){
+    console.log(this.user);
   }
+
 
 }

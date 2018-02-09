@@ -14,6 +14,7 @@ export class PostDataProvider {
     console.log('Hello PostDataProvider Provider');
   }
   postData(link, data){
+    //add headers
     return this.http.post(link,data);
   }
 }

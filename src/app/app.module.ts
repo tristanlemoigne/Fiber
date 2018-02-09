@@ -10,7 +10,7 @@ import { MyApp } from './app.component';
 import { AccueilPage } from '../pages/accueil/accueil';
 import { FiltresPage } from '../pages/filtres/filtres';
 import { SupportPage } from '../pages/support/support';
-
+import { ProfilePage } from '../pages/profile/profile';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ConnexionPage } from '../pages/connexion/connexion';
 import { InscriptionPage } from '../pages/inscription/inscription';
@@ -29,7 +29,8 @@ import { GetDataProvider } from '../providers/get-data/get-data';
     InscriptionPage,
     SupportPage,
     ConnexionPage,
-    ConnexionInscriptionPage
+    ConnexionInscriptionPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +47,8 @@ import { GetDataProvider } from '../providers/get-data/get-data';
     SupportPage,
     ConnexionInscriptionPage,
     InscriptionPage,
-    ConnexionPage
+    ConnexionPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,

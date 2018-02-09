@@ -52,21 +52,24 @@ export class ConnexionPage {
     () => {
       loading.dismiss();
       console.log(this.response);
-      if(this.response == 1){
-
-        let alert = this.alert.create({
-           title: 'Erreur',
-           subTitle: 'Login ou mail inexsitant!',
-           buttons: ['OK']
-         });
-         alert.present();
+      if(typeof this.response == "string"){
+        this.navCtrl.push(MyApp);
       } else{
-        let alert = this.alert.create({
-           title: 'Erreur',
-           subTitle: 'Mot de passe incorrect',
-           buttons: ['OK']
-         });
-         alert.present();
+        if(this.response == 1){
+          let alert = this.alert.create({
+             title: 'Erreur',
+             subTitle: 'Login ou mail inexsitant!',
+             buttons: ['OK']
+           });
+           alert.present();
+        } else if (this.response == 2){
+            let alert = this.alert.create({
+               title: 'Erreur',
+               subTitle: 'Mot de passe incorrect',
+               buttons: ['OK']
+             });
+             alert.present();
+        }
       }
     });
   }

@@ -3,6 +3,7 @@ import { ModalController } from 'ionic-angular';
 import { FiltresPage } from '../filtres/filtres';
 import { NavController} from 'ionic-angular';
 import { GetDataProvider } from '../../providers/get-data/get-data';
+import { ProfilePage } from '../profile/profile';
 
 @Component({
   selector: 'page-accueil',
@@ -15,6 +16,7 @@ export class AccueilPage  implements OnInit {
   public currentPhoto:string;
   public authorPhoto:string;
   public filtresPage = FiltresPage;
+
 
 
   constructor (private modalCtrl: ModalController, private getDataProvider:GetDataProvider, private nav: NavController) {
@@ -52,6 +54,11 @@ export class AccueilPage  implements OnInit {
 
   load(page: any){
       this.nav.setRoot(page);
+  }
+  clickProfile(){
+    this.nav.push(ProfilePage,{
+      user:this.authorPhoto,
+    });
   }
   // move(e){
   //
