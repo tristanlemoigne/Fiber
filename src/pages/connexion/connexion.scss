@@ -4,7 +4,7 @@ page-connexion {
     width: 25px;
     // margin: 5vh auto 0;
     margin-top: 3vh;
-    margin-left: 16vw;
+    margin-left: 5vw;
     }
 
   .landing{
@@ -12,14 +12,6 @@ page-connexion {
     display: block;
     margin: 10vh auto 7vh;
   }
-
-  .button{
-    display: block;
-    border-radius: 50px;
-    box-shadow: none;
-    margin: 0 auto;
-  }
-
 
   // INPUT
   ion-input, input{
@@ -59,14 +51,24 @@ page-connexion {
     border: solid 2px #cacaca;
     text-transform: none;
     color: #cacaca;
-    font-size: 1.7em;
     font-weight: normal;
     width: 70vw;
     height: 50px;
+    display: block;
+    border-radius: 50px;
+    box-shadow: none;
+    margin: 0 auto;
+    font-size: 2.5em;
   }
 
+  ion-icon{
+    font-size: 20px;
+  }
 
-
+  span{
+    font-family: 'Gotham';
+    font-size: 0.7em;
+  }
 
   .item-md.item-input.input-has-focus .item-inner {
     border-bottom-color: transparent !important;

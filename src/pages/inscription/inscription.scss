@@ -1,3 +1,95 @@
 page-inscription {
+  .back{
+    display: block;
+    width: 25px;
+    // margin: 5vh auto 0;
+    margin-top: 3vh;
+    margin-left: 5vw;
+    }
+
+  .landing{
+    height: 60px;
+    display: block;
+    margin: 5vh auto 5vh;
+  }
+
+
+  ion-input, input{
+    display: block;
+    background-color: #f8f8f8;
+    border-radius: 50px;
+
+    width: 70vw;
+    margin: 0 auto;
+    border: none;
+    height: 50px;
+    padding-left: 20px;
+
+    margin-bottom: 3vh;
+  }
+
+  .input-wrapper{
+    display: block;
+    margin: 0;
+  }
+
+  input::-webkit-input-placeholder {
+    color: #cacaca !important;
+  }
+
+  .button{
+    border: solid 2px #cacaca;
+    text-transform: none;
+    color: #cacaca;
+    font-weight: normal;
+    width: 70vw;
+    height: 50px;
+    display: block;
+    border-radius: 50px;
+    box-shadow: none;
+    margin: 5vh auto 0;
+    font-size: 1.7em;
+  }
+
+
+
+
+    .item-md.item-input.input-has-focus .item-inner {
+      border-bottom-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .list-md .item-input.input-has-focus:last-child {
+      border-bottom-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .list-md .item-input.input-has-focus:last-child .item-inner {
+      box-shadow: none;
+    }
+
+    .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
+      border-bottom-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child {
+      border-bottom-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child .item-inner {
+      box-shadow: none;
+    }
+
+    .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus) .item-inner {
+      border-bottom-color: transparent !important;
+      box-shadow: none !important;
+    }
+
+    .list-md .item-input.ng-invalid.ng-touched:not(.input-has-focus):last-child {
+      border-bottom-color: transparent !important;
+      box-shadow: none !important;
+    }
 
 }

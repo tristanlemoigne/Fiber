@@ -80,4 +80,9 @@ export class InscriptionPage {
        }
      });
   }
+
+  popView(){
+    this.navCtrl.pop();
+  }
+
 }

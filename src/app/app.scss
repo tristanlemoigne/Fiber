@@ -1,5 +1,22 @@
 // http://ionicframework.com/docs/theming/
 
+@font-face {
+  font-family: 'Gotham';
+  src: url("../assets/fonts/Gotham-Medium.woff");
+  font-weight: normal;
+}
+
+
+@font-face {
+  font-family: 'Gotham';
+  src: url("../assets/fonts/Gotham-Bold.woff");
+  font-weight: bold;
+}
+
+*{
+  font-size: 0.97em;
+}
+
 .toolbar-background {
   background-color: white;
 }

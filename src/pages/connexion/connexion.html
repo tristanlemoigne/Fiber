@@ -1,47 +1,17 @@
-<!--
-  Generated template for the ConnexionPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-
-
-
-<!-- <ion-content padding>
-  <form #myform="ngForm" (ngSubmit)="connexion()">
-    <ion-item>
-      <ion-input placeholder="Nom d'utilisateur ou email" [(ngModel)]="login" name="login"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input placeholder="Mot de passe" [(ngModel)]="mdp" name="mdp"></ion-input>
-    </ion-item>
-    <button ion-button> Se connecter </button>
-
-  </form>
-</ion-content> -->
-
-
 <ion-content padding>
   <img class="back" src="assets/imgs/retour.png" (click)="popView()"/>
-
   <img class="landing" src="assets/imgs/fiber_landing.png" />
 
   <form #myform="ngForm" (ngSubmit)="connexion()" novalidate>
-    <!-- <ion-item no-lines>
-
-    </ion-item> -->
-
     <ion-item no-lines>
+      <input type="text" placeholder="Nom d'utilisateur ou email" [(ngModel)]="login" name="login">
 
-      <input class="test" type="text" placeholder="Nom d'utilisateur ou email" [(ngModel)]="login" name="login">
-
-      <!-- <ion-input id="show-password" type="password" placeholder="Mot de passe" [(ngModel)]="mdp" name="mdp"><ion-icon name="ios-eye-outline" (click)="test()"></ion-icon></ion-input> -->
       <input id="show-password" type="password" placeholder="Mot de passe" [(ngModel)]="mdp" name="mdp">
     </ion-item>
 
-    <ion-icon name="ios-eye" (click)="togglePassword()"> &nbsp;Afficher le mot de passe</ion-icon>
-    <!-- <label><input type="checkbox" (click)="togglePassword()">Afficher le mot de passe</label> -->
-
+    <ion-icon name="ios-eye" (click)="togglePassword()">
+      <span> &nbsp; Afficher le mot de passe </span>
+    </ion-icon>
 
     <button ion-button class="button"> Connexion </button>
   </form>
