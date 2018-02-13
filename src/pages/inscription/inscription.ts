@@ -25,12 +25,14 @@ export class InscriptionPage {
   public mdp:string = "";
   public mail:string = "";
   public login:string = "";
+  public mdpConfirm:string = "";
   public response:any;
   tabsPage = TabsPage
   inscription(){
     let mydata = JSON.stringify({login: this.login,
                                  mail: this.mail,
-                                 mdp: this.mdp});
+                                 mdp: this.mdp,
+                               mdpConfirm: this.mdpConfirm});
     let link = "http://fiber-app.com/SERVER/inscription_verif.php";
     let req = this.postDataProvider.postData(link,mydata);
     var loading = this.loading.create({
@@ -61,22 +63,40 @@ export class InscriptionPage {
        if(typeof this.response == "string"){
          this.navCtrl.push(MyApp);
        } else{
-         if(this.response == 1){
-           let alert = this.alert.create({
-              title: 'Erreur',
-              subTitle: 'Login ou mail déjà enregistré!',
-              buttons: ['OK']
-            });
-            alert.present();
-
-         } else{
-           let alert = this.alert.create({
-              title: 'Erreur',
-              subTitle: 'Erreur de connexion',
-              buttons: ['OK']
-            });
-            alert.present();
-         }
+           switch (this.response){
+             case 1:
+               let alert = this.alert.create({
+                  title: 'Erreur',
+                  subTitle: 'Tous les champs doivent être remplis',
+                  buttons: ['OK']
+                });
+                alert.present();
+                break;
+             case 2:
+                alert = this.alert.create({
+                  title: 'Erreur',
+                  subTitle: 'Login ou mail déjà enregistré!',
+                  buttons: ['OK']
+                });
+                alert.present();
+                break;
+              case 3:
+                alert = this.alert.create({
+                  title: 'Erreur',
+                  subTitle: 'Les deux mots de passe sont différents!',
+                  buttons: ['OK']
+                });
+                alert.present();
+                break;
+              case 4:
+                alert = this.alert.create({
+                  title: 'Erreur',
+                  subTitle: 'Erreur de serveur interne',
+                  buttons: ['OK']
+                });
+                alert.present();
+                break;
+           }
        }
      });
   }

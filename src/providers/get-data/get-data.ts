@@ -17,7 +17,7 @@ export class GetDataProvider {
   constructor(public http: HttpClient) {
     console.log('Hello GetDataProvider Provider');
   }
-  getData(link){
-    return this.http.get(link);
+  getData(link,options?){
+    return this.http.get(link,options);
   }
 }
