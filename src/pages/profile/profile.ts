@@ -19,6 +19,7 @@ import { RequestOptions } from '@angular/http';
 export class ProfilePage implements OnInit {
   public user:string;
   public token:string;
+  public photos:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private getDataProvider:GetDataProvider, private storage:Storage) {
     this.user = this.navParams.get('user');
   }
@@ -27,12 +28,11 @@ export class ProfilePage implements OnInit {
     this.storage.get("token").then((val) => {
         this.token = val;
         let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
-        //headers.append('Authentication', `Bearer `+this.token);
-        //let options = new RequestOptions({ headers: headers });
-        let link = "http://fiber-app.com/SERVER/extractToken.php";
+
+        let link = "http://fiber-app.com/SERVER/profile.php"+"?username="+this.user;
         let req = this.getDataProvider.getData(link,{headers});
         req.subscribe(data=>{
-          console.log(data);
+          this.photos = data;
         })
     });
 
