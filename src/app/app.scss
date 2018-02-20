@@ -17,6 +17,14 @@
   font-size: 0.97em;
 }
 
+.title, .title-md, ion-title, .toolbar-title-md{
+  font-size: 1.6em;
+  font-weight: bold;
+  background: -webkit-linear-gradient(#f5d4c9, #b2c4dd, #42aac6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .toolbar-background {
   background-color: white;
 }

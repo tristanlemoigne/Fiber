@@ -7,10 +7,9 @@ page-connexion {
     margin-left: 5vw;
     }
 
-  .landing{
-    height: 60px;
-    display: block;
-    margin: 10vh auto 7vh;
+  .title, .title-md, ion-title, .toolbar-title-md{
+    font-size: 2.4em;
+    margin: 5vh auto 2vh;
   }
 
   // INPUT

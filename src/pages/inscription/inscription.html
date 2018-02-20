@@ -1,6 +1,9 @@
 <ion-content padding>
   <img class="back" src="assets/imgs/retour.png" (click)="popView()"/>
-  <img class="landing" src="assets/imgs/fiber_landing.png" />
+  
+  <ion-title>
+    FIBER
+  </ion-title>
 
   <form #myform="ngForm" (ngSubmit)="inscription()">
     <ion-item no-lines>
@@ -8,9 +11,9 @@
 
       <input placeholder="E-mail" [(ngModel)]="mail" name="mail" required>
 
-      <input placeholder="Mot de passe" [(ngModel)]="mdp" name="mdp" required>
+      <input type="password" placeholder="Mot de passe" [(ngModel)]="mdp" name="mdp" required>
 
-      <input placeholder="Confirmer le mot de passe" [(ngModel)]="mdpConfirm" name="mdpConfirm" required>
+      <input type="password" placeholder="Confirmer le mot de passe" [(ngModel)]="mdpConfirm" name="mdpConfirm" required>
     </ion-item>
 
     <button ion-button> S'inscrire </button>
