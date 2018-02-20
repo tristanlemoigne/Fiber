@@ -3,8 +3,12 @@ QUAND LOG = CHARGER DANS CE COMPOSANT IDEALEMENT
 <menu></menu>
 <page-accueil> DANS LA PAGE D'ACCUEIL METTRE LES BOUTONS LIKE PAS LIKE PROFIL ETC </page-accueil>
 -->
+<ion-nav #myNav [root]="rootPage" *ngIf="afficheConnexion">
 
-<div *ngIf="tokenExist">
+</ion-nav>
+
+
+<div *ngIf="afficheHome">
   <!--LE MENU-->
   <ion-menu  [content]="nav">
     <ion-header>
@@ -42,9 +46,5 @@ QUAND LOG = CHARGER DANS CE COMPOSANT IDEALEMENT
     </ion-content>
   </ion-menu>
 
-  <!-- devrait être dans la page accueil -->
   <ion-nav [root]="tabsPage" #nav></ion-nav>
 </div>
-<ion-nav #myNav [root]="rootPage" *ngIf="!tokenExist">
-
-</ion-nav>

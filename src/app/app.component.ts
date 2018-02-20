@@ -23,8 +23,10 @@ export class MyApp implements OnInit {
   connexionInscriptionPage = ConnexionInscriptionPage;
   supportPage = SupportPage;
 
-  tokenExist:boolean;
-  tokenValue:any;
+  afficheConnexion:boolean = false;
+  afficheHome:boolean = false;
+
+  // tokenValue:any;
   @ViewChild('nav') nav: NavController;
   public rootPage:any = ConnexionInscriptionPage;
 
@@ -39,16 +41,22 @@ export class MyApp implements OnInit {
 
   ngOnInit(){
     //USE THIS LINE TO GET RID OF TOKEN FOR TEST ================ this.storage.remove("token");
-    this.storage.get('token').then((val) => {
-      this.tokenValue = val;
-      console.log(val);
-      if(this.tokenValue != null){
-        this.tokenExist=true;
+    this.storage.get('token').then((tokenValue) => {
+      // this.tokenValue = val;
+      console.log(tokenValue);
+      if(tokenValue != null){
+        this.afficheConnexion=false;
+        this.afficheHome=true;
+        console.log("token true");
       }
       else{
-        this.tokenExist=false;
+        this.afficheHome=false;
+        this.afficheConnexion=true;
+        console.log("token false");
       }
     });
+
+    // REturn ou let boolean
   }
 
   onLoad(page: any){
