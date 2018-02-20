@@ -55,20 +55,31 @@ export class ConnexionPage {
       if(typeof this.response == "string"){
         this.navCtrl.push(MyApp);
       } else{
-        if(this.response == 1){
-          let alert = this.alert.create({
-             title: 'Erreur',
-             subTitle: 'Login ou mail inexsitant!',
-             buttons: ['OK']
-           });
-           alert.present();
-        } else if (this.response == 2){
+        switch (this.response){
+          case 1:
             let alert = this.alert.create({
                title: 'Erreur',
-               subTitle: 'Mot de passe incorrect',
+               subTitle: 'Tous les champs doivent être remplis',
                buttons: ['OK']
              });
              alert.present();
+             break;
+          case 2:
+             alert = this.alert.create({
+               title: 'Erreur',
+               subTitle: 'Login ou mail inexistant',
+               buttons: ['OK']
+             });
+             alert.present();
+             break;
+           case 3:
+             alert = this.alert.create({
+               title: 'Erreur',
+               subTitle: 'Le mot de passe est incorrect',
+               buttons: ['OK']
+             });
+             alert.present();
+             break;
         }
       }
     });
