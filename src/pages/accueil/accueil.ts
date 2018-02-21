@@ -16,6 +16,8 @@ export class AccueilPage  implements OnInit {
   public currentPhoto:string;
   public authorPhoto:string;
   public filtresPage = FiltresPage;
+  public commentaires:any;
+  public hasComment:boolean = false;
 
 
 
@@ -26,28 +28,28 @@ export class AccueilPage  implements OnInit {
     let link = "http://fiber-app.com/SERVER/getPhoto.php";
     this.getDataProvider.getData(link).subscribe(data=>{
       this.photoList = data;
-      this.currentPhoto = this.photoList[0]["link_photo"];
-      this.authorPhoto = this.photoList[0]["login_user"];
-      console.log(this.authorPhoto);
+      this.currentPhoto = this.photoList[0]["photo"]["link_photo"];
+      this.authorPhoto = this.photoList[0]["photo"]["login_user"];
+      console.log(data);
     });
   }
 
   swipeEvent(e){
     if (e.direction == 2) {
-      console.log("swipe");
+      this.hasComment=false;
       this.photoList.splice(0,1);
-      this.currentPhoto = this.photoList[0]["link_photo"];
-      this.authorPhoto = this.photoList[0]["login_user"];
+      this.currentPhoto = this.photoList[0]["photo"]["link_photo"];
+      this.authorPhoto = this.photoList[0]["photo"]["login_user"];
       // console.log(e)
       // console.log(e.distance);
         //direction 2 = right to left swipe.
     }
 
     if (e.direction == 4) {
-      console.log("swipe");
+      this.hasComment=false;
       this.photoList.splice(0,1);
-      this.currentPhoto = this.photoList[0]["link_photo"];
-      this.authorPhoto = this.photoList[0]["login_user"];
+      this.currentPhoto = this.photoList[0]["photo"]["link_photo"];
+      this.authorPhoto = this.photoList[0]["photo"]["login_user"];
         //direction 2 = right to left swipe.
     }
   }
@@ -59,6 +61,11 @@ export class AccueilPage  implements OnInit {
     this.nav.push(ProfilePage,{
       user:this.authorPhoto,
     });
+  }
+  commenter(){
+    this.hasComment=true;
+    this.commentaires = this.photoList[0]["comments"];
+    console.log(this.commentaires);
   }
   // move(e){
   //

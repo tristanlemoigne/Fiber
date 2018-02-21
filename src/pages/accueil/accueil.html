@@ -32,6 +32,16 @@
     </button>
 
     <img id="imaage" class="margin" (swipe)="swipeEvent($event)" src={{this.currentPhoto}} />
+     <ion-fab>
+       <button (click)="commenter()" ion-fab>Comm</button>
+     </ion-fab>
+     <br /><br /><br /><br />
+     <div *ngIf="hasComment">
+       <p *ngFor="let comment of commentaires">
+         <span> {{comment["login_user"]}} a commenté : </span>
+         <span>{{comment["text_comment"]}} </span>
+       </p>
+     </div>
 
     <!-- <img id="card" class="margin" (swipe)="swipeEvent($event)" (mousemove)="move($event)" src="assets/imgs/photo1.jpg" /> -->
   </ion-card>
