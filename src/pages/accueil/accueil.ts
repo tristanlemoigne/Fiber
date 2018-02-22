@@ -4,6 +4,7 @@ import { FiltresPage } from '../filtres/filtres';
 import { NavController} from 'ionic-angular';
 import { GetDataProvider } from '../../providers/get-data/get-data';
 import { ProfilePage } from '../profile/profile';
+import { ComPredefiniPage } from '../com-predefini/com-predefini';
 
 @Component({
   selector: 'page-accueil',
@@ -40,8 +41,6 @@ export class AccueilPage  implements OnInit {
       this.photoList.splice(0,1);
       this.currentPhoto = this.photoList[0]["photo"]["link_photo"];
       this.authorPhoto = this.photoList[0]["photo"]["login_user"];
-      // console.log(e)
-      // console.log(e.distance);
         //direction 2 = right to left swipe.
     }
 
@@ -66,6 +65,9 @@ export class AccueilPage  implements OnInit {
     this.hasComment=true;
     this.commentaires = this.photoList[0]["comments"];
     console.log(this.commentaires);
+  }
+  ecrireCommentaire(){
+    this.nav.push(ComPredefiniPage);
   }
   // move(e){
   //

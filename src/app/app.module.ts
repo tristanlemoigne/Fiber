@@ -15,6 +15,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { ConnexionPage } from '../pages/connexion/connexion';
 import { InscriptionPage } from '../pages/inscription/inscription';
 import { ConnexionInscriptionPage } from '../pages/connexion-inscription/connexion-inscription';
+import { ComPredefiniPage } from '../pages/com-predefini/com-predefini';
 import { SettingsService } from '../services/settings';
 import { PostDataProvider } from '../providers/post-data/post-data';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -30,7 +31,8 @@ import { GetDataProvider } from '../providers/get-data/get-data';
     SupportPage,
     ConnexionPage,
     ConnexionInscriptionPage,
-    ProfilePage
+    ProfilePage,
+    ComPredefiniPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { GetDataProvider } from '../providers/get-data/get-data';
     ConnexionInscriptionPage,
     InscriptionPage,
     ConnexionPage,
-    ProfilePage
+    ProfilePage,
+    ComPredefiniPage
   ],
   providers: [
     StatusBar,
