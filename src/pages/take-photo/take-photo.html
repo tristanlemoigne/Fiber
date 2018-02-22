@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <img alt="menu" height="23" src="assets/imgs/menu_icon.png">
+      </button>
+    </ion-buttons>
+
+    <ion-title>Prendre une photo</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <button ion-button (click)="takePhoto()">Prendre une photo ici</button>
+    <button ion-button (click)="openGallery()">Importer depuis la gallerie</button>
+</ion-content>

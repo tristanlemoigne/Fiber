@@ -11,9 +11,12 @@ import { AccueilPage } from '../pages/accueil/accueil';
 import { FiltresPage } from '../pages/filtres/filtres';
 import { SupportPage } from '../pages/support/support';
 import { ProfilePage } from '../pages/profile/profile';
+import { TakePhotoPage } from '../pages/take-photo/take-photo';
+import { EnvoiPhotoPage } from '../pages/envoi-photo/envoi-photo';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ConnexionPage } from '../pages/connexion/connexion';
 import { InscriptionPage } from '../pages/inscription/inscription';
+import { DernieresNouvellesPage } from '../pages/dernieres-nouvelles/dernieres-nouvelles';
 import { ConnexionInscriptionPage } from '../pages/connexion-inscription/connexion-inscription';
 import { ComPredefiniPage } from '../pages/com-predefini/com-predefini';
 import { SettingsService } from '../services/settings';
@@ -32,7 +35,10 @@ import { GetDataProvider } from '../providers/get-data/get-data';
     ConnexionPage,
     ConnexionInscriptionPage,
     ProfilePage,
-    ComPredefiniPage
+    ComPredefiniPage,
+    TakePhotoPage,
+    EnvoiPhotoPage,
+    DernieresNouvellesPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,11 @@ import { GetDataProvider } from '../providers/get-data/get-data';
     InscriptionPage,
     ConnexionPage,
     ProfilePage,
-    ComPredefiniPage
+    ComPredefiniPage,
+    TakePhotoPage,
+    EnvoiPhotoPage,
+    DernieresNouvellesPage
+
   ],
   providers: [
     StatusBar,

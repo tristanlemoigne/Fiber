@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import { FiltresPage } from '../pages/filtres/filtres';
 import { SupportPage } from '../pages/support/support';
+import { DernieresNouvellesPage } from '../pages/dernieres-nouvelles/dernieres-nouvelles';
 
 import { ConnexionInscriptionPage } from '../pages/connexion-inscription/connexion-inscription';
 import { NavController} from 'ionic-angular';
@@ -22,6 +23,7 @@ export class MyApp implements OnInit {
   filtrespage = FiltresPage;
   connexionInscriptionPage = ConnexionInscriptionPage;
   supportPage = SupportPage;
+  dernieresNouvellesPage = DernieresNouvellesPage;
 
   afficheConnexion:boolean = false;
   afficheHome:boolean = false;

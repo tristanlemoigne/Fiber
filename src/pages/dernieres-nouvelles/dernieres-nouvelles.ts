@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the EnvoiPhotoPage page.
+ * Generated class for the DernieresNouvellesPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,20 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-envoi-photo',
-  templateUrl: 'envoi-photo.html',
+  selector: 'page-dernieres-nouvelles',
+  templateUrl: 'dernieres-nouvelles.html',
 })
-export class EnvoiPhotoPage {
-  public imageTaken:string;
-  public imageGallery:string;
+export class DernieresNouvellesPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.imageTaken = this.navParams.get('base64Image');
-    this.imageGallery = this.navParams.get('imageSrc');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EnvoiPhotoPage');
+    console.log('ionViewDidLoad DernieresNouvellesPage');
   }
 
 }

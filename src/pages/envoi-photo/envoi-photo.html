@@ -7,12 +7,16 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>envoiPhoto</ion-title>
+    <ion-title>Envoyer une photo</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-card class="block">
+    <img [src]="imageTaken"  *ngIf="imageTaken"  />
+    <img [src]="imageGallery"  *ngIf="imageGallery"  />
+  </ion-card>
 
 </ion-content>

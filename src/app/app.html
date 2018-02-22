@@ -13,9 +13,8 @@ QUAND LOG = CHARGER DANS CE COMPOSANT IDEALEMENT
   <ion-menu  [content]="nav">
     <ion-header>
       <ion-toolbar>
-        <ion-title>
+        <ion-title class="menuTitle">
           MENU
-          <!-- <img alt="fiber" height="15" src="assets/imgs/menu_title.png"> -->
         </ion-title>
       </ion-toolbar>
     </ion-header>
@@ -26,11 +25,11 @@ QUAND LOG = CHARGER DANS CE COMPOSANT IDEALEMENT
           Accueil
         </button>
 
-        <button class="button" ion-item no-lines detail-none text-center onclick="window.open('http://fiber-app.com/index-blog.html', '_system', 'location=yes')">
+        <!-- <button class="button" ion-item no-lines detail-none text-center onclick="window.open('http://fiber-app.com/index-blog.html', '_system', 'location=yes')">
           Blog
-        </button>
+        </button> -->
 
-        <button class="button" ion-item no-lines detail-none text-center onclick="window.open('http://fiber-app.com/index-presentation.html', '_system', 'location=yes')">
+        <button class="button" ion-item no-lines detail-none text-center (click)="onLoad(dernieresNouvellesPage)">
           Dernières nouvelles
         </button>
 
