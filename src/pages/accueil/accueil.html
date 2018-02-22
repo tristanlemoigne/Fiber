@@ -2,7 +2,7 @@
 <!-- <ion-header no-border> -->
 
   <ion-navbar>
-    <ion-buttons left>
+    <ion-buttons start left>
       <button ion-button menuToggle>
         <img alt="menu" height="23" src="assets/imgs/menu_icon.png">
       </button>
@@ -13,7 +13,7 @@
       FIBER
     </ion-title>
 
-    <ion-buttons end>
+    <ion-buttons right end>
       <button ion-button (click)="load(filtresPage)">
         <img alt="filters" height="23" src="assets/imgs/filter_icon.png">
       </button>
@@ -25,8 +25,8 @@
 <ion-content class="content">
 
   <ion-card id="card" no-shadow  class="card" >
-    <button ion-button round class="card-title" (click)="clickProfile()">
-      <button ion-button round class="border">
+    <button ion-button round no-lines detail-none class="card-title" (click)="clickProfile()">
+      <button ion-button round no-lines detail-none class="border" >
         <b>{{this.authorPhoto}}</b>
       </button>
     </button>
@@ -36,6 +36,7 @@
        <button (click)="commenter()" ion-fab>Comm</button>
      </ion-fab>
      <br /><br /><br /><br />
+
      <div *ngIf="hasComment">
        <p *ngFor="let comment of commentaires">
          <span> {{comment["login_user"]}} a commenté : </span>

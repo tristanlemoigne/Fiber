@@ -2,7 +2,8 @@ page-tabs {
 
    .ion-md-photo, .ion-ios-photo, .ion-ios-photo-outline, .ion-md-photo-outline{
        content: url(../assets/imgs/photo_icon.png);
-       width: 30px;
+       width: 30px !important;
+       min-width: 30px !important;
        height: 30px;
        // background-repeat: no-repeat;
        // background-size: 30px 30px;
@@ -12,7 +13,10 @@ page-tabs {
 
   .ion-md-profile, .ion-ios-profile, .ion-ios-profile-outline, .ion-md-profile-outline{
     content: url(../assets/imgs/profile.png);
-    width: 30px;
+    width: 30px !important;
+    min-width: 30px !important;
+    min-width: 30px;
+
     height: 30px;
   }
 

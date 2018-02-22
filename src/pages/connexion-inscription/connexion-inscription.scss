@@ -1,5 +1,9 @@
 page-connexion-inscription {
-  .title, .title-md, ion-title, .toolbar-title-md{
+  .title, .title-md, .title-ios, ion-title, .toolbar-title-md, .toolbar-title-ios{
+    position: relative;
+    padding: 0;
+    height: auto;
+    width: auto;
     font-size: 2.4em;
     margin: 6vh auto 0;
   }
@@ -27,9 +31,10 @@ page-connexion-inscription {
     color: #dd4b39;
     // background-color: #dd4b39;
   }
-
+// b1c3dd
   .button:nth-of-type(3){
-    background: linear-gradient(to right, #b1c3dd, #ebd2cc);
+    // background: linear-gradient(to right, #b1c3dd, #ebd2cc);
+    background: linear-gradient(to right, #a7c1e0, #f5d4c9);
     // background-color: #dd4b39;
   }
 

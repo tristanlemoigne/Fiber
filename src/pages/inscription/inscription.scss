@@ -7,7 +7,11 @@ page-inscription {
     margin-left: 5vw;
     }
 
-  .title, .title-md, ion-title, .toolbar-title-md{
+  .title, .title-md, .title-ios, ion-title, .toolbar-title-md, .toolbar-title-ios{
+    position: relative;
+    padding: 0;
+    height: auto;
+    width: auto;
     font-size: 2.4em;
     margin: 3vh auto 1vh;
   }

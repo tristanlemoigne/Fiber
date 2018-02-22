@@ -11,9 +11,8 @@ page-accueil{
   }
 
   .card-title {
-    font-size: 1.2em;
-    height: 2.5em;
-    padding: 2px;
+    height: 40px !important;
+    padding: 2px !important;
 
     margin: 0;
 
@@ -21,17 +20,22 @@ page-accueil{
     top: 7px;
     left: 7px;
 
-    background: linear-gradient(#f7dcd3, #cbd3eb, #3baaca);
+    background: -webkit-linear-gradient(#f7dcd3, #cbd3eb, #3baaca);
     z-index: 3;
+    box-shadow: none !important;
   }
 
-
-
   .border{
-    height: 2.7em;
+    height: 36px !important;
     padding: 10px;
     background-color: white;
     color: black;
+    box-shadow: none !important;
+
+  }
+
+  .border  b {
+    font-size: 15px !important;
   }
 
   .margin{
