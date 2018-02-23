@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { AccueilPage } from '../accueil/accueil';
+import { TabsPage } from '../tabs/tabs';
+
+
 /**
  * Generated class for the DernieresNouvellesPage page.
  *
@@ -22,4 +26,7 @@ export class DernieresNouvellesPage {
     console.log('ionViewDidLoad DernieresNouvellesPage');
   }
 
+  popView(){
+    this.navCtrl.setRoot(TabsPage);
+   }
 }

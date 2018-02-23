@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AccueilPage } from '../accueil/accueil';
+import { TabsPage } from '../tabs/tabs';
+
 
 /**
  * Generated class for the FiltresPage page.
@@ -21,5 +24,9 @@ export class FiltresPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad FiltresPage');
   }
+
+  popView(){
+    this.navCtrl.setRoot(TabsPage);
+   }
 
 }

@@ -1,3 +1,53 @@
 page-support {
+  // INPUT
+  .input-wrapper{
+    display: block;
+    margin: 0;
+  }
+
+  input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #cacaca !important;
+  }
+
+  ion-input, input{
+    display: block;
+    background-color: #f8f8f8;
+    border-radius: 50px;
+
+    width: 70vw;
+    margin: 0 auto;
+    border: none;
+    height: 50px;
+    padding-left: 20px;
+
+    font-size: 1.2em;
+    margin-top: 6vh;
+    margin-bottom: 5vh;
+  }
+
+  textarea, .text-input, .text-input-ios{
+    font-size: 1.2em;
+    background-color: #f8f8f8;
+    border-radius: 20px;
+    width: 70vw;
+    margin: 0 auto 4vh !important;
+    opacity: 100%;
+    height: 50vh;
+    padding: 20px;
+  }
+
+  .buttonEnvoi{
+    display: block;
+    color: #cacaca;
+    box-shadow: unset !important;
+    opacity: 1 !important;
+    width: 70vw;
+    margin: 0 auto;
+    border-radius: 50px;
+    padding: 25px 0;
+    font-size: 1.5em;
+    border: solid 2px #cacaca;
+  }
+
 
 }

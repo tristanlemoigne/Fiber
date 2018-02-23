@@ -43,7 +43,24 @@ page-accueil{
     // padding: 0 7px;
     z-index: 1;
   }
-}
 
-//emmet
-//autocompletion
+  img[alt="like"], img[alt="dislike"]{
+    width: 60px;
+    display: inline;
+  }
+
+  img[alt="comment"]{
+    display: inline;
+    width: 40px;
+  }
+
+  .input-wrapper, ion-item, .item{
+    // position: absolute;
+    // bottom: 0;
+    // z-index: 9;
+    // margin: 0;
+
+    background-color: red;
+    padding: 0;
+  }
+}

@@ -42,6 +42,8 @@ export class AccueilPage  implements OnInit {
       this.currentPhoto = this.photoList[0]["photo"]["link_photo"];
       this.authorPhoto = this.photoList[0]["photo"]["login_user"];
         //direction 2 = right to left swipe.
+        // Send dislike to bdd
+
     }
 
     if (e.direction == 4) {
@@ -49,23 +51,42 @@ export class AccueilPage  implements OnInit {
       this.photoList.splice(0,1);
       this.currentPhoto = this.photoList[0]["photo"]["link_photo"];
       this.authorPhoto = this.photoList[0]["photo"]["login_user"];
-        //direction 2 = right to left swipe.
+        // Send like to bdd
     }
+  }
+
+  like(){
+    // Send like to bdd
+    this.hasComment=false;
+    this.photoList.splice(0,1);
+    this.currentPhoto = this.photoList[0]["photo"]["link_photo"];
+    this.authorPhoto = this.photoList[0]["photo"]["login_user"];
+  }
+
+  dislike(){
+    // Send dislike to bdd
+    this.hasComment=false;
+    this.photoList.splice(0,1);
+    this.currentPhoto = this.photoList[0]["photo"]["link_photo"];
+    this.authorPhoto = this.photoList[0]["photo"]["login_user"];
   }
 
   load(page: any){
       this.nav.setRoot(page);
   }
+
   clickProfile(){
     this.nav.push(ProfilePage,{
       user:this.authorPhoto,
     });
   }
+
   commenter(){
     this.hasComment=true;
     this.commentaires = this.photoList[0]["comments"];
     console.log(this.commentaires);
   }
+
   ecrireCommentaire(){
     this.nav.push(ComPredefiniPage);
   }

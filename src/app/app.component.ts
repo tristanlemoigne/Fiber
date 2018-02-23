@@ -67,7 +67,7 @@ export class MyApp implements OnInit {
         this.menuCtrl.close();
         this.nav.setRoot(page);
       } else {
-        this.nav.push(page);
+        this.nav.setRoot(page);
         this.menuCtrl.close();
       }
   }

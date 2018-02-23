@@ -24,17 +24,26 @@
 
 <ion-content class="content">
 
-  <ion-card id="card" no-shadow  class="card" >
+  <ion-card id="card" no-shadow  class="card" (swipe)="swipeEvent($event)"  >
     <button ion-button round no-lines detail-none class="card-title" (click)="clickProfile()">
       <button ion-button round no-lines detail-none class="border" >
         <b>{{this.authorPhoto}}</b>
       </button>
     </button>
 
-    <img id="imaage" class="margin" (swipe)="swipeEvent($event)" src={{this.currentPhoto}} />
-     <ion-fab>
-       <button (click)="commenter()" ion-fab>Comm</button>
-     </ion-fab>
+
+    <ion-item>
+        <img alt="dislike" (click)="like()" src="assets/imgs/dislike.png">
+        <img alt="comment" (click)="commenter()" src="assets/imgs/comment.png">
+        <img alt="like" (click)="dislike()" src="assets/imgs/like.png">
+
+    </ion-item>
+
+    <img id="imaage" class="margin" src={{this.currentPhoto}} />
+
+
+
+
      <br /><br /><br /><br />
 
      <div *ngIf="hasComment">

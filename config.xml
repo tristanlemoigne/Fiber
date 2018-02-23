@@ -78,7 +78,6 @@
     </platform>
     <allow-navigation href="http://192.168.43.227:8101" />
     <allow-navigation href="http://192.168.1.36:8100" />
-    <engine name="android" spec="^7.0.0" />
     <engine name="ios" spec="4.5.4" />
     <plugin name="cordova-plugin-camera" spec="^3.0.0" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
@@ -93,4 +92,5 @@
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <allow-navigation href="http://172.22.142.53:8100" />
     <allow-navigation href="http://192.168.43.22:8100" />
+    <engine name="android" spec="~7.0.0" />
 </widget>
