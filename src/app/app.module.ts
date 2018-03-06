@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { IonicStorageModule } from '@ionic/storage';
+import { FileTransfer, FileUploadOptions, FileTransferObject  } from '@ionic-native/file-transfer';
 
 import { MyApp } from './app.component';
 import { AccueilPage } from '../pages/accueil/accueil';
@@ -70,6 +71,7 @@ import { GetDataProvider } from '../providers/get-data/get-data';
     SettingsService,
     PostDataProvider,
     GetDataProvider,
+    FileTransfer
   ]
 })
 export class AppModule {}
