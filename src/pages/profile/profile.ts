@@ -32,7 +32,9 @@ export class ProfilePage implements OnInit {
         let link = "http://fiber-app.com/SERVER/profile.php"+"?username="+this.user;
         let req = this.getDataProvider.getData(link,{headers});
         req.subscribe(data=>{
-          this.photos = data;
+          console.log(data);
+          this.photos=data[0];
+          //data[1] = le token
         })
     });
 
