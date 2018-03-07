@@ -31,3 +31,9 @@ ATTENTION : Télécharger les modules suivant :
   ionic cordova plugin add cordova-plugin-file-transfer
 
   npm install --save @ionic-native/file-transfer
+
+ - Instagram :
+
+ ionic cordova plugin add cordova-instagram-plugin
+ 
+ npm install --save @ionic-native/instagram
