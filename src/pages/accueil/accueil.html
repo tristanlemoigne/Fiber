@@ -31,12 +31,15 @@
       </button>
     </button>
 
+    <img *ngIf="hasDisliked" alt="dislikeAnimation" src="assets/imgs/dislike.png">
+    <!-- <img *ngIf="hasLiked" alt="likeAnimation" src="assets/imgs/like.png"> -->
+
     <img id="imaage" class="margin" src={{this.currentPhoto}} />
 
     <ion-row class="boxLikes">
-        <img alt="dislike" (click)="like()" src="assets/imgs/dislike.png">
+        <img alt="dislike" (click)="dislike()" src="assets/imgs/dislike.png">
         <img alt="comment" (click)="commenter()" src="assets/imgs/comment.png">
-        <img alt="like" (click)="dislike()" src="assets/imgs/like.png">
+        <img alt="like" (click)="like()" src="assets/imgs/like.png">
     </ion-row>
   </ion-card>
 

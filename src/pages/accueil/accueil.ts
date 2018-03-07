@@ -19,6 +19,8 @@ export class AccueilPage  implements OnInit {
   public filtresPage = FiltresPage;
   public commentaires:any;
   public hasComment:boolean = false;
+  public hasLiked:boolean = false;
+  public hasDisliked:boolean = false;
 
 
 
@@ -35,41 +37,46 @@ export class AccueilPage  implements OnInit {
     });
   }
 
-  swipeEvent(e){
-    if (e.direction == 2) {
-      this.hasComment=false;
-      this.photoList.splice(0,1);
-      this.currentPhoto = this.photoList[0]["photo"]["link_photo"];
-      this.authorPhoto = this.photoList[0]["photo"]["login_user"];
-        //direction 2 = right to left swipe.
-        // Send dislike to bdd
-
-    }
-
-    if (e.direction == 4) {
-      this.hasComment=false;
-      this.photoList.splice(0,1);
-      this.currentPhoto = this.photoList[0]["photo"]["link_photo"];
-      this.authorPhoto = this.photoList[0]["photo"]["login_user"];
-        // Send like to bdd
-    }
-  }
-
   like(){
     // Send like to bdd
-    this.hasComment=false;
-    this.photoList.splice(0,1);
-    this.currentPhoto = this.photoList[0]["photo"]["link_photo"];
-    this.authorPhoto = this.photoList[0]["photo"]["login_user"];
+    this.hasLiked = true;
+
+    setTimeout(() => {
+      this.hasLiked = false;
+      this.hasComment=false;
+      this.photoList.splice(0,1);
+      this.currentPhoto = this.photoList[0]["photo"]["link_photo"];
+      this.authorPhoto = this.photoList[0]["photo"]["login_user"];
+      },500)
   }
 
   dislike(){
     // Send dislike to bdd
-    this.hasComment=false;
-    this.photoList.splice(0,1);
-    this.currentPhoto = this.photoList[0]["photo"]["link_photo"];
-    this.authorPhoto = this.photoList[0]["photo"]["login_user"];
+    this.hasDisliked = true;
+
+    setTimeout(() => {
+       this.hasDisliked = false;
+       this.hasComment=false;
+       this.photoList.splice(0,1);
+       this.currentPhoto = this.photoList[0]["photo"]["link_photo"];
+       this.authorPhoto = this.photoList[0]["photo"]["login_user"];
+    },500);
   }
+
+  swipeEvent(e){
+    if (e.direction == 2) {
+      this.dislike();
+        //direction 2 = right to left swipe.
+        // Send dislike to bdd
+    }
+
+    if (e.direction == 4) {
+      this.like();
+        // Send like to bdd
+    }
+  }
+
+
 
   load(page: any){
       this.nav.setRoot(page);
