@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <ion-card class="block">
-    <img [src]="imageTaken"  *ngIf="imageTaken"  />
+    <img (click)="tag()" [src]="imageTaken"  *ngIf="imageTaken"  />
     <img [src]="imageGallery"  *ngIf="imageGallery"  />
   </ion-card>
   <button (click)="envoyer()" value="Envoi">Envoyer la photo</button>

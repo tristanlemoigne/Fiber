@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { FileTransfer, FileUploadOptions, FileTransferObject  } from '@ionic-native/file-transfer';
 import { Storage } from '@ionic/storage';
 import { Instagram } from '@ionic-native/instagram';
-
+import { AccueilPage } from '../accueil/accueil';
+import { TagPage } from '../tag/tag';
 /**
  * Generated class for the EnvoiPhotoPage page.
  *
@@ -20,9 +21,10 @@ export class EnvoiPhotoPage {
   public imageTaken:string;
   public imageGallery:string;
   public token:string;
+  public tags:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public transfer:FileTransfer, public storage:Storage,
-  public instagram:Instagram) {
+  public instagram:Instagram, public loading:LoadingController, public alert:AlertController) {
     this.imageTaken = this.navParams.get('base64Image');
     this.imageGallery = this.navParams.get('imageSrc');
   }
@@ -36,15 +38,20 @@ export class EnvoiPhotoPage {
           fileName:"test.jpg",
           headers:{Authorization: "Bearer "+this.token}
         }
+        var loading = this.loading.create({
+          content: "Envoi des données"
+        });
+        loading.present();
         fileTransfer.upload(this.imageTaken, 'http://fiber-app.com/SERVER/postPhoto.php', options)
         .then((data)=>{
-          let out = ' ';
-          for (var i in data) {
-            out += i + ": " + data[i] + "\n";
-          }
-
-          alert(out);
-          alert("success");
+          loading.dismiss();
+          let alert = this.alert.create({
+             title: 'Partagée !',
+             subTitle: 'Photo partagée',
+             buttons: ["OK"]
+           });
+           alert.present();
+           this.navCtrl.setRoot(AccueilPage);
         }, (err) => {
           alert("Erreur"+JSON.stringify(err));
         });
@@ -54,6 +61,9 @@ export class EnvoiPhotoPage {
     if(this.imageGallery){
 
     }
+  }
+  tag(){
+    this.navCtrl.push(TagPage);
   }
   partager(){
     if(this.instagram.isInstalled()){
