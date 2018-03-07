@@ -16,9 +16,27 @@
 <ion-content padding>
   <form #myform="ngForm" (ngSubmit)="envoiTag()">
     <ion-item>
-      Vêtement :
-      <input placeholder="Veste" [(ngModel)]="vetement" name="vetement" required>
-      Couleur :
+      <ion-label>
+        Vêtement ou accessoire
+      </ion-label>
+      <ion-select [(ngModel)]="vetement" name="vetement">
+        <ion-option value="veste">Veste</ion-option>
+        <ion-option value="blanc">T-shirt manches courtes</ion-option>
+        <ion-option value="gris">T-shirt manches longues</ion-option>
+        <ion-option value="marron">Sweat à capuche</ion-option>
+        <ion-option value="bleu">Sweat sans capuche</ion-option>
+        <ion-option value="vert">Jean</ion-option>
+        <ion-option value="rouge">Chino</ion-option>
+        <ion-option value="violet">Pantalon</ion-option>
+        <ion-option value="rose">Jupe</ion-option>
+        <ion-option value="kaki">Robe</ion-option>
+        <ion-option value="jaune">Marcel</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Couleur
+      </ion-label>
       <ion-select [(ngModel)]="couleur" name="couleur">
         <ion-option value="noir">Noir</ion-option>
         <ion-option value="blanc">Blanc</ion-option>
@@ -32,7 +50,11 @@
         <ion-option value="kaki">Kaki</ion-option>
         <ion-option value="jaune">Jaune</ion-option>
       </ion-select>
-      Motif :
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        Motif
+      </ion-label>
       <ion-select [(ngModel)]="Motif" name="motif">
         <ion-option value="uni">Uni</ion-option>
         <ion-option value="raye">Rayé</ion-option>
@@ -40,11 +62,20 @@
         <ion-option value="chine">Chiné</ion-option>
         <ion-option value="original">Original</ion-option>
       </ion-select>
+    </ion-item>
+    <ion-item>
       Prix (en euros) :
       <input placeholder="25" [(ngModel)]="prix" name="prix" required>
-      Magasin :
-      <input type="text" placeholder="Zara" [(ngModel)]="magasin" name="magasin" required />
     </ion-item>
+    <ion-item>
+      Magasin :
+      <input type="text" (keyUp)="callMaps()" placeholder="Zara" [(ngModel)]="magasin" name="magasin" required />
+    </ion-item>
+    <ul>
+      <li *ngFor="let prop of propositions">
+        {{prop}}
+      </li>
+    </ul>
 
     <button ion-button> S'inscrire </button>
   </form>

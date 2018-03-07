@@ -7,6 +7,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { IonicStorageModule } from '@ionic/storage';
 import { FileTransfer, FileUploadOptions, FileTransferObject  } from '@ionic-native/file-transfer';
 import { Instagram } from '@ionic-native/instagram';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { MyApp } from './app.component';
 import { AccueilPage } from '../pages/accueil/accueil';
@@ -76,7 +77,8 @@ import { GetDataProvider } from '../providers/get-data/get-data';
     PostDataProvider,
     GetDataProvider,
     FileTransfer,
-    Instagram
+    Instagram,
+    Geolocation,
   ]
 })
 export class AppModule {}

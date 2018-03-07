@@ -24,6 +24,7 @@
         "@ionic-native/core": "4.3.3",
         "@ionic-native/email-composer": "^4.5.3",
         "@ionic-native/file-transfer": "^4.5.3",
+        "@ionic-native/geolocation": "^4.5.3",
         "@ionic-native/in-app-browser": "^4.5.3",
         "@ionic-native/instagram": "^4.5.3",
         "@ionic-native/native-storage": "^4.5.3",
@@ -41,6 +42,7 @@
         "cordova-plugin-email-composer": "^0.8.15",
         "cordova-plugin-file": "^6.0.1",
         "cordova-plugin-file-transfer": "^1.7.1",
+        "cordova-plugin-geolocation": "^4.0.1",
         "cordova-plugin-inappbrowser": "^2.0.2",
         "cordova-plugin-ionic-webview": "^1.1.16",
         "cordova-plugin-ios-camera-permissions": "^1.2.0",
@@ -77,7 +79,10 @@
             "cordova-plugin-email-composer": {},
             "cordova-sqlite-storage": {},
             "cordova-plugin-file-transfer": {},
-            "cordova-instagram-plugin": {}
+            "cordova-instagram-plugin": {},
+            "cordova-plugin-geolocation": {
+                "GEOLOCATION_USAGE_DESCRIPTION": "Pour rechercher des endroits près de vous"
+            }
         },
         "platforms": [
             "android",

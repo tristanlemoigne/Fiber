@@ -73,8 +73,13 @@
     </ion-item>
     <ion-item>
       Magasin :
-      <input type="text" placeholder="Zara" [(ngModel)]="magasin" name="magasin" required />
+      <input type="text" (keyup)="callMaps()" placeholder="Zara" [(ngModel)]="magasin" name="magasin" required />
     </ion-item>
+    <ul>
+      <li *ngFor="let prop of propositions">
+        {{prop}}
+      </li>
+    </ul>
 
     <button ion-button> S'inscrire </button>
   </form>
