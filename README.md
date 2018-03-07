@@ -1,5 +1,5 @@
-SI GIT NE MARCHE PLUS : 
-Dans un répertoire faire : 
+SI GIT NE MARCHE PLUS :
+Dans un répertoire faire :
 
 git clone https://github.com/tristanlemoigne/fiber.git
 cd fiber
@@ -25,3 +25,9 @@ ATTENTION : Télécharger les modules suivant :
   ionic cordova plugin add cordova-sqlite-storage
 
   npm install --save @ionic/storage
+
+- File Transfer :
+
+  ionic cordova plugin add cordova-plugin-file-transfer
+
+  npm install --save @ionic-native/file-transfer
