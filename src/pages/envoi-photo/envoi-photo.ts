@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FileTransfer, FileUploadOptions, FileTransferObject  } from '@ionic-native/file-transfer';
 import { Storage } from '@ionic/storage';
+import { Instagram } from '@ionic-native/instagram';
 
 /**
  * Generated class for the EnvoiPhotoPage page.
@@ -20,7 +21,8 @@ export class EnvoiPhotoPage {
   public imageGallery:string;
   public token:string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public transfer:FileTransfer, public storage:Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public transfer:FileTransfer, public storage:Storage,
+  public instagram:Instagram) {
     this.imageTaken = this.navParams.get('base64Image');
     this.imageGallery = this.navParams.get('imageSrc');
   }
@@ -52,7 +54,21 @@ export class EnvoiPhotoPage {
     if(this.imageGallery){
 
     }
-    let link = "http://fiber-app.com/SERVER/postPhoto.php";
+  }
+  partager(){
+    if(this.instagram.isInstalled()){
+      if(this.imageTaken){
+        let legende = prompt("Veuillez rentrer une légende : ");
+        this.instagram.share(this.imageTaken,legende)
+        .then(()=>alert("shared"))
+        .catch((error:any)=>alert("error"));
+      }
+      if(this.imageGallery){
+
+      }
+    } else{
+      alert("Veuillez installer l'application instagram");
+    }
 
   }
   ionViewDidLoad() {
