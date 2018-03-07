@@ -1,14 +1,14 @@
 page-tabs {
+   ion-tabs, .tabbar{
+      border: none!important;
+   }
 
    .ion-md-photo, .ion-ios-photo, .ion-ios-photo-outline, .ion-md-photo-outline{
        content: url(../assets/imgs/photo_icon.png);
        width: 30px !important;
        min-width: 30px !important;
        height: 30px;
-       // background-repeat: no-repeat;
-       // background-size: 30px 30px;
-       // background-position: center;
-       // display: inline-block;
+       margin-right:-70px;
    }
 
   .ion-md-profile, .ion-ios-profile, .ion-ios-profile-outline, .ion-md-profile-outline{
@@ -16,8 +16,8 @@ page-tabs {
     width: 30px !important;
     min-width: 30px !important;
     min-width: 30px;
-
     height: 30px;
+    margin-left: -70px;
   }
 
 }

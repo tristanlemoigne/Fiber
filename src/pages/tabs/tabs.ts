@@ -9,8 +9,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 @Component({
   selector: 'page-tabs',
   template: `
-     <ion-tabs class="tabs-icon-top tabs-positive">
-
+     <ion-tabs no-border color="light" class="tabs-icon-top tabs-positive">
        <ion-tab [root]="accueilPage" tabIcon="profile"></ion-tab>
        <ion-tab [root]="takePhotoPage" tabIcon="photo" ></ion-tab>
      </ion-tabs>

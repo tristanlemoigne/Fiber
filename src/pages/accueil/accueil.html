@@ -41,12 +41,17 @@
   </ion-card>
 
   <div class="commentaires" *ngIf="hasComment">
-   <p *ngFor="let comment of commentaires">
-     <span><b>{{comment["login_user"]}} : </b></span>
-     <span>{{comment["text_comment"]}} </span>
-   </p>
+   <div class="containerCommentaires">
+      <p *ngFor="let comment of commentaires">
+        <span><b>{{comment["login_user"]}} : </b></span>
+        <span>{{comment["text_comment"]}} </span>
+      </p>
+   </div>
 
-   <input type="text" placeholder="Laisser un commentaire">
+   <div class="fixCommentaires">
+      <input type="text" placeholder="Laisser un commentaire">
+      <img alt="envoieCommentaire" (click)="envoyerCommmentaire()" src="assets/imgs/retour.png">
+   </div>
    <!-- <button (click)="ecrireCommentaire()" value="Ecrire un commentaire">Commenter la photo</button> -->
  </div>
 

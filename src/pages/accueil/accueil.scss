@@ -1,12 +1,12 @@
 page-accueil{
    .scroll-content {
-    overflow: hidden;
+      overflow: hidden;
    }
 
 
   .card{
     box-shadow: unset;
-    height: 68vh;
+    height: 71vh;
     overflow: hidden;
   }
 
@@ -33,11 +33,12 @@ page-accueil{
       flex-wrap: nowrap;
       align-items: center;
       justify-content: center;
+      // z-index: 999:
    }
 
    .boxLikes  img{
       width: 60px;
-      margin: 0 3px;
+      margin: 0 6px;
    }
 
    img[alt="comment"]{
@@ -61,61 +62,58 @@ page-accueil{
     margin-top: 7px;
     z-index: 1;
     display: block;
-    // height: 50vh;
   }
 
   .commentaires{
      position: absolute;
      background-color: white;
      width: 100%;
-     overflow: scroll;
-
      height: 55vh;
-     top: 15vh;
-     padding: 10px;
+     top: 18vh;
+     padding: 0 15px;
      box-shadow: 0px -5px 20px grey;
-     font-size: 1.7em;
+     font-size: 1.7rem;
+   }
+
+   .containerCommentaires{
+      height: 47vh;
+      overflow: scroll;
    }
 
    .commentaires span b{
-      font-size: 1.2em;
+      font-size: 1.8rem;
    }
 
+
    .commentaires input{
-      // position: absolute;
+      position: absolute;
+      bottom: 7px;
+      left: 45px;
       display: block;
       width: 70vw;
       height: 40px;
-
-      margin: 0 auto;
+      margin-left: auto;
+      margin-right: auto;
 
 
       border: none;
       background-color: #f8f8f8;
       border-radius: 50px;
       padding-left: 20px;
-      overflow: visible;
-
 
    }
 
-
-   // ion-input, input{
-   //   display: block;
-   //   background-color: #f8f8f8;
-   //   border-radius: 50px;
-   //
-   //   width: 70vw;
-   //   margin: 0 auto;
-   //   border: none;
-   //   height: 50px;
-   //   padding-left: 20px;
-   //
-   //   margin-bottom: 5vh;
-   // }
-
    .commentaires input::-webkit-input-placeholder {
      color: #cacaca !important;
+   }
+
+   img[alt="envoieCommentaire"]{
+      position: absolute;
+      right: 20px;
+      bottom: 7px;
+      width: 35px;
+      transform: scaleX(-1);
+        filter: FlipH;
    }
 
 }
