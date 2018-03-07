@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FileTransfer, FileUploadOptions, FileTransferObject  } from '@ionic-native/file-transfer';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the EnvoiPhotoPage page.
@@ -17,24 +18,36 @@ import { FileTransfer, FileUploadOptions, FileTransferObject  } from '@ionic-nat
 export class EnvoiPhotoPage {
   public imageTaken:string;
   public imageGallery:string;
+  public token:string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public transfer:FileTransfer) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public transfer:FileTransfer, public storage:Storage) {
     this.imageTaken = this.navParams.get('base64Image');
     this.imageGallery = this.navParams.get('imageSrc');
   }
   envoyer(){
     if(this.imageTaken){
       let fileTransfer: FileTransferObject = this.transfer.create();
-      let options: FileUploadOptions = {
-        fileKey: 'file',
-        fileName:"test.jpg"
-      }
-      fileTransfer.upload(this.imageTaken, 'http://fiber-app.com/SERVER/postPhoto.php', options)
-      .then((data)=>{
-        alert("success");
-      }, (err) => {
-        alert("Erreur"+JSON.stringify(err));
+      this.storage.get("token").then((val) =>{
+        this.token=val;
+        let options: FileUploadOptions = {
+          fileKey: 'file',
+          fileName:"test.jpg",
+          headers:{Authorization: "Bearer "+this.token}
+        }
+        fileTransfer.upload(this.imageTaken, 'http://fiber-app.com/SERVER/postPhoto.php', options)
+        .then((data)=>{
+          let out = ' ';
+          for (var i in data) {
+            out += i + ": " + data[i] + "\n";
+          }
+
+          alert(out);
+          alert("success");
+        }, (err) => {
+          alert("Erreur"+JSON.stringify(err));
+        });
       });
+
     }
     if(this.imageGallery){
 
