@@ -53,7 +53,7 @@ export class TakePhotoPage {
       targetWidth: 1000,
       targetHeight: 1000,
       encodingType: this.camera.EncodingType.JPEG,
-      correctOrientation: true
+      correctOrientation: true,
     }
 
     this.camera.getPicture(cameraOptions).then(file_uri => {

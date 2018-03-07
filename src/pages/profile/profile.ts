@@ -4,6 +4,8 @@ import { GetDataProvider } from '../../providers/get-data/get-data';
 import { Storage } from '@ionic/storage';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RequestOptions } from '@angular/http';
+import { TabsPage } from '../tabs/tabs';
+
 /**
  * Generated class for the ProfilePage page.
  *
@@ -39,6 +41,10 @@ export class ProfilePage implements OnInit {
     });
 
   }
+
+  popView(){
+    this.navCtrl.setRoot(TabsPage);
+   }
 
 
 }
