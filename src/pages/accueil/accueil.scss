@@ -1,13 +1,13 @@
 page-accueil{
+   .scroll-content {
+    overflow: hidden;
+   }
 
 
   .card{
     box-shadow: unset;
-    // background-color: black;
-    // display: block;
-    // width: 100%;
-    // height: 100%;
-
+    height: 68vh;
+    overflow: hidden;
   }
 
   .card-title {
@@ -25,13 +25,32 @@ page-accueil{
     box-shadow: none !important;
   }
 
+   .boxLikes{
+      position: absolute;
+      bottom: 0;
+      margin-left: -11px;
+      width: 100%;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+   }
+
+   .boxLikes  img{
+      width: 60px;
+      margin: 0 3px;
+   }
+
+   img[alt="comment"]{
+     width: 40px;
+     margin-top: 20px;
+   }
+
   .border{
     height: 36px !important;
     padding: 10px;
     background-color: white;
     color: black;
     box-shadow: none !important;
-
   }
 
   .border  b {
@@ -40,27 +59,63 @@ page-accueil{
 
   .margin{
     margin-top: 7px;
-    // padding: 0 7px;
     z-index: 1;
+    display: block;
+    // height: 50vh;
   }
 
-  img[alt="like"], img[alt="dislike"]{
-    width: 60px;
-    display: inline;
-  }
+  .commentaires{
+     position: absolute;
+     background-color: white;
+     width: 100%;
+     overflow: scroll;
 
-  img[alt="comment"]{
-    display: inline;
-    width: 40px;
-  }
+     height: 55vh;
+     top: 15vh;
+     padding: 10px;
+     box-shadow: 0px -5px 20px grey;
+     font-size: 1.7em;
+   }
 
-  .input-wrapper, ion-item, .item{
-    // position: absolute;
-    // bottom: 0;
-    // z-index: 9;
-    // margin: 0;
+   .commentaires span b{
+      font-size: 1.2em;
+   }
 
-    background-color: red;
-    padding: 0;
-  }
+   .commentaires input{
+      // position: absolute;
+      display: block;
+      width: 70vw;
+      height: 40px;
+
+      margin: 0 auto;
+
+
+      border: none;
+      background-color: #f8f8f8;
+      border-radius: 50px;
+      padding-left: 20px;
+      overflow: visible;
+
+
+   }
+
+
+   // ion-input, input{
+   //   display: block;
+   //   background-color: #f8f8f8;
+   //   border-radius: 50px;
+   //
+   //   width: 70vw;
+   //   margin: 0 auto;
+   //   border: none;
+   //   height: 50px;
+   //   padding-left: 20px;
+   //
+   //   margin-bottom: 5vh;
+   // }
+
+   .commentaires input::-webkit-input-placeholder {
+     color: #cacaca !important;
+   }
+
 }

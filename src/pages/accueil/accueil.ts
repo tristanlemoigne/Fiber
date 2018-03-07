@@ -76,13 +76,17 @@ export class AccueilPage  implements OnInit {
   }
 
   clickProfile(){
-    this.nav.push(ProfilePage,{
+    this.nav.setRoot(ProfilePage,{
       user:this.authorPhoto,
     });
   }
 
   commenter(){
-    this.hasComment=true;
+     if(this.hasComment === true)
+         this.hasComment=false;
+      else
+         this.hasComment=true;
+
     this.commentaires = this.photoList[0]["comments"];
     console.log(this.commentaires);
   }
