@@ -15,11 +15,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TagPage {
 
+  public vetement:string;
+  public motif:string;
+  public couleur:string;
+  public prix:number;
+  public magasin:string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TagPage');
+  envoiTag(){
+    alert("hey");
   }
 
 }

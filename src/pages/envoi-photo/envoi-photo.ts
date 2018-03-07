@@ -36,6 +36,7 @@ export class EnvoiPhotoPage {
         let options: FileUploadOptions = {
           fileKey: 'file',
           fileName:"test.jpg",
+          params:{},
           headers:{Authorization: "Bearer "+this.token}
         }
         var loading = this.loading.create({
