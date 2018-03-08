@@ -9,7 +9,8 @@ if(isset($_GET["username"])){
     while($data = $req->fetch()){
         $result[]=$data["link_photo"];
     }
-    echo(json_encode($result));
+    $donnees = [$result,$claims];
+    echo(json_encode($donnees));
 }
 
 

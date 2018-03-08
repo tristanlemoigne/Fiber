@@ -50,7 +50,11 @@ export class TagPage implements OnInit {
       for(let i =0; i<data["results"].length;i++){
         this.propositions[i] = data["results"][i].name+ " " +data["results"][i].vicinity;
       }
-    
+
+      /*for(let i=0;i<data.results.length;i++){
+
+      }
+      data.results*/
     })
   }
   envoiTag(){

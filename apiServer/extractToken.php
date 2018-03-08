@@ -22,6 +22,7 @@ try{
         echo(json_encode("Erreur"));
         die;
     }
+    $claims = $token->getClaims();
     //echo(json_encode($token->getClaims()));
 }
 catch(Exception $e){
