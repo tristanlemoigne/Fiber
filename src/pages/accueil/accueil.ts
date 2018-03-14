@@ -45,6 +45,16 @@ export class AccueilPage  implements OnInit {
   }
 
   like(){
+    this.storage.get("token").then((val) => {
+      this.token = val;
+      let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+      let link = "http://fiber-app.com/SERVER/likePhoto.php?id_photo="+this.photoList[0]["photo"]["id_photo"];
+      let req = this.getDataProvider.getData(link,{headers});
+      req.subscribe(data=>{
+        console.log(data);
+        //data[1] = le token
+      })
+    });
     // Send like to bdd
     this.hasLiked = true;
 
