@@ -28,6 +28,7 @@ export class AccueilPage  implements OnInit {
   public token:any;
   public postCom:any;
   public infoCom:any;
+  public commentEmpty:any;
 
 
 
@@ -38,17 +39,18 @@ export class AccueilPage  implements OnInit {
     let link = "http://fiber-app.com/SERVER/getPhoto.php";
     this.getDataProvider.getData(link).subscribe(data=>{
       this.photoList = data;
-      this.currentPhoto = this.photoList[0]["photo"]["link_photo"];
-      this.authorPhoto = this.photoList[0]["photo"]["login_user"];
+      this.currentPhoto = this.photoList[0]["link_photo"];
+      this.authorPhoto = this.photoList[0]["login_user"];
       console.log(data);
     });
   }
 
   like(){
+    this.commentaires = [];
     this.storage.get("token").then((val) => {
       this.token = val;
       let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
-      let link = "http://fiber-app.com/SERVER/likePhoto.php?id_photo="+this.photoList[0]["photo"]["id_photo"];
+      let link = "http://fiber-app.com/SERVER/likePhoto.php?id_photo="+this.photoList[0]["id_photo"];
       let req = this.getDataProvider.getData(link,{headers});
       req.subscribe(data=>{
         console.log(data);
@@ -62,21 +64,21 @@ export class AccueilPage  implements OnInit {
       this.hasLiked = false;
       this.hasComment=false;
       this.photoList.splice(0,1);
-      this.currentPhoto = this.photoList[0]["photo"]["link_photo"];
-      this.authorPhoto = this.photoList[0]["photo"]["login_user"];
+      this.currentPhoto = this.photoList[0]["link_photo"];
+      this.authorPhoto = this.photoList[0]["login_user"];
       },500)
   }
 
   dislike(){
-    // Send dislike to bdd
+    this.commentaires = [];
     this.hasDisliked = true;
 
     setTimeout(() => {
        this.hasDisliked = false;
        this.hasComment=false;
        this.photoList.splice(0,1);
-       this.currentPhoto = this.photoList[0]["photo"]["link_photo"];
-       this.authorPhoto = this.photoList[0]["photo"]["login_user"];
+       this.currentPhoto = this.photoList[0]["link_photo"];
+       this.authorPhoto = this.photoList[0]["login_user"];
     },500);
   }
 
@@ -111,34 +113,49 @@ export class AccueilPage  implements OnInit {
       else
          this.hasComment=true;
 
-    this.commentaires = this.photoList[0]["comments"];
-    console.log(this.commentaires);
+     this.storage.get("token").then((val) => {
+       this.token = val;
+       let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+       let link = "http://fiber-app.com/SERVER/getToken.php";
+       let req = this.getDataProvider.getData(link,{headers});
+       req.subscribe(data=>{
+         if(data["permissions"]=="Administrateur"){
+           //LAISSER INPUT
+           console.log("admin");
+         } else{
+           //METTRE BOUTON POUR COMMENTAIRES PREDEFINIS
+           console.log("user");
+         }
+         console.log(data);
+         //data[1] = le token
+       })
+     });
 
-    //commentaires prédéfinis ou non
     this.storage.get("token").then((val) => {
       this.token = val;
       let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
-      let link = "http://fiber-app.com/SERVER/commentToken.php";
+      let link = "http://fiber-app.com/SERVER/getComment.php?id_photo="+this.photoList[0]["id_photo"];
       let req = this.getDataProvider.getData(link,{headers});
       req.subscribe(data=>{
-        if(data["permissions"]=="Administrateur"){
-          //LAISSER INPUT
-          console.log("admin");
-        } else{
-          //METTRE BOUTON POUR COMMENTAIRES PREDEFINIS
-          console.log("user");
+        this.commentaires = data;
+        console.log(this.commentaires);
+        if(this.commentaires == null){
+          this.commentEmpty = true;
         }
-        console.log(data);
         //data[1] = le token
-      })
+      });
     });
+
+    //commentaires prédéfinis ou non
+
+
 
   }
 
   envoyerCommentaire(){
     console.log(this.postCom);
     let mydata = JSON.stringify({com: this.postCom});
-    let link = "http://fiber-app.com/SERVER/insertCom.php?id_photo="+this.photoList[0]["photo"]["id_photo"];
+    let link = "http://fiber-app.com/SERVER/postCom.php?id_photo="+this.photoList[0]["id_photo"];
     let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
     let req = this.postDataProvider.postData(link,mydata,{headers});
     req.subscribe(data => {
@@ -148,7 +165,12 @@ export class AccueilPage  implements OnInit {
     (err) => {
     },
     () => {
-      this.commentaires.push(this.infoCom);
+      this.commentEmpty = false;
+      if(this.commentaires == null){
+        this.commentaires = [this.infoCom];
+      } else{
+        this.commentaires.push(this.infoCom);
+      }
       this.postCom="";
     });
 

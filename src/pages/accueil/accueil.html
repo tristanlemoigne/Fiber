@@ -45,6 +45,9 @@
 
   <div class="commentaires" *ngIf="hasComment">
    <div class="containerCommentaires">
+     <p *ngIf="commentEmpty">
+       <i style="opacity:0.3"> Pas de commentaires, sois le premier à commenter ce look !</i>
+     </p>
       <p *ngFor="let comment of commentaires">
         <span><b>{{comment["login_user"]}} : </b></span>
         <span>{{comment["text_comment"]}} </span>
