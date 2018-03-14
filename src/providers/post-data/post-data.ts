@@ -13,8 +13,8 @@ export class PostDataProvider {
   constructor(public http: HttpClient) {
     console.log('Hello PostDataProvider Provider');
   }
-  postData(link, data){
+  postData(link, data, options?){
     //add headers
-    return this.http.post(link,data);
+    return this.http.post(link,data,options);
   }
 }

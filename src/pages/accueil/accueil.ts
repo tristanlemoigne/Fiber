@@ -5,6 +5,10 @@ import { NavController} from 'ionic-angular';
 import { GetDataProvider } from '../../providers/get-data/get-data';
 import { ProfilePage } from '../profile/profile';
 import { ComPredefiniPage } from '../com-predefini/com-predefini';
+import { Storage } from '@ionic/storage';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { RequestOptions } from '@angular/http';
+import { PostDataProvider } from '../../providers/post-data/post-data';
 
 @Component({
   selector: 'page-accueil',
@@ -21,10 +25,13 @@ export class AccueilPage  implements OnInit {
   public hasComment:boolean = false;
   public hasLiked:boolean = false;
   public hasDisliked:boolean = false;
+  public token:any;
+  public postCom:any;
+  public infoCom:any;
 
 
 
-  constructor (private modalCtrl: ModalController, private getDataProvider:GetDataProvider, private nav: NavController) {
+  constructor (private modalCtrl: ModalController, private getDataProvider:GetDataProvider, private nav: NavController, public storage: Storage, public postDataProvider: PostDataProvider) {
       this.data.lien = '';
     }
   ngOnInit(){
@@ -96,10 +103,47 @@ export class AccueilPage  implements OnInit {
 
     this.commentaires = this.photoList[0]["comments"];
     console.log(this.commentaires);
+
+    //commentaires prédéfinis ou non
+    this.storage.get("token").then((val) => {
+      this.token = val;
+      let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+      let link = "http://fiber-app.com/SERVER/commentToken.php";
+      let req = this.getDataProvider.getData(link,{headers});
+      req.subscribe(data=>{
+        if(data["permissions"]=="Administrateur"){
+          //LAISSER INPUT
+          console.log("admin");
+        } else{
+          //METTRE BOUTON POUR COMMENTAIRES PREDEFINIS
+          console.log("user");
+        }
+        console.log(data);
+        //data[1] = le token
+      })
+    });
+
   }
 
-  ecrireCommentaire(){
-    this.nav.push(ComPredefiniPage);
+  envoyerCommentaire(){
+    console.log(this.postCom);
+    let mydata = JSON.stringify({com: this.postCom});
+    let link = "http://fiber-app.com/SERVER/insertCom.php?id_photo="+this.photoList[0]["photo"]["id_photo"];
+    let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+    let req = this.postDataProvider.postData(link,mydata,{headers});
+    req.subscribe(data => {
+      this.infoCom = data;
+      console.log(data);
+    },
+    (err) => {
+    },
+    () => {
+      this.commentaires.push(this.infoCom);
+      this.postCom="";
+    });
+
+    //at the end
+
   }
   // move(e){
   //

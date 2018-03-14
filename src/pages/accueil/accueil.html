@@ -52,8 +52,8 @@
    </div>
 
    <div class="fixCommentaires">
-      <input type="text" placeholder="Laisser un commentaire">
-      <img alt="envoieCommentaire" (click)="envoyerCommmentaire()" src="assets/imgs/retour.png">
+      <input type="text" placeholder="Laisser un commentaire" [(ngModel)]="postCom">
+      <img alt="envoieCommentaire" (click)="envoyerCommentaire()" src="assets/imgs/retour.png">
    </div>
    <!-- <button (click)="ecrireCommentaire()" value="Ecrire un commentaire">Commenter la photo</button> -->
  </div>
