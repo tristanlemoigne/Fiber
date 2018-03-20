@@ -76,7 +76,7 @@
       <input type="text" (keyup)="callMaps()" placeholder="Zara" [(ngModel)]="magasin" name="magasin" required />
     </ion-item>
     <ul>
-      <li *ngFor="let prop of propositions">
+      <li (click)="selectMagasin(prop)" *ngFor="let prop of propositions">
         {{prop}}
       </li>
     </ul>

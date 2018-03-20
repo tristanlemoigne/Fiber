@@ -43,21 +43,26 @@ export class FiltresPage implements OnInit{
   }
   callMaps(){
     this.propositions=[];
-    let headers = new HttpHeaders().set("Access-Control-Allow-Origin","*");
-    let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.lat+","+this.long+
-    "&radius=2000&type=clothing_store&keyword="+this.magasin+"&key="+this.key;
-    let promise = this.getDataProvider.getData(url,{headers});
-    promise.subscribe(data=>{
-      //console.log(data["results"]);
-      for(let i =0; i<data["results"].length;i++){
-        this.propositions[i] = data["results"][i].name+ " " +data["results"][i].vicinity;
-      }
-
-      /*for(let i=0;i<data.results.length;i++){
-
-      }
-      data.results*/
-    })
+    if(this.magasin!=""){
+      let headers = new HttpHeaders().set("Access-Control-Allow-Origin","*");
+      let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.lat+","+this.long+
+      "&radius=5000&type=clothing_store&keyword="+this.magasin+"&key="+this.key;
+      let promise = this.getDataProvider.getData(url,{headers});
+      promise.subscribe(data=>{
+        //console.log(data["results"]);
+        if(data["status"]=="ZERO_RESULTS"){
+          this.propositions[0] = "Pas de résultats";
+        } else{
+          for(let i =0; i<data["results"].length;i++){
+            this.propositions[i] = data["results"][i].name+ " " +data["results"][i].vicinity;
+          }
+        }
+      })
+    }
+  }
+  selectMagasin(prop){
+    this.magasin = prop;
+    this.propositions = [];
   }
   popView(){
     this.navCtrl.setRoot(TabsPage);
