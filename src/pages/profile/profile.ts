@@ -27,18 +27,40 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit(){
-    this.storage.get("token").then((val) => {
-        this.token = val;
-        let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+    //si c'est l'utilisateur actuel
+    if(this.user == undefined){
+      this.user="";
+      console.log("aaa");
+      this.storage.get("token").then((val) => {
+          this.token = val;
+          let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+          let link = "http://fiber-app.com/SERVER/profile.php";
+          let req = this.getDataProvider.getData(link,{headers});
+          req.subscribe(data=>{
+            console.log(data);
+            this.photos=data[0];
+            this.user = data[1]["login"];
 
-        let link = "http://fiber-app.com/SERVER/profile.php"+"?username="+this.user;
-        let req = this.getDataProvider.getData(link,{headers});
-        req.subscribe(data=>{
-          console.log(data);
-          this.photos=data[0];
-          //data[1] = le token
-        })
-    });
+            //data[1] = le token
+          })
+      });
+    } else{
+      console.log("ooo");
+      this.storage.get("token").then((val) => {
+          this.token = val;
+          let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+
+          let link = "http://fiber-app.com/SERVER/profile.php"+"?username="+this.user;
+          let req = this.getDataProvider.getData(link,{headers});
+          req.subscribe(data=>{
+            console.log(data);
+            this.photos=data[0];
+            //data[1] = le token
+          })
+      });
+    }
+
+
 
   }
 

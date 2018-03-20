@@ -44,10 +44,11 @@ export class FiltresPage implements OnInit{
   callMaps(){
     this.propositions=[];
     if(this.magasin!=""){
-      let headers = new HttpHeaders().set("Access-Control-Allow-Origin","*");
+      //let headers = new HttpHeaders().set("Access-Control-Allow-Origin","*");
       let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.lat+","+this.long+
       "&radius=5000&type=clothing_store&keyword="+this.magasin+"&key="+this.key;
-      let promise = this.getDataProvider.getData(url,{headers});
+      //headers makes 2 requests wtf ?
+      let promise = this.getDataProvider.getData(url);
       promise.subscribe(data=>{
         //console.log(data["results"]);
         if(data["status"]=="ZERO_RESULTS"){
