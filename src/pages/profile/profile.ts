@@ -19,15 +19,22 @@ import { TabsPage } from '../tabs/tabs';
   templateUrl: 'profile.html',
 })
 export class ProfilePage implements OnInit {
+  public loaded:boolean = false;
   public user:string;
   public token:string;
   public photos:any;
+  public userID:any;
+  public suivi:any;
+  public response:any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private getDataProvider:GetDataProvider, private storage:Storage) {
     this.user = this.navParams.get('user');
+    this.userID = this.navParams.get('userID');
   }
 
   ngOnInit(){
     //si c'est l'utilisateur actuel
+
     if(this.user == undefined){
       this.user="";
       console.log("aaa");
@@ -50,11 +57,13 @@ export class ProfilePage implements OnInit {
           this.token = val;
           let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
 
-          let link = "http://fiber-app.com/SERVER/profile.php"+"?username="+this.user;
+          let link = "http://fiber-app.com/SERVER/profile.php"+"?userID="+this.userID;
           let req = this.getDataProvider.getData(link,{headers});
           req.subscribe(data=>{
+            this.loaded = true;
             console.log(data);
             this.photos=data[0];
+            this.suivi = data[2];
             //data[1] = le token
           })
       });
@@ -63,7 +72,31 @@ export class ProfilePage implements OnInit {
 
 
   }
+  abonnement(param){;
+    this.storage.get("token").then((val) => {
+        this.token = val;
+        let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+        let link = "";
+        if(param){
+          link = "http://fiber-app.com/SERVER/abonnement.php?abo=true&userID="+this.userID;
+        } else{
+          link = "http://fiber-app.com/SERVER/abonnement.php?abo=false&userID="+this.userID;
+        }
+        let req = this.getDataProvider.getData(link,{headers});
+        req.subscribe(data=>{
+          this.response = data;
+          console.log(this.response);
+          if(this.response == 1){
+            this.suivi = true;
+          }
+          if(this.response == 3){
+            this.suivi = false;
+          }
 
+        });
+    });
+
+  }
   popView(){
     this.navCtrl.setRoot(TabsPage);
    }

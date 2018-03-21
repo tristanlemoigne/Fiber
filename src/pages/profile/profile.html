@@ -12,7 +12,7 @@
          <img alt="menu" height="23" src="assets/imgs/retour.png">
       </button>
      </ion-buttons>
-     
+
     <ion-title>Profil de {{user}}</ion-title>
   </ion-navbar>
 
@@ -20,6 +20,20 @@
 
 
 <ion-content padding>
+  <!--DIV CACHE TANT QU'ON SAIT PAS SI L'UTILISATEUR EST ABONNE OU PAS-->
+  <div *ngIf="loaded">
+    <!--s'il est pas abonné-->
+    <p *ngIf="!suivi">
+      S'ABONNER
+      <button  (click)="abonnement(true)">S'abonner</button>
+    </p>
+    <!--s'il est abonné-->
+    <p *ngIf="suivi">
+      SE DESABONNER
+      <button  (click)="abonnement(false)">Se désabonner</button>
+    </p>
+  </div>
+
   <p *ngFor="let photo of photos ">
     <img src={{photo}} />
   </p>

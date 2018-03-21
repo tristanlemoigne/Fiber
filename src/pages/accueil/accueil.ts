@@ -20,6 +20,7 @@ export class AccueilPage  implements OnInit {
   public photoList:any;
   public currentPhoto:string;
   public authorPhoto:string;
+  public authorPhotoId:any;
   public filtresPage = FiltresPage;
   public commentaires:any;
   public hasComment:boolean = false;
@@ -44,6 +45,7 @@ export class AccueilPage  implements OnInit {
         this.photoList = data;
         this.currentPhoto = this.photoList[0]["link_photo"];
         this.authorPhoto = this.photoList[0]["login_user"];
+        this.authorPhotoId = this.photoList[0]["id_user"];
         console.log(data);
       });
     });
@@ -70,6 +72,7 @@ export class AccueilPage  implements OnInit {
       this.photoList.splice(0,1);
       this.currentPhoto = this.photoList[0]["link_photo"];
       this.authorPhoto = this.photoList[0]["login_user"];
+      this.authorPhotoId = this.photoList[0]["id_user"];
       },500)
   }
 
@@ -83,6 +86,7 @@ export class AccueilPage  implements OnInit {
        this.photoList.splice(0,1);
        this.currentPhoto = this.photoList[0]["link_photo"];
        this.authorPhoto = this.photoList[0]["login_user"];
+       this.authorPhotoId = this.photoList[0]["id_user"];
     },500);
   }
 
@@ -108,6 +112,7 @@ export class AccueilPage  implements OnInit {
   clickProfile(){
     this.nav.setRoot(ProfilePage,{
       user:this.authorPhoto,
+      userID:this.authorPhotoId
     });
   }
 
