@@ -36,12 +36,16 @@ export class AccueilPage  implements OnInit {
       this.data.lien = '';
     }
   ngOnInit(){
-    let link = "http://fiber-app.com/SERVER/getPhoto.php";
-    this.getDataProvider.getData(link).subscribe(data=>{
-      this.photoList = data;
-      this.currentPhoto = this.photoList[0]["link_photo"];
-      this.authorPhoto = this.photoList[0]["login_user"];
-      console.log(data);
+    this.storage.get("token").then((val) => {
+      this.token = val;
+      let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+      let link = "http://fiber-app.com/SERVER/getPhoto.php";
+      this.getDataProvider.getData(link,{headers}).subscribe(data=>{
+        this.photoList = data;
+        this.currentPhoto = this.photoList[0]["link_photo"];
+        this.authorPhoto = this.photoList[0]["login_user"];
+        console.log(data);
+      });
     });
   }
 
