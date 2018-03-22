@@ -34,7 +34,6 @@ export class ProfilePage implements OnInit {
 
   ngOnInit(){
     //si c'est l'utilisateur actuel
-
     if(this.user == undefined){
       this.user="";
       console.log("aaa");
@@ -56,7 +55,7 @@ export class ProfilePage implements OnInit {
       this.storage.get("token").then((val) => {
           this.token = val;
           let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
-
+          console.log(this.userID);
           let link = "http://fiber-app.com/SERVER/profile.php"+"?userID="+this.userID;
           let req = this.getDataProvider.getData(link,{headers});
           req.subscribe(data=>{

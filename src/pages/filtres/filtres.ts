@@ -5,6 +5,7 @@ import { TabsPage } from '../tabs/tabs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GetDataProvider } from '../../providers/get-data/get-data';
 import { Geolocation } from '@ionic-native/geolocation';
+import { ProfilePage } from '../profile/profile';
 
 
 /**
@@ -30,6 +31,8 @@ export class FiltresPage implements OnInit{
   public lat:any;
   public long:any;
   public propositions:any;
+  public getUserName:string;
+  public userList:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public getDataProvider:GetDataProvider, private location:Geolocation) {
   }
@@ -64,6 +67,19 @@ export class FiltresPage implements OnInit{
   selectMagasin(prop){
     this.magasin = prop;
     this.propositions = [];
+  }
+  getUser(){
+    let url = "http://fiber-app.com/SERVER/getUserList.php?username="+this.getUserName;
+    let promise = this.getDataProvider.getData(url);
+    promise.subscribe(data=>{
+      this.userList=data;
+    });
+  }
+  selectUser(userID){
+    this.navCtrl.setRoot(ProfilePage,{
+      //userList[nbUser][1]
+      userID:userID
+    });
   }
   popView(){
     this.navCtrl.setRoot(TabsPage);
