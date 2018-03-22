@@ -1,34 +1,33 @@
 <ion-nav #myNav [root]="connexionInscriptionPage" *ngIf="afficheConnexion"></ion-nav>
 
+<div  *ngIf="afficheAccueil">
+  <ion-nav #content [root]="accueilPage"></ion-nav>
+      <ion-menu [content]="content" [swipeEnabled]="false">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title class="menuTitle">
+              MENU
+            </ion-title>
+          </ion-toolbar>
+        </ion-header>
 
-<ion-nav #content [root]="accueilPage"></ion-nav>
+        <ion-content>
 
+            <button class="button" ion-item no-lines detail-none text-center (click)="onLoad(accueilPage)">
+              Accueil
+            </button>
 
-    <ion-menu [content]="content" [swipeEnabled]="false">
-      <ion-header>
-        <ion-toolbar>
-          <ion-title class="menuTitle">
-            MENU
-          </ion-title>
-        </ion-toolbar>
-      </ion-header>
+            <button class="button" ion-item no-lines detail-none text-center (click)="onLoad(dernieresNouvellesPage)">
+              Dernières nouvelles
+            </button>
 
-      <ion-content>
+            <button class="button" ion-item no-lines detail-none text-center (click)="onLoad(supportPage)">
+              Support technique
+            </button>
 
-          <button class="button" ion-item no-lines detail-none text-center (click)="onLoad(accueilPage)">
-            Accueil
-          </button>
-
-          <button class="button" ion-item no-lines detail-none text-center (click)="onLoad(dernieresNouvellesPage)">
-            Dernières nouvelles
-          </button>
-
-          <button class="button" ion-item no-lines detail-none text-center (click)="onLoad(supportPage)">
-            Support technique
-          </button>
-
-          <button class="button decoButton" ion-item no-lines detail-none text-center (click)="onLoad(connexionInscriptionPage)">
-            Se déconnecter
-          </button>
-      </ion-content>
-    </ion-menu>
+            <button class="button decoButton" ion-item no-lines detail-none text-center (click)="onLoad(connexionInscriptionPage)">
+              Se déconnecter
+            </button>
+        </ion-content>
+      </ion-menu>
+</div>
