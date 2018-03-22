@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AccueilPage } from '../accueil/accueil';
-import { TabsPage } from '../tabs/tabs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GetDataProvider } from '../../providers/get-data/get-data';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -81,8 +80,8 @@ export class FiltresPage implements OnInit{
       userID:userID
     });
   }
-  popView(){
-    this.navCtrl.setRoot(TabsPage);
-   }
 
+  popView(){
+    this.navCtrl.setRoot(AccueilPage)
+  }
 }

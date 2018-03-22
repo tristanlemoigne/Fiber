@@ -16,7 +16,6 @@ import { SupportPage } from '../pages/support/support';
 import { ProfilePage } from '../pages/profile/profile';
 import { TakePhotoPage } from '../pages/take-photo/take-photo';
 import { EnvoiPhotoPage } from '../pages/envoi-photo/envoi-photo';
-import { TabsPage } from '../pages/tabs/tabs';
 import { ConnexionPage } from '../pages/connexion/connexion';
 import { InscriptionPage } from '../pages/inscription/inscription';
 import { DernieresNouvellesPage } from '../pages/dernieres-nouvelles/dernieres-nouvelles';
@@ -33,7 +32,6 @@ import { GetDataProvider } from '../providers/get-data/get-data';
     MyApp,
     AccueilPage,
     FiltresPage,
-    TabsPage,
     InscriptionPage,
     SupportPage,
     ConnexionPage,
@@ -56,7 +54,6 @@ import { GetDataProvider } from '../providers/get-data/get-data';
     MyApp,
     AccueilPage,
     FiltresPage,
-    TabsPage,
     SupportPage,
     ConnexionInscriptionPage,
     InscriptionPage,

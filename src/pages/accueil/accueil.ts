@@ -1,14 +1,16 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { ModalController } from 'ionic-angular';
-import { FiltresPage } from '../filtres/filtres';
 import { NavController} from 'ionic-angular';
 import { GetDataProvider } from '../../providers/get-data/get-data';
-import { ProfilePage } from '../profile/profile';
 import { ComPredefiniPage } from '../com-predefini/com-predefini';
 import { Storage } from '@ionic/storage';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RequestOptions } from '@angular/http';
 import { PostDataProvider } from '../../providers/post-data/post-data';
+
+import { FiltresPage } from '../filtres/filtres';
+import { ProfilePage } from '../profile/profile';
+import { TakePhotoPage } from '../take-photo/take-photo';
 
 @Component({
   selector: 'page-accueil',
@@ -21,7 +23,6 @@ export class AccueilPage  implements OnInit {
   public currentPhoto:string;
   public authorPhoto:string;
   public authorPhotoId:any;
-  public filtresPage = FiltresPage;
   public commentaires:any;
   public hasComment:boolean = false;
   public hasLiked:boolean = false;
@@ -31,7 +32,9 @@ export class AccueilPage  implements OnInit {
   public infoCom:any;
   public commentEmpty:any;
 
-
+  public filtresPage = FiltresPage;
+  public profilPage = ProfilePage;
+  public takePhotoPage = TakePhotoPage;
 
   constructor (private modalCtrl: ModalController, private getDataProvider:GetDataProvider, private nav: NavController, public storage: Storage, public postDataProvider: PostDataProvider) {
       this.data.lien = '';
@@ -156,9 +159,6 @@ export class AccueilPage  implements OnInit {
     });
 
     //commentaires prédéfinis ou non
-
-
-
   }
 
   envoyerCommentaire(){

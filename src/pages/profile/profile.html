@@ -1,17 +1,13 @@
-<!--
-  Generated template for the ProfilePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
+  <!-- MENU IF ROOT USER 
 
+  BACK IF OTHER USER -->
   <ion-navbar>
-     <ion-buttons left>
+    <ion-buttons left>
       <button ion-button (click)="popView()">
-         <img alt="menu" height="23" src="assets/imgs/retour.png">
+        <img alt="menu" height="23" src="assets/imgs/retour.png">
       </button>
-     </ion-buttons>
+    </ion-buttons>
 
     <ion-title>Profil de {{user}}</ion-title>
   </ion-navbar>
@@ -38,3 +34,8 @@
     <img src={{photo}} />
   </p>
 </ion-content>
+
+<ion-footer no-border>
+    <img alt="profil" (click)="load(profilPage)" height="35" src="assets/imgs/profile.png">
+    <img alt="photo" (click)="load(takePhotoPage)" height="35" src="assets/imgs/photo_icon_off.png">
+</ion-footer>

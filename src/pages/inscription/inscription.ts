@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController, LoadingController } from 'ionic-angular';
 import { PostDataProvider } from '../../providers/post-data/post-data';
 import { Storage } from '@ionic/storage';
-import { TabsPage } from '../tabs/tabs';
 import { MyApp } from '../../app/app.component';
 
 /**
@@ -27,7 +26,6 @@ export class InscriptionPage {
   public login:string = "";
   public mdpConfirm:string = "";
   public response:any;
-  tabsPage = TabsPage
   inscription(){
     let mydata = JSON.stringify({login: this.login,
                                  mail: this.mail,

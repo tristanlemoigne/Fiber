@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController  } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { FiltresPage } from '../filtres/filtres';
 import { EnvoiPhotoPage } from '../envoi-photo/envoi-photo';
+
+import { FiltresPage } from '../filtres/filtres';
+import { ProfilePage } from '../profile/profile';
+import { AccueilPage } from '../accueil/accueil';
 
 
 @IonicPage()
@@ -13,6 +16,9 @@ import { EnvoiPhotoPage } from '../envoi-photo/envoi-photo';
 
 export class TakePhotoPage {
   private imageSrc: string;
+  public filtresPage = FiltresPage;
+  public profilPage = ProfilePage;
+  public takePhotoPage = TakePhotoPage;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private alertCtrl: AlertController) {
@@ -67,6 +73,15 @@ export class TakePhotoPage {
       console.log(err);
     });
   }
+
+  load(page: any){
+      this.navCtrl.setRoot(page);
+  }
+
+  popView(){
+    this.navCtrl.setRoot(AccueilPage)
+  }
+
 
 
 }

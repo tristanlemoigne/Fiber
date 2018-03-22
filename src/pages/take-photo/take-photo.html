@@ -2,8 +2,8 @@
 
   <ion-navbar>
     <ion-buttons left>
-      <button ion-button menuToggle>
-        <img alt="menu" height="23" src="assets/imgs/menu_icon.png">
+      <button ion-button (click)="popView()">
+        <img alt="menu" height="23" src="assets/imgs/retour.png">
       </button>
     </ion-buttons>
 
@@ -17,3 +17,8 @@
     <button ion-button (click)="takePhoto()">Prendre une photo ici</button>
     <button ion-button (click)="openGallery()">Importer depuis la gallerie</button>
 </ion-content>
+
+<ion-footer no-border>
+    <img alt="profil" (click)="load(profilPage)" height="35" src="assets/imgs/profile_off.png">
+    <img alt="photo" (click)="load(takePhotoPage)" height="35" src="assets/imgs/photo_icon.png">
+</ion-footer>

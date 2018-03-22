@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { HttpClient } from '@angular/common/http';
 import { AccueilPage } from '../accueil/accueil';
-import { TabsPage } from '../tabs/tabs';
 
 
 
@@ -52,11 +51,6 @@ export class SupportPage {
     })
 
   }
-
-  popView(){
-    this.navCtrl.setRoot(TabsPage);
-   }
-
 
 
   // $http({

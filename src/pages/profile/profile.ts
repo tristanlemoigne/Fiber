@@ -4,14 +4,11 @@ import { GetDataProvider } from '../../providers/get-data/get-data';
 import { Storage } from '@ionic/storage';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RequestOptions } from '@angular/http';
-import { TabsPage } from '../tabs/tabs';
 
-/**
- * Generated class for the ProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { FiltresPage } from '../filtres/filtres';
+import { TakePhotoPage } from '../take-photo/take-photo';
+import { AccueilPage } from '../accueil/accueil';
+
 
 @IonicPage()
 @Component({
@@ -26,6 +23,10 @@ export class ProfilePage implements OnInit {
   public userID:any;
   public suivi:any;
   public response:any;
+
+  public filtresPage = FiltresPage;
+  public profilPage = ProfilePage;
+  public takePhotoPage = TakePhotoPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private getDataProvider:GetDataProvider, private storage:Storage) {
     this.user = this.navParams.get('user');
@@ -96,9 +97,15 @@ export class ProfilePage implements OnInit {
     });
 
   }
+
+  load(page: any){
+      this.navCtrl.setRoot(page);
+  }
+
   popView(){
-    this.navCtrl.setRoot(TabsPage);
-   }
+    this.navCtrl.setRoot(AccueilPage);
+  }
+
 
 
 }

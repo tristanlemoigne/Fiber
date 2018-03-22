@@ -1,49 +1,34 @@
-<!--=========== 2 CAS AU BOOT : LOG OU PAS LOG
-QUAND LOG = CHARGER DANS CE COMPOSANT IDEALEMENT
-<menu></menu>
-<page-accueil> DANS LA PAGE D'ACCUEIL METTRE LES BOUTONS LIKE PAS LIKE PROFIL ETC </page-accueil>
--->
-<ion-nav #myNav [root]="rootPage" *ngIf="afficheConnexion">
-
-</ion-nav>
+<ion-nav #myNav [root]="connexionInscriptionPage" *ngIf="afficheConnexion"></ion-nav>
 
 
-<div *ngIf="afficheHome">
-  <!--LE MENU-->
-  <ion-menu  [content]="nav" [swipeEnabled]="false">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title class="menuTitle">
-          MENU
-        </ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-    <ion-content>
-
-        <button class="button" ion-item no-lines detail-none text-center (click)="onLoad(tabsPage)">
-          Accueil
-        </button>
-
-        <!-- <button class="button" ion-item no-lines detail-none text-center onclick="window.open('http://fiber-app.com/index-blog.html', '_system', 'location=yes')">
-          Blog
-        </button> -->
-
-        <button class="button" ion-item no-lines detail-none text-center (click)="onLoad(dernieresNouvellesPage)">
-          Dernières nouvelles
-        </button>
-
-        <button class="button" ion-item no-lines detail-none text-center (click)="onLoad(supportPage)">
-          Support technique
-        </button>
-
-        <button class="button decoButton" ion-item no-lines detail-none text-center (click)="onLoad(connexionInscriptionPage)">
-          Se déconnecter
-        </button>
+<ion-nav #content [root]="accueilPage"></ion-nav>
 
 
-    </ion-content>
-  </ion-menu>
+    <ion-menu [content]="content" [swipeEnabled]="false">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title class="menuTitle">
+            MENU
+          </ion-title>
+        </ion-toolbar>
+      </ion-header>
 
-  <ion-nav [root]="tabsPage" #nav></ion-nav>
-</div>
+      <ion-content>
+
+          <button class="button" ion-item no-lines detail-none text-center (click)="onLoad(accueilPage)">
+            Accueil
+          </button>
+
+          <button class="button" ion-item no-lines detail-none text-center (click)="onLoad(dernieresNouvellesPage)">
+            Dernières nouvelles
+          </button>
+
+          <button class="button" ion-item no-lines detail-none text-center (click)="onLoad(supportPage)">
+            Support technique
+          </button>
+
+          <button class="button decoButton" ion-item no-lines detail-none text-center (click)="onLoad(connexionInscriptionPage)">
+            Se déconnecter
+          </button>
+      </ion-content>
+    </ion-menu>

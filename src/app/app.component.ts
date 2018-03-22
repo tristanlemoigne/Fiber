@@ -3,7 +3,6 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { TabsPage } from '../pages/tabs/tabs';
 import { FiltresPage } from '../pages/filtres/filtres';
 import { SupportPage } from '../pages/support/support';
 import { DernieresNouvellesPage } from '../pages/dernieres-nouvelles/dernieres-nouvelles';
@@ -19,18 +18,16 @@ import { AccueilPage } from '../pages/accueil/accueil';
 })
 
 export class MyApp implements OnInit {
-  tabsPage = TabsPage;
-  filtrespage = FiltresPage;
-  connexionInscriptionPage = ConnexionInscriptionPage;
-  supportPage = SupportPage;
-  dernieresNouvellesPage = DernieresNouvellesPage;
+  public filtrespage = FiltresPage;
+  public supportPage = SupportPage;
+  public dernieresNouvellesPage = DernieresNouvellesPage;
 
-  afficheConnexion:boolean = false;
-  afficheHome:boolean = false;
+  public afficheConnexion:boolean = false;
+  public afficheAccueil:boolean = false;
 
-  // tokenValue:any;
-  @ViewChild('nav') nav: NavController;
-  public rootPage:any = ConnexionInscriptionPage;
+  @ViewChild('content') nav: NavController
+  public accueilPage = AccueilPage;
+  public connexionInscriptionPage = ConnexionInscriptionPage;
 
   constructor(platform: Platform, private menuCtrl: MenuController, statusBar: StatusBar, splashScreen: SplashScreen, private storage:Storage) {
     platform.ready().then(() => {
@@ -44,30 +41,30 @@ export class MyApp implements OnInit {
   ngOnInit(){
     //USE THIS LINE TO GET RID OF TOKEN FOR TEST ================ this.storage.remove("token");
     this.storage.get('token').then((tokenValue) => {
-      // this.tokenValue = val;
       console.log(tokenValue);
       if(tokenValue != null){
         this.afficheConnexion=false;
-        this.afficheHome=true;
+        this.afficheAccueil=true;
         console.log("token true");
       }
       else{
-        this.afficheHome=false;
+        this.afficheAccueil=false;
         this.afficheConnexion=true;
         console.log("token false");
       }
     });
-
-    // REturn ou let boolean
   }
 
   onLoad(page: any){
       if(page === ConnexionInscriptionPage){
+        console.log("coucou");
         this.storage.clear();
         this.menuCtrl.close();
+        console.log(page);
         this.nav.setRoot(page);
+        // this.nav.setRoot(page);
       } else {
-        this.nav.setRoot(page);
+        this.nav.setRoot(AccueilPage);
         this.menuCtrl.close();
       }
   }
