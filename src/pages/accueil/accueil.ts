@@ -36,6 +36,9 @@ export class AccueilPage  implements OnInit {
   public profilPage = ProfilePage;
   public takePhotoPage = TakePhotoPage;
 
+  public affichePlusDePhoto: boolean = false;
+  public afficheLesPhotos: boolean = true;
+
   constructor (private modalCtrl: ModalController, private getDataProvider:GetDataProvider, private nav: NavController, public storage: Storage, public postDataProvider: PostDataProvider) {
       this.data.lien = '';
     }
@@ -46,10 +49,15 @@ export class AccueilPage  implements OnInit {
       let link = "http://fiber-app.com/SERVER/getPhoto.php";
       this.getDataProvider.getData(link,{headers}).subscribe(data=>{
         this.photoList = data;
-        this.currentPhoto = this.photoList[0]["link_photo"];
-        this.authorPhoto = this.photoList[0]["login_user"];
-        this.authorPhotoId = this.photoList[0]["id_user"];
-        console.log(data);
+        if(data === null || data.byteLength <= 0 || data === undefined || this.photoList.length <= 1){
+          console.log("PLus de photos à afficher");
+          this.affichePlusDePhoto = true;
+          this.afficheLesPhotos = false;
+        } else {
+          this.currentPhoto = this.photoList[0]["link_photo"];
+          this.authorPhoto = this.photoList[0]["login_user"];
+          this.authorPhotoId = this.photoList[0]["id_user"];
+        }
       });
     });
   }
@@ -59,24 +67,35 @@ export class AccueilPage  implements OnInit {
     this.storage.get("token").then((val) => {
       this.token = val;
       let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
-      let link = "http://fiber-app.com/SERVER/likePhoto.php?id_photo="+this.photoList[0]["id_photo"];
-      let req = this.getDataProvider.getData(link,{headers});
-      req.subscribe(data=>{
-        console.log(data);
-        //data[1] = le token
-      })
+
+      if(this.photoList.length <= 1){
+        this.photoList = this.photoList.slice(1);
+        this.hasLiked = false;
+        this.hasComment=false;
+
+        console.log("PLus de photos à afficher");
+        this.affichePlusDePhoto = true;
+        this.afficheLesPhotos = false;
+      } else {
+        let link = "http://fiber-app.com/SERVER/likePhoto.php?id_photo="+this.photoList[0]["id_photo"];
+
+        this.getDataProvider.getData(link,{headers}).subscribe(data=>{
+            setTimeout(() => {
+                this.hasLiked = false;
+                this.hasComment=false;
+                this.photoList.splice(0,1);
+                this.currentPhoto = this.photoList[0]["link_photo"];
+                this.authorPhoto = this.photoList[0]["login_user"];
+                this.authorPhotoId = this.photoList[0]["id_user"];
+            },300)
+          //data[1] = le token
+        })
+
+      }
+
     });
     // Send like to bdd
     this.hasLiked = true;
-
-    setTimeout(() => {
-      this.hasLiked = false;
-      this.hasComment=false;
-      this.photoList.splice(0,1);
-      this.currentPhoto = this.photoList[0]["link_photo"];
-      this.authorPhoto = this.photoList[0]["login_user"];
-      this.authorPhotoId = this.photoList[0]["id_user"];
-      },500)
   }
 
   dislike(){
@@ -90,7 +109,7 @@ export class AccueilPage  implements OnInit {
        this.currentPhoto = this.photoList[0]["link_photo"];
        this.authorPhoto = this.photoList[0]["login_user"];
        this.authorPhotoId = this.photoList[0]["id_user"];
-    },500);
+    },300);
   }
 
   swipeEvent(e){

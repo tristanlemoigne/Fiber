@@ -52,6 +52,10 @@ export class SupportPage {
 
   }
 
+  popView(){
+    this.navCtrl.setRoot(AccueilPage);
+  }
+
 
   // $http({
   //     method: 'POST',

@@ -2,32 +2,31 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { FiltresPage } from '../pages/filtres/filtres';
-import { SupportPage } from '../pages/support/support';
-import { DernieresNouvellesPage } from '../pages/dernieres-nouvelles/dernieres-nouvelles';
-
-import { ConnexionInscriptionPage } from '../pages/connexion-inscription/connexion-inscription';
 import { NavController} from 'ionic-angular';
 import { MenuController} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+
+import { FiltresPage } from '../pages/filtres/filtres';
+import { ConnexionInscriptionPage } from '../pages/connexion-inscription/connexion-inscription';
 import { AccueilPage } from '../pages/accueil/accueil';
+
+import { DernieresNouvellesPage } from '../pages/dernieres-nouvelles/dernieres-nouvelles';
+import { SupportPage } from '../pages/support/support';
+
 
 @Component({
   templateUrl: 'app.html'
 })
 
 export class MyApp implements OnInit {
-  public filtrespage = FiltresPage;
-  public supportPage = SupportPage;
-  public dernieresNouvellesPage = DernieresNouvellesPage;
-
   public afficheConnexion:boolean = false;
   public afficheAccueil:boolean = false;
 
   @ViewChild('content') nav: NavController
   public accueilPage = AccueilPage;
   public connexionInscriptionPage = ConnexionInscriptionPage;
+  public supportPage = SupportPage;
+  public dernieresNouvellesPage = DernieresNouvellesPage;
 
   constructor(platform: Platform, private menuCtrl: MenuController, statusBar: StatusBar, splashScreen: SplashScreen, private storage:Storage) {
     platform.ready().then(() => {
@@ -64,7 +63,7 @@ export class MyApp implements OnInit {
         this.nav.setRoot(page);
         // this.nav.setRoot(page);
       } else {
-        this.nav.setRoot(AccueilPage);
+        this.nav.setRoot(page);
         this.menuCtrl.close();
       }
   }

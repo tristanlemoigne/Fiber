@@ -18,13 +18,22 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="content">
+
+<ion-content *ngIf="affichePlusDePhoto">
+  <p class="gros">
+    Il n'y a plus de photos à afficher
+  </p>
+</ion-content>
+
+<ion-content *ngIf="afficheLesPhotos" class="content">
   <ion-card id="card" no-shadow  class="card" (swipe)="swipeEvent($event)"  >
     <button ion-button round no-lines detail-none class="card-title" (click)="clickProfile()">
       <button ion-button round no-lines detail-none class="border" >
         <b>{{this.authorPhoto}}</b>
       </button>
     </button>
+
+    <!-- Absolute + white -->
 
     <img *ngIf="hasDisliked" alt="dislikeAnimation" src="assets/imgs/dislike.png">
     <img *ngIf="hasLiked" alt="likeAnimation" src="assets/imgs/like.png">

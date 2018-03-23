@@ -25,4 +25,9 @@ export class DernieresNouvellesPage {
     console.log('ionViewDidLoad DernieresNouvellesPage');
   }
 
+  popView(){
+    this.navCtrl.setRoot(AccueilPage);
+  }
+
+
 }
