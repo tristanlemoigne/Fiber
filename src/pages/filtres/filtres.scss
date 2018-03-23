@@ -1,3 +1,34 @@
 page-filtres {
+  input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #cacaca !important;
+  }
+
+  input{
+    display: block;
+    width: 80vw;
+    margin: 0 auto;
+    background-color: #f8f8f8;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+  }
+
+  .buttonEnvoi{
+    display: block;
+    color: #cacaca;
+    box-shadow: unset;
+    opacity: 1;
+    width: 70vw;
+    margin: 0 auto;
+    border-radius: 50px;
+    padding: 25px 0;
+    font-size: 1.5em;
+    border: solid 2px #cacaca;
+
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+  }
 
 }

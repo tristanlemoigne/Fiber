@@ -74,6 +74,7 @@ export class AccueilPage  implements OnInit {
         this.hasComment=false;
 
         console.log("PLus de photos à afficher");
+        console.log(this.photoList);
         this.affichePlusDePhoto = true;
         this.afficheLesPhotos = false;
       } else {
@@ -101,27 +102,33 @@ export class AccueilPage  implements OnInit {
   dislike(){
     this.commentaires = [];
     this.hasDisliked = true;
+    if(this.photoList.length <= 1){
+      this.photoList = this.photoList.slice(1);
+      this.hasLiked = false;
+      this.hasComment=false;
 
-    setTimeout(() => {
-       this.hasDisliked = false;
-       this.hasComment=false;
-       this.photoList.splice(0,1);
-       this.currentPhoto = this.photoList[0]["link_photo"];
-       this.authorPhoto = this.photoList[0]["login_user"];
-       this.authorPhotoId = this.photoList[0]["id_user"];
-    },300);
+      console.log("PLus de photos à afficher");
+      this.affichePlusDePhoto = true;
+      this.afficheLesPhotos = false;
+    } else {
+      setTimeout(() => {
+         this.hasDisliked = false;
+         this.hasComment=false;
+         this.photoList.splice(0,1);
+         this.currentPhoto = this.photoList[0]["link_photo"];
+         this.authorPhoto = this.photoList[0]["login_user"];
+         this.authorPhotoId = this.photoList[0]["id_user"];
+      },300);
+    }
   }
 
   swipeEvent(e){
     if (e.direction == 2) {
       this.dislike();
         //direction 2 = right to left swipe.
-        // Send dislike to bdd
     }
-
     if (e.direction == 4) {
       this.like();
-        // Send like to bdd
     }
   }
 
