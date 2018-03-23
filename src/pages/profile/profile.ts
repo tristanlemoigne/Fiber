@@ -23,6 +23,7 @@ export class ProfilePage implements OnInit {
   public userID:any;
   public suivi:any;
   public response:any;
+  public userParams:boolean = false;
 
   public filtresPage = FiltresPage;
   public profilPage = ProfilePage;
@@ -37,17 +38,16 @@ export class ProfilePage implements OnInit {
     //si c'est l'utilisateur actuel
     if(this.user == undefined){
       this.user="";
-      console.log("aaa");
       this.storage.get("token").then((val) => {
           this.token = val;
           let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
           let link = "http://fiber-app.com/SERVER/profile.php";
           let req = this.getDataProvider.getData(link,{headers});
           req.subscribe(data=>{
-            console.log(data);
+            this.loaded = true;
+            this.userParams = true;
             this.photos=data[0];
             this.user = data[1]["login"];
-
             //data[1] = le token
           })
       });
