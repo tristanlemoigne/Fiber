@@ -3,35 +3,41 @@
 
   BACK IF OTHER USER -->
   <ion-navbar>
-    <ion-buttons left>
+    <ion-buttons left start>
       <button ion-button (click)="popView()">
         <img alt="menu" height="23" src="assets/imgs/retour.png">
       </button>
     </ion-buttons>
 
-    <ion-title *ngIf="loaded">Profil de {{user}}</ion-title>
-  </ion-navbar>
+    <ion-title>Fiber</ion-title>
 
+    <ion-buttons *ngIf="userParams" right end>
+      <button ion-button>
+        <img alt="settings" height="23" src="assets/imgs/settings.png">
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-  <!--DIV CACHE TANT QU'ON SAIT PAS SI L'UTILISATEUR EST ABONNE OU PAS-->
-  <div *ngIf="loaded">
-    <!--s'il est pas abonné-->
-    <p *ngIf="!suivi">
-      S'ABONNER
-      <button  (click)="abonnement(true)">S'abonner</button>
-    </p>
-    <!--s'il est abonné-->
-    <p *ngIf="suivi">
-      SE DESABONNER
-      <button  (click)="abonnement(false)">Se désabonner</button>
-    </p>
+  <img src="assets/imgs/user_profile.png" width=100 alt="">
+  <div class="right">
+    <div>
+
+    <h2>{{user}}</h2>
+
+    <!--DIV CACHE TANT QU'ON SAIT PAS SI L'UTILISATEUR EST ABONNE OU PAS-->
+    <div *ngIf="loaded">
+      <!--s'il est pas abonné-->
+      <button class="abonnement" *ngIf="!suivi" (click)="abonnement(true)">S'abonner</button>
+      <!--s'il est abonné-->
+      <button class="abonnement" *ngIf="suivi" (click)="abonnement(false)">Se désabonner</button>
+    </div>
+    </div>
   </div>
-  <p *ngIf="userParams">
-    <button (click)="modifProfile"> Modifier son profil </button>
-  </p>
+
   <p *ngFor="let photo of photos ">
     <img src={{photo}} />
   </p>

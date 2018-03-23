@@ -7,4 +7,34 @@ page-profile {
     float: right;
     margin-right : 7vw;
   }
+
+  .right{
+    display: inline-block;
+    padding-left: 5vw;
+    position: absolute;
+    top: 16px;
+    height: 100px;
+
+  }
+
+  .right > div{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  h2{
+  }
+
+  .abonnement{
+    display: inline-block;
+    background-color: white;
+    color: #cacaca;
+    border: solid 1px #cacaca;
+    border-radius: 50px;
+    padding: 10px 20px ;
+    width: 35vw;
+  }
+
+
 }
