@@ -74,6 +74,7 @@ export class FiltresPage implements OnInit{
       this.userList=data;
     });
   }
+  
   selectUser(user){
     this.navCtrl.setRoot(ProfilePage,{
       user:user[0],

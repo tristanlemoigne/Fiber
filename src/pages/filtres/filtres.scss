@@ -31,4 +31,15 @@ page-filtres {
     right: 0;
   }
 
+  ul{
+    margin: 0;
+    font-size: 1.5em;
+    color: #cacaca;
+    list-style-type: none;
+  }
+
+  ul > li {
+    margin-bottom: 2vh;
+  }
+
 }
