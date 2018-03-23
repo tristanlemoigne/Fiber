@@ -1,5 +1,5 @@
 <ion-header>
-  <!-- MENU IF ROOT USER 
+  <!-- MENU IF ROOT USER
 
   BACK IF OTHER USER -->
   <ion-navbar>
@@ -9,7 +9,7 @@
       </button>
     </ion-buttons>
 
-    <ion-title>Profil de {{user}}</ion-title>
+    <ion-title *ngIf="loaded">Profil de {{user}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -29,7 +29,9 @@
       <button  (click)="abonnement(false)">Se désabonner</button>
     </p>
   </div>
-
+  <p *ngIf="userParams">
+    <button (click)="modifProfile"> Modifier son profil </button>
+  </p>
   <p *ngFor="let photo of photos ">
     <img src={{photo}} />
   </p>

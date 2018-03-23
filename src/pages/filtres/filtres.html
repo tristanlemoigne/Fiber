@@ -19,15 +19,15 @@
 
 <ion-content padding>
   <ion-item>
-    Magasin :
+    UTILISATEUR :
     <input type="text" (keyup)="getUser()" placeholder="Chercher un utilisateur" [(ngModel)]="getUserName" name="getUserName" required />
   </ion-item>
   <ul>
-    <li (click)="selectUser(user[1])" *ngFor="let user of userList">
+    <li (click)="selectUser(user)" *ngFor="let user of userList">
       {{user[0]}}
     </li>
   </ul>
-  <!--FORMULAIRE POUR RAJOUTER DES TAGS A LA PHOTO-->
+  <!--FORMULAIRE POUR RAJOUTER DES TAGS A LA PHOTO
   <form #myform="ngForm" (ngSubmit)="envoiTag()">
     <ion-item>
       <ion-label>
@@ -92,5 +92,5 @@
     </ul>
 
     <button ion-button> S'inscrire </button>
-  </form>
+  </form>-->
 </ion-content>

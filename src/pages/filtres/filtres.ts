@@ -74,10 +74,10 @@ export class FiltresPage implements OnInit{
       this.userList=data;
     });
   }
-  selectUser(userID){
+  selectUser(user){
     this.navCtrl.setRoot(ProfilePage,{
-      //userList[nbUser][1]
-      userID:userID
+      user:user[0],
+      userID:user[1]
     });
   }
 
