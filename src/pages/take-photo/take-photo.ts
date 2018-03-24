@@ -84,6 +84,30 @@ export class TakePhotoPage {
   // });
 
 
+  // private openGallery (): void {
+  //   let cameraOptions = {
+  //     sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+  //     destinationType: this.camera.DestinationType.FILE_URI,
+  //     quality: 100,
+  //     targetWidth: 1000,
+  //     targetHeight: 1000,
+  //     encodingType: this.camera.EncodingType.JPEG,
+  //     correctOrientation: true,
+  //   }
+  //
+  //   this.camera.getPicture(cameraOptions).then(file_uri => {
+  //     this.imageSrc = file_uri;
+  //
+  //     this.navCtrl.push(EnvoiPhotoPage, {
+  //       imageSrc: this.imageSrc,
+  //     });
+  //
+  //   }, (err) => {
+  //     console.log(err);
+  //   });
+  // }
+
+
   private openGallery (): void {
     let cameraOptions = {
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
@@ -95,15 +119,14 @@ export class TakePhotoPage {
       correctOrientation: true,
     }
 
-    this.camera.getPicture(cameraOptions).then(file_uri => {
-      this.imageSrc = file_uri;
-
-      this.navCtrl.push(EnvoiPhotoPage, {
-        imageSrc: this.imageSrc,
-      });
-
-    }, (err) => {
-      console.log(err);
+    this.camera.getPicture(cameraOptions).then((file_uri) => {
+      return this.crop.crop('file://' + file_uri, {quality:100,  targetWidth: -1, targetHeight: -1});
+      
+    })
+    .then((path) => {
+      return this.navCtrl.push(EnvoiPhotoPage, {
+              base64Image: path,
+            });
     });
   }
 
