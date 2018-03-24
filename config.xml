@@ -81,7 +81,6 @@
     <allow-navigation href="http://172.22.142.53:8100" />
     <allow-navigation href="http://192.168.43.22:8100" />
     <allow-navigation href="http://192.168.123.146:8100" />
-    <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="4.5.4" />
     <plugin name="cordova-instagram-plugin" spec="^0.5.5" />
     <plugin name="cordova-plugin-camera" spec="^3.0.0" />
@@ -104,4 +103,7 @@
     <plugin name="cordova-plugin-file-transfer" spec="^1.7.1" />
     <plugin name="cordova-instagram-plugin" spec="^0.5.5" />
     <engine name="android" spec="~7.0.0" />
+    <allow-navigation href="http://192.168.0.24:8100" />
+    <plugin name="cordova-plugin-crop" spec="^0.4.0" />
+    <plugin name="com-badrit-base64" spec="^0.2.0" />
 </widget>

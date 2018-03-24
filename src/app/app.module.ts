@@ -5,10 +5,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { IonicStorageModule } from '@ionic/storage';
+import { Crop } from '@ionic-native/crop';
+import { Base64 } from '@ionic-native/base64';
 import { FileTransfer, FileUploadOptions, FileTransferObject  } from '@ionic-native/file-transfer';
 import { Instagram } from '@ionic-native/instagram';
 import { Geolocation } from '@ionic-native/geolocation';
-
 import { MyApp } from './app.component';
 import { AccueilPage } from '../pages/accueil/accueil';
 import { FiltresPage } from '../pages/filtres/filtres';
@@ -76,6 +77,8 @@ import { GetDataProvider } from '../providers/get-data/get-data';
     FileTransfer,
     Instagram,
     Geolocation,
+    Crop,
+    Base64,
   ]
 })
 export class AppModule {}

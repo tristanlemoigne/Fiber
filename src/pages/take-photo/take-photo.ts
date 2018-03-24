@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController  } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { EnvoiPhotoPage } from '../envoi-photo/envoi-photo';
+import { Crop } from '@ionic-native/crop';
+import { Base64 } from '@ionic-native/base64';
 
 import { FiltresPage } from '../filtres/filtres';
 import { ProfilePage } from '../profile/profile';
@@ -15,40 +17,71 @@ import { AccueilPage } from '../accueil/accueil';
 })
 
 export class TakePhotoPage {
-  private imageSrc: string;
+  public imageSrc: string;
+  public imageCroped: any;
+  public imagePath: string;
   public filtresPage = FiltresPage;
   public profilPage = ProfilePage;
   public takePhotoPage = TakePhotoPage;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, private alertCtrl: AlertController, public crop: Crop, public base64: Base64) {
   }
 
   public photos: any;
-  public base64Image: string;
+  public base64Image: any;
 
 
-  takePhoto(){
-     const options: CameraOptions = {
-        quality: 50,
-        destinationType: this.camera.DestinationType.DATA_URL,
-        encodingType: this.camera.EncodingType.JPEG,
-        mediaType: this.camera.MediaType.PICTURE
-      }
+  // takePhoto(){
+  //    const options: CameraOptions = {
+  //       quality: 50,
+  //       destinationType: this.camera.DestinationType.DATA_URL,
+  //       encodingType: this.camera.EncodingType.JPEG,
+  //       mediaType: this.camera.MediaType.PICTURE
+  //     }
+  //
+  //     this.camera.getPicture(options).then((imageData) => {
+  //      // imageData is either a base64 encoded string or a file URI
+  //      // If it's base64:
+  //      this.base64Image = 'data:image/jpeg;base64,' + imageData;
+  //
+  //
+  //      this.navCtrl.push(EnvoiPhotoPage, {
+  //        base64Image: imageData,
+  //      });
+  //      // this.photos.reverse();
+  //     }, (err) => {
+  //      // Handle error
+  //     });
+  // }
 
-      this.camera.getPicture(options).then((imageData) => {
-       // imageData is either a base64 encoded string or a file URI
-       // If it's base64:
-       this.base64Image = 'data:image/jpeg;base64,' + imageData;
 
-       this.navCtrl.push(EnvoiPhotoPage, {
-         base64Image: this.base64Image,
-       });
-       // this.photos.reverse();
-      }, (err) => {
-       // Handle error
-      });
+  takePhoto(): Promise<any>{
+    const options: any = {
+      destinationType: this.camera.DestinationType.FILE_URI,
+			mediaType: this.camera.MediaType.ALLMEDIA,
+			encodingType: this.camera.EncodingType.JPEG,
+			correctOrientation: true,
+    }
+
+	  return this.camera.getPicture(options).then((fileUri) => {
+      // fileUri = 'file://' + fileUri;
+      return this.crop.crop('file://' + fileUri, {quality:100,  targetWidth: -1, targetHeight: -1});
+    })
+    .then((path) => {
+      return this.navCtrl.push(EnvoiPhotoPage, {
+              base64Image: path,
+            });
+    });
   }
+
+  // this.base64.encodeFile(path).then((base64File: string) => {
+  //   this.navCtrl.push(EnvoiPhotoPage, {
+  //     base64Image: base64File,
+  //   });
+  // }, (err) => {
+  //   console.log(err);
+  // });
 
 
   private openGallery (): void {

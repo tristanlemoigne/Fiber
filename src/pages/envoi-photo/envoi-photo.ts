@@ -28,6 +28,7 @@ export class EnvoiPhotoPage {
     this.imageTaken = this.navParams.get('base64Image');
     this.imageGallery = this.navParams.get('imageSrc');
   }
+  
   envoyer(){
     if(this.imageTaken){
       let fileTransfer: FileTransferObject = this.transfer.create();
@@ -63,9 +64,12 @@ export class EnvoiPhotoPage {
 
     }
   }
+
+
   tag(){
     this.navCtrl.push(TagPage);
   }
+
   partager(){
     if(this.instagram.isInstalled()){
       if(this.imageTaken){
@@ -82,8 +86,6 @@ export class EnvoiPhotoPage {
     }
 
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad EnvoiPhotoPage');
-  }
+
 
 }

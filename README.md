@@ -35,5 +35,17 @@ ATTENTION : Télécharger les modules suivant :
  - Instagram :
 
  ionic cordova plugin add cordova-instagram-plugin
- 
+
  npm install --save @ionic-native/instagram
+
+ - Crop photo :
+
+ ionic cordova plugin add cordova-plugin-crop
+
+ npm install --save @ionic-native/crop
+
+ - Base64 Converter :
+
+ionic cordova plugin add com-badrit-base64
+
+ npm install --save @ionic-native/base64
