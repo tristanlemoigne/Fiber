@@ -1,3 +1,78 @@
 page-envoi-photo {
+  input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #cacaca !important;
+  }
+
+  ion-input, input{
+    display: block;
+    background-color: #f8f8f8;
+    border-radius: 50px;
+    width: 70vw;
+    margin: 0 auto;
+    border: none;
+    height: 50px;
+    padding-left: 20px;
+    padding-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+  }
+
+  textarea, .text-input, .text-input-ios{
+    font-size: 1.2em;
+    background-color: #f8f8f8;
+    border-radius: 20px;
+    width: 70vw;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    opacity: 100%;
+    height: 10vh;
+    padding: 20px;
+  }
+
+
+  ion-item, ion-label{
+    color: black!important;
+  }
+
+  ion-card, .ion-card, .card{
+    box-shadow: none;
+  }
+
+  ion-card > img{
+    display: block;
+    margin: 0 auto 10px;
+    width: 50vw;
+  }
+
+  .buttonInsta{
+    margin-top: 5vh;
+  }
+
+  .buttonInsta{
+    display: block;
+    color: #cacaca;
+    box-shadow: unset !important;
+    opacity: 1 !important;
+    width: 70vw;
+    margin: 3vh auto 0;
+    border-radius: 50px;
+    padding: 25px 0;
+    font-size: 1.5em;
+    border: solid 2px #cacaca;
+  }
+
+  .btnEnvoi{
+    background: -webkit-linear-gradient(#f5d4c9, #b2c4dd, #42aac6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    font-size: 0.9em;
+  }
+
+  img[alt="envoi"]{
+     transform: scaleX(-1);
+      filter: FlipH;
+  }
+
 
 }

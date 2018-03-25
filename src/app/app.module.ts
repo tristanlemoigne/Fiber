@@ -22,7 +22,6 @@ import { InscriptionPage } from '../pages/inscription/inscription';
 import { DernieresNouvellesPage } from '../pages/dernieres-nouvelles/dernieres-nouvelles';
 import { ConnexionInscriptionPage } from '../pages/connexion-inscription/connexion-inscription';
 import { ComPredefiniPage } from '../pages/com-predefini/com-predefini';
-import { TagPage } from '../pages/tag/tag';
 import { SettingsService } from '../services/settings';
 import { PostDataProvider } from '../providers/post-data/post-data';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -42,7 +41,6 @@ import { GetDataProvider } from '../providers/get-data/get-data';
     TakePhotoPage,
     EnvoiPhotoPage,
     DernieresNouvellesPage,
-    TagPage
   ],
   imports: [
     BrowserModule,
@@ -64,7 +62,6 @@ import { GetDataProvider } from '../providers/get-data/get-data';
     TakePhotoPage,
     EnvoiPhotoPage,
     DernieresNouvellesPage,
-    TagPage
 
   ],
   providers: [
