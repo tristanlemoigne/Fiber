@@ -29,6 +29,9 @@ export class ProfilePage implements OnInit {
   public profilPage = ProfilePage;
   public takePhotoPage = TakePhotoPage;
 
+  public selectPictures: boolean = false;
+  public visible: boolean = true;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private getDataProvider:GetDataProvider, private storage:Storage) {
     this.user = this.navParams.get('user');
     this.userID = this.navParams.get('userID');
@@ -47,6 +50,12 @@ export class ProfilePage implements OnInit {
             this.loaded = false;
             this.userParams = true;
             this.photos=data[0];
+            //
+            // data = data[0].json()
+            // // this.photos={image: JSON.stringify(data[0])};
+            // console.log(data)
+            // // this.photos={image: data[0], icon:'checkmark-circle-outline'};
+
             this.user = data[1]["login"];
             //data[1] = le token
           })
@@ -62,7 +71,9 @@ export class ProfilePage implements OnInit {
           req.subscribe(data=>{
             this.loaded = true;
             console.log(data);
-            this.photos=data[0];
+            // this.photos=data[0];
+            this.photos={image: data[0], icon:'checkmark-circle-outline'};
+
             this.suivi = data[2];
             //data[1] = le token
           })
@@ -98,6 +109,22 @@ export class ProfilePage implements OnInit {
 
   }
 
+  selectAll(){
+    console.log("Sélection de toutes les photos");
+    this.selectPictures = true;
+  }
+
+  selectOne(index){
+    console.log("Sélection de la photo " + index)
+    // this.visible = !this.visible;
+    // console.log(this.photos[index])
+  }
+
+  unSelect(){
+    this.selectPictures = false;
+  }
+
+
   load(page: any){
       this.navCtrl.setRoot(page);
   }
@@ -105,6 +132,7 @@ export class ProfilePage implements OnInit {
   popView(){
     this.navCtrl.setRoot(AccueilPage);
   }
+
 
 
 
