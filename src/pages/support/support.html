@@ -22,7 +22,7 @@
   <form #form = "ngForm" (ngSubmit)="onSubmit()">
     <input name="object" [(ngModel)]="object" placeholder="Objet" required>
     <ion-textarea name="question" [(ngModel)]="question" placeholder="Expliquez-nous ce qu’il ne va pas pour que nous réglions le problème.. :)"></ion-textarea>
-
+  
 
     <button ion-button class="buttonEnvoi" [disabled]="!form.form.valid">Envoyer</button>
   </form>

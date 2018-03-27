@@ -12,7 +12,7 @@
     <ion-title>Fiber</ion-title>
 
     <ion-buttons *ngIf="userParams" right end>
-      <button ion-button>
+      <button ion-button (click)="unSelect()">
         <img alt="settings" height="23" src="assets/imgs/settings.png">
       </button>
     </ion-buttons>
@@ -38,9 +38,14 @@
     </div>
   </div>
 
-  <p *ngFor="let photo of photos ">
-    <img src={{photo}} />
-  </p>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4 class="overview" *ngFor="let photo of photos; let i = index" (press)="selectAll()">
+        <ion-icon [name]="visible ? 'checkmark-circle-outline' :'checkmark-circle'" class="selectPictures" *ngIf="selectPictures" (click)="selectOne(i)"></ion-icon>
+        <img src={{photo}}/>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 
 <ion-footer no-border>

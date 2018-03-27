@@ -36,5 +36,24 @@ page-profile {
     width: 35vw;
   }
 
+  .col:nth-of-type(1){
+    width: 50%;
+    max-width: 50%;
+    flex-basis: 50%;
+  }
 
+  .col:nth-of-type(2){
+    width: 50%;
+    max-width: 50%;
+    flex-basis: 50%;
+  }
+
+  .selectPictures{
+    color: white;
+    font-size: 20px;
+
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
 }
