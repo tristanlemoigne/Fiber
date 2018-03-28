@@ -31,6 +31,10 @@ export class AccueilPage  implements OnInit {
   public postCom:any;
   public infoCom:any;
   public commentEmpty:any;
+  public nbLikeTab:any;
+  public nbComTab:any;
+  public nbLike:any;
+  public nbCom:any;
 
   public filtresPage = FiltresPage;
   public profilPage = ProfilePage;
@@ -48,7 +52,10 @@ export class AccueilPage  implements OnInit {
       let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
       let link = "http://fiber-app.com/SERVER/getPhoto.php";
       this.getDataProvider.getData(link,{headers}).subscribe(data=>{
-        this.photoList = data;
+        console.log(data);
+        this.photoList = data[0];
+        this.nbLikeTab = data[1];
+        this.nbComTab = data[2];
         if(data === null || data.byteLength <= 0 || data === undefined || this.photoList.length <= 1){
           console.log("PLus de photos à afficher");
           this.affichePlusDePhoto = true;
@@ -57,6 +64,8 @@ export class AccueilPage  implements OnInit {
           this.currentPhoto = this.photoList[0]["link_photo"];
           this.authorPhoto = this.photoList[0]["login_user"];
           this.authorPhotoId = this.photoList[0]["id_user"];
+          this.nbLike = this.nbLikeTab[0];
+          this.nbCom = this.nbComTab[0];
         }
       });
     });
@@ -70,6 +79,8 @@ export class AccueilPage  implements OnInit {
 
       if(this.photoList.length <= 1){
         this.photoList = this.photoList.slice(1);
+        this.nbLikeTab = this.nbLikeTab.slice(1);
+        this.nbComTab = this.nbComTab.slice(1);
         this.hasLiked = false;
         this.hasComment=false;
 
@@ -85,6 +96,10 @@ export class AccueilPage  implements OnInit {
                 this.hasLiked = false;
                 this.hasComment=false;
                 this.photoList.splice(0,1);
+                this.nbLikeTab.splice(0,1);
+                this.nbComTab.splice(0,1);
+                this.nbLike = this.nbLikeTab[0];
+                this.nbCom = this.nbComTab[0];
                 this.currentPhoto = this.photoList[0]["link_photo"];
                 this.authorPhoto = this.photoList[0]["login_user"];
                 this.authorPhotoId = this.photoList[0]["id_user"];
@@ -104,6 +119,8 @@ export class AccueilPage  implements OnInit {
     this.hasDisliked = true;
     if(this.photoList.length <= 1){
       this.photoList = this.photoList.slice(1);
+      this.nbLikeTab = this.nbLikeTab.slice(1);
+      this.nbComTab = this.nbComTab.slice(1);
       this.hasLiked = false;
       this.hasComment=false;
 
@@ -115,6 +132,10 @@ export class AccueilPage  implements OnInit {
          this.hasDisliked = false;
          this.hasComment=false;
          this.photoList.splice(0,1);
+         this.nbLikeTab.splice(0,1);
+         this.nbComTab.splice(0,1);
+         this.nbLike = this.nbLikeTab[0];
+         this.nbCom = this.nbComTab[0];
          this.currentPhoto = this.photoList[0]["link_photo"];
          this.authorPhoto = this.photoList[0]["login_user"];
          this.authorPhotoId = this.photoList[0]["id_user"];
@@ -200,6 +221,7 @@ export class AccueilPage  implements OnInit {
     (err) => {
     },
     () => {
+      this.nbCom[0] = this.nbCom[0]+1;
       this.commentEmpty = false;
       if(this.commentaires == null){
         this.commentaires = [this.infoCom];

@@ -39,6 +39,10 @@
     <img *ngIf="hasLiked" alt="likeAnimation" src="assets/imgs/like.png">
 
     <img id="imaage" class="margin" src={{this.currentPhoto}} />
+    <p>
+      <i>{{nbLike}} likes</i>
+      <i>{{nbCom}} commentaires</i>
+    </p>
 
     <ion-row class="boxLikes">
         <img alt="dislike" (click)="dislike()" src="assets/imgs/dislike.png">
