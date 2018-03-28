@@ -19,29 +19,48 @@ import { TakePhotoPage } from '../take-photo/take-photo';
 
 export class AccueilPage  implements OnInit {
   data:any = {};
+  //Liste des photos qui contient toutes les infos
   public photoList:any;
+  //La photo affichéen actuellement
   public currentPhoto:string;
+  //L'utilisateur qui a pris la photo actuelle
   public authorPhoto:string;
+  //Son id
   public authorPhotoId:any;
+  //Nombre de like d'une photo
+  public nbLike:any;
+  //Nombre de vêtements
+  public nbVet:any;
+  //Nombre de commentaires
+  public nbCom:any;
+  //occasion de la photo
+  public occasion:any;
+  //style de la photo
+  public style:any;
+  //saison de la photo
+  public saison:any;
+  //légende de la photo
+  public description:any;
+  //La liste des commentaires reliés à une photo
   public commentaires:any;
+  //La liste des vêtements reliés à une photo
+  public listeVetement:any;
+
+
   public hasComment:boolean = false;
   public hasLiked:boolean = false;
   public hasDisliked:boolean = false;
+
+  //Boolean pour afficher le bouton + si la photo a des vêtements renseignés
   public hasVetement:boolean = false;
+  //Boolean pour afficher les vêtements quand on clique sur le +
+  public afficheVetement:boolean = false;
+  //Propriété qui contient le token de l'utilisateur avec ses infos etc pour l'identifier
   public token:any;
+
   public postCom:any;
   public infoCom:any;
   public commentEmpty:any;
-  public nbLikeTab:any;
-  public nbComTab:any;
-  public nbLike:any;
-  public nbCom:any;
-  public occasion:any;
-  public style:any;
-  public saison:any;
-  public description:any;
-  public nbVetTab:any;
-  public nbVet:any;
 
   public filtresPage = FiltresPage;
   public profilPage = ProfilePage;
@@ -120,6 +139,8 @@ export class AccueilPage  implements OnInit {
                 }
                 if(this.nbVet != 0){
                   this.hasVetement = true;
+                } else{
+                  this.hasVetement = false;
                 }
                 this.occasion = this.photoList[0]["name_occasion"];
                 this.style = this.photoList[0]["name_style"];
@@ -164,6 +185,8 @@ export class AccueilPage  implements OnInit {
          }
          if(this.nbVet != 0){
            this.hasVetement = true;
+         } else{
+           this.hasVetement = false;
          }
          this.occasion = this.photoList[0]["name_occasion"];
          this.style = this.photoList[0]["name_style"];
@@ -271,6 +294,16 @@ export class AccueilPage  implements OnInit {
     let link = "http://fiber-app.com/SERVER/getVetement.php?idPhoto="+this.photoList[0]["id_photo"];
     let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
     let req = this.postDataProvider.postData(link,{headers});
+    req.subscribe(data =>{
+      this.afficheVetement = true;
+      this.listeVetement = data;
+      console.log(this.listeVetement);
+    },
+    (err) =>{
+
+    },()=>{
+
+    });
   }
   // move(e){
   //

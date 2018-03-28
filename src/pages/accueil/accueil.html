@@ -48,6 +48,15 @@
       <!--BOUTON VETEMENTS-->
       <span *ngIf="hasVetement" (click)="detailsVetements()"> IL Y A DES VETEMENTS</span>
     </p>
+    <!--AFFICHAGE DES VETEMENTS -->
+    <ul *ngIf="afficheVetement">
+      <li *ngFor="let vet of listeVetement" >
+        Nom : {{vet.name_cloth}}
+        <!-- FAIRE vet.price_cloth pour le prix et vet.name_store pour le magasin
+        On peut aussi faire vet.name_color pour la couleur, vet.name_pattern pour le motif -->
+      </li>
+      <br />
+    </ul>
 
     <ion-row class="boxLikes">
         <img alt="dislike" (click)="dislike()" src="assets/imgs/dislike.png">
