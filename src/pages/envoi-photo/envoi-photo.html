@@ -7,139 +7,117 @@
     </ion-buttons>
 
     <ion-title>PHOTO</ion-title>
-
-    <ion-buttons right>
-      <button ion-button (click)="envoyer()">
-        <span class="btnEnvoi">Envoyer &nbsp;</span><img alt="envoi" height="23" src="assets/imgs/retour.png">
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <form #myform="ngForm" (ngSubmit)="envoiTag()">
 
-    <!-- INFORMATIONS PRINCIPALES -->
-    <ion-card no-lines no-border class="card">
-      <img [src]="imageTaken"  *ngIf="imageTaken"  />
-      <img [src]="imageGallery"  *ngIf="imageGallery"  />
+    <img [src]="imageTaken"  *ngIf="imageTaken"  />
+    <img [src]="imageGallery"  *ngIf="imageGallery"  />
+
+    <!-- INFORMATIONS OBLIGATOIRES -->
+    <ion-textarea placeholder="Ajouter une description de votre photo ici..." type="text" maxlength="100" [(ngModel)]="description" name="description" required></ion-textarea>
+
+    <ion-card>
+      <span>Obligatoire</span>
+      <ion-item>
+        <ion-label>OCCASION</ion-label>
+        <ion-select [(ngModel)]="occasion" name="occasion" multiple="false">
+          <ion-option value="1">Aller en cours</ion-option>
+          <ion-option value="2">Soirée entre amis</ion-option>
+          <ion-option value="3">Chill</ion-option>
+          <ion-option value="4">Au travail</ion-option>
+          <ion-option value="5">Aller au sport</ion-option>
+          <ion-option value="6">Pour les fêtes</ion-option>
+          <ion-option value="7">Aller à un cocktail / Séminaire</ion-option>
+          <ion-option value="8">Premier rendez-vous</ion-option>
+          <ion-option value="9">Entretien</ion-option>
+          <ion-option value="10">En Festival</ion-option>
+          <ion-option value="11">Mariage</ion-option>
+          <ion-option value="12">En vacances</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>SAISON</ion-label>
+        <ion-select [(ngModel)]="saison" name="saison" multiple="false">
+          <ion-option value="1">Printemps</ion-option>
+          <ion-option value="2">Été</ion-option>
+          <ion-option value="3">Automne</ion-option>
+          <ion-option value="4">Hiver</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>STYLE</ion-label>
+        <ion-select [(ngModel)]="style" name="style" multiple="false">
+          <ion-option value="1">Casual</ion-option>
+          <ion-option value="2">Urbain</ion-option>
+          <ion-option value="3">Business</ion-option>
+          <ion-option value="4">Chic</ion-option>
+          <ion-option value="5">Street</ion-option>
+          <ion-option value="6">Sport</ion-option>
+          <ion-option value="7">Rock</ion-option>
+          <ion-option value="8">Bohème</ion-option>
+          <ion-option value="9">Baroudeur</ion-option>
+          <ion-option value="10">Autre</ion-option>
+        </ion-select>
+      </ion-item>
     </ion-card>
 
-    <!-- DETAILS COMMERCIAUX -->
-    <ion-textarea placeholder="Ajouter une description" type="text" maxlength="100" [(ngModel)]="description" name="description" required></ion-textarea>
-
-    <!-- PRECISIONS SUR LE LOOK -->
-    <ion-item>
-      <ion-label>OCCASION</ion-label>
-      <ion-select [(ngModel)]="occasion" name="occasion" multiple="false">
-        <ion-option value="1">Aller en cours</ion-option>
-        <ion-option value="2">Soirée entre amis</ion-option>
-        <ion-option value="3">Chill</ion-option>
-        <ion-option value="4">Au travail</ion-option>
-        <ion-option value="5">Aller au sport</ion-option>
-        <ion-option value="6">Pour les fêtes</ion-option>
-        <ion-option value="7">Aller à un cocktail / Séminaire</ion-option>
-        <ion-option value="8">Premier rendez-vous</ion-option>
-        <ion-option value="9">Entretien</ion-option>
-        <ion-option value="10">En Festival</ion-option>
-        <ion-option value="11">Mariage</ion-option>
-        <ion-option value="12">En vacances</ion-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>SAISON</ion-label>
-      <ion-select [(ngModel)]="saison" name="saison" multiple="false">
-        <ion-option value="1">Printemps</ion-option>
-        <ion-option value="2">Été</ion-option>
-        <ion-option value="3">Automne</ion-option>
-        <ion-option value="4">Hiver</ion-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>STYLE</ion-label>
-      <ion-select [(ngModel)]="style" name="style" multiple="false">
-        <ion-option value="1">Casual</ion-option>
-        <ion-option value="2">Urbain</ion-option>
-        <ion-option value="3">Business</ion-option>
-        <ion-option value="4">Chic</ion-option>
-        <ion-option value="5">Street</ion-option>
-        <ion-option value="6">Sport</ion-option>
-        <ion-option value="7">Rock</ion-option>
-        <ion-option value="8">Bohème</ion-option>
-        <ion-option value="9">Baroudeur</ion-option>
-        <ion-option value="10">Autre</ion-option>
-      </ion-select>
-    </ion-item>
     <br />
-    <i>{{vetements.length}} vêtements/accessoires ajoutés à cette photo</i>
-    <!-- PRECISIONS SUR LES VETEMENTS -->
-    <h2>Ajouter un vêtement à cette photo  </h2>
-    <input placeholder="Vêtement ou accessoire" type="text" [(ngModel)]="vetement" name="vetement" required>
-    <!--<ion-item>
-      <ion-label>VÊTEMENT</ion-label>
-      <ion-select [(ngModel)]="vetement" name="vetement" multiple="flase">
-        <ion-option value="veste">Haut</ion-option>
-        <ion-option value="pantalon">Bas</ion-option>
-        <ion-option value="pantalon">Chaussures</ion-option>
-        <ion-option value="tshirtCourt">Accessoire</ion-option>-->
 
+    <!-- INFORMATIONS FACULTATIVES -->
+    <ion-card>
+      <span class="facultatif">Facultatif</span>
+      <h3>Ajouter un vêtement à cette photo  </h3>
+      <input placeholder="Vêtement ou accessoire" type="text" [(ngModel)]="vetement" name="vetement" required>
 
-        <!--
-        <ion-option value="tshitLong">T-shirt manches longues</ion-option>
-        <ion-option value="sweatWithCapuche">Sweat à capuche</ion-option>
-        <ion-option value="sweatWithoutCapuche">Sweat sans capuche</ion-option>
-        <ion-option value="jean">Jean</ion-option>
-        <ion-option value="chino">Chino</ion-option>
+      <ion-item>
+        <ion-label>COULEUR</ion-label>
+        <ion-select [(ngModel)]="couleur" name="couleur" multiple="false">
+          <ion-option value="1">Noir</ion-option>
+          <ion-option value="2">Blanc</ion-option>
+          <ion-option value="3">Gris</ion-option>
+          <ion-option value="4">Marron</ion-option>
+          <ion-option value="5">Bleu</ion-option>
+          <ion-option value="6">Vert</ion-option>
+          <ion-option value="7">Rouge</ion-option>
+          <ion-option value="8">Violet</ion-option>
+          <ion-option value="9">Rose</ion-option>
+          <ion-option value="10">Kaki</ion-option>
+          <ion-option value="11">Jaune</ion-option>
+        </ion-select>
+      </ion-item>
 
-        <ion-option value="jupe">Jupe</ion-option>
-        <ion-option value="robe">Robe</ion-option>
-        <ion-option value="marcel">Marcel</ion-option>
-        <ion-option value="marcel">Chaussures</ion-option>
-        <ion-option value="marcel">Echarpe</ion-option>
-        <ion-option value="marcel">Bague</ion-option>
-      </ion-select>
-    </ion-item>-->
+      <ion-item>
+        <ion-label>MOTIF</ion-label>
+        <ion-select [(ngModel)]="motif" name="motif" multiple="false">
+          <ion-option value="1">Uni</ion-option>
+          <ion-option value="2">Rayé</ion-option>
+          <ion-option value="3">A pois</ion-option>
+          <ion-option value="4">Chiné</ion-option>
+          <ion-option value="5">Original</ion-option>
+        </ion-select>
+      </ion-item>
 
-    <ion-item>
-      <ion-label>COULEUR</ion-label>
-      <ion-select [(ngModel)]="couleur" name="couleur" multiple="false">
-        <ion-option value="1">Noir</ion-option>
-        <ion-option value="2">Blanc</ion-option>
-        <ion-option value="3">Gris</ion-option>
-        <ion-option value="4">Marron</ion-option>
-        <ion-option value="5">Bleu</ion-option>
-        <ion-option value="6">Vert</ion-option>
-        <ion-option value="7">Rouge</ion-option>
-        <ion-option value="8">Violet</ion-option>
-        <ion-option value="9">Rose</ion-option>
-        <ion-option value="10">Kaki</ion-option>
-        <ion-option value="11">Jaune</ion-option>
-      </ion-select>
-    </ion-item>
+      <br />
+      <input placeholder="Prix (en euros)" type="number" [(ngModel)]="prix" name="prix" required>
+      <input placeholder="Magasin" type="text" (keyup)="callMaps()" [(ngModel)]="magasin" name="magasin" required />
 
-    <ion-item>
-      <ion-label>MOTIF</ion-label>
-      <ion-select [(ngModel)]="motif" name="motif" multiple="false">
-        <ion-option value="1">Uni</ion-option>
-        <ion-option value="2">Rayé</ion-option>
-        <ion-option value="3">A pois</ion-option>
-        <ion-option value="4">Chiné</ion-option>
-        <ion-option value="5">Original</ion-option>
-      </ion-select>
-    </ion-item>
-    <br />
-    <input placeholder="Prix (en euros)" type="number" [(ngModel)]="prix" name="prix" required>
-    <input placeholder="Magasin" type="text" (keyup)="callMaps()" [(ngModel)]="magasin" name="magasin" required />
+      <ul>
+        <li (click)="selectMagasin(prop) "*ngFor="let prop of propositions">
+          {{prop[0]}}
+        </li>
+      </ul>
 
-    <ul>
-      <li (click)="selectMagasin(prop) "*ngFor="let prop of propositions">
-        {{prop[0]}}
-      </li>
-    </ul>
-    <button ion-button class="buttonInsta" (click)="ajoutVetement()" value="Partager">Ajouter ce vêtement</button>
-    <button ion-button class="buttonInsta" (click)="partager()" value="Partager">Partager sur Instagram</button>
-    <!-- <button ion-button class="buttonEnvoi" (click)="envoyer()" value="Envoi">Envoyer</button> -->
+      <button ion-button class="buttonVetement" (click)="ajoutVetement()" value="Vetement">Ajoutez ce vêtement</button>
+
+      <span>{{vetements.length}} vêtements/accessoires ajoutés à cette photo</span>
+    </ion-card>
+
+    <button ion-button class="buttonTemplate buttonEnvoi" (click)="envoyer()" value="Envoi">Envoyer</button>
+    <button ion-button class="buttonTemplate" (click)="partager()" value="Partager">Partager sur Instagram</button>
   </form>
 </ion-content>

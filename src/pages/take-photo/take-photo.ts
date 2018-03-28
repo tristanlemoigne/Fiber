@@ -36,12 +36,13 @@ export class TakePhotoPage {
       destinationType: this.camera.DestinationType.FILE_URI,
 			mediaType: this.camera.MediaType.ALLMEDIA,
 			encodingType: this.camera.EncodingType.JPEG,
+      allowEdit: false,
 			correctOrientation: true,
-      cameraDirection: 0,
     }
 
 	  return this.camera.getPicture(options).then((fileUri) => {
       // fileUri = 'file://' + fileUri;
+      // fileUri = fileUri.reverse();
       return this.crop.crop('file://' + fileUri, {quality:100,  targetWidth: -1, targetHeight: -1});
     })
     .then((path) => {
