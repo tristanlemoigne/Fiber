@@ -106,22 +106,19 @@ export class EnvoiPhotoPage {
              let link = "http://fiber-app.com/SERVER/postVetement.php";
              let req = this.postData.postData(link,mydata,{headers});
              req.subscribe(data => {
-               alert(data);
              },
              (err)=>{
                alert(err.message);
              },()=>{
+               let alert = this.alert.create({
+                  title: 'Partagée !',
+                  subTitle: 'Photo partagée',
+                  buttons: ["OK"]});
 
-               alert('ho');
+                alert.present();
+                this.navCtrl.setRoot(AccueilPage);
              });
-            /*
-            let alert = this.alert.create({
-               title: 'Partagée !',
-               subTitle: 'Photo partagée',
-               buttons: ["OK"]
-             });
-             alert.present();
-             this.navCtrl.setRoot(AccueilPage);*/
+
           }, (err) => {
             alert("Erreur"+JSON.stringify(err));
           });
@@ -141,24 +138,38 @@ export class EnvoiPhotoPage {
           var loading = this.loading.create({
             content: "Envoi des données"
           });
+
           loading.present();
-          fileTransfer.upload(this.imageTaken, 'http://fiber-app.com/SERVER/postPhoto.php', options)
+          fileTransfer.upload(this.imageGallery, 'http://fiber-app.com/SERVER/postPhoto.php', options)
           .then((data)=>{
-            loading.dismiss();
-            let alert = this.alert.create({
-               title: 'Partagée !',
-               subTitle: 'Photo partagée',
-               buttons: ["OK"]
+             loading.dismiss();
+             this.idPhoto = data.response;
+             let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+             let mydata = JSON.stringify({vetements: this.vetements,
+                                          idPhoto:this.idPhoto});
+             let link = "http://fiber-app.com/SERVER/postVetement.php";
+             let req = this.postData.postData(link,mydata,{headers});
+             req.subscribe(data => {
+             },
+             (err)=>{
+               alert(err.message);
+             },()=>{
+               let alert = this.alert.create({
+                  title: 'Partagée !',
+                  subTitle: 'Photo partagée',
+                  buttons: ["OK"]});
+
+                alert.present();
+                this.navCtrl.setRoot(AccueilPage);
              });
-             alert.present();
-             this.navCtrl.setRoot(AccueilPage);
+
           }, (err) => {
             alert("Erreur"+JSON.stringify(err));
           });
+
         });
       }
     }
-
   }
 
   partager(){
