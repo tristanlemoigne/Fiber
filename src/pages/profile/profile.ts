@@ -113,8 +113,11 @@ export class ProfilePage implements OnInit {
   }
 
   selectAll(){
-    console.log("Sélection de toutes les photos");
-    this.selectPictures = true;
+    if(this.userParams === true){
+      console.log("Sélection de toutes les photos");
+      this.selectPictures = true;
+    }
+
   }
 
   selectOne(index){

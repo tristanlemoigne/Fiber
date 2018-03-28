@@ -23,17 +23,17 @@
   <div class="right">
     <div>
 
-    <h2>{{user}}</h2>
-    <p *ngIf="userBiographie">{{user.biographie}}</p>
-    <p *ngIf="!userBiographie">L'utilisateur n'as pas encore de biographie</p>
+      <h2>{{user}}</h2>
+      <p *ngIf="userBiographie">{{user.biographie}}</p>
+      <p class="noBio" *ngIf="!userBiographie">L'utilisateur n'as pas encore de biographie</p>
 
-    <!--DIV CACHE TANT QU'ON SAIT PAS SI L'UTILISATEUR EST ABONNE OU PAS-->
-    <div *ngIf="loaded">
-      <!--s'il est pas abonné-->
-      <button class="abonnement" *ngIf="!suivi" (click)="abonnement(true)">S'abonner</button>
-      <!--s'il est abonné-->
-      <button class="abonnement" *ngIf="suivi" (click)="abonnement(false)">Se désabonner</button>
-    </div>
+      <!--DIV CACHE TANT QU'ON SAIT PAS SI L'UTILISATEUR EST ABONNE OU PAS-->
+      <div *ngIf="loaded">
+        <!--s'il est pas abonné-->
+        <button class="abonnement" *ngIf="!suivi" (click)="abonnement(true)">S'abonner</button>
+        <!--s'il est abonné-->
+        <button class="abonnement" *ngIf="suivi" (click)="abonnement(false)">Se désabonner</button>
+      </div>
     </div>
   </div>
 
