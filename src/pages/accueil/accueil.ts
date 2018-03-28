@@ -27,6 +27,7 @@ export class AccueilPage  implements OnInit {
   public hasComment:boolean = false;
   public hasLiked:boolean = false;
   public hasDisliked:boolean = false;
+  public hasVetement:boolean = false;
   public token:any;
   public postCom:any;
   public infoCom:any;
@@ -38,6 +39,9 @@ export class AccueilPage  implements OnInit {
   public occasion:any;
   public style:any;
   public saison:any;
+  public description:any;
+  public nbVetTab:any;
+  public nbVet:any;
 
   public filtresPage = FiltresPage;
   public profilPage = ProfilePage;
@@ -56,9 +60,7 @@ export class AccueilPage  implements OnInit {
       let link = "http://fiber-app.com/SERVER/getPhoto.php";
       this.getDataProvider.getData(link,{headers}).subscribe(data=>{
         console.log(data);
-        this.photoList = data[0];
-        this.nbLikeTab = data[1];
-        this.nbComTab = data[2];
+        this.photoList = data;
         if(data === null || data.byteLength <= 0 || data === undefined || this.photoList.length <= 1){
           console.log("PLus de photos à afficher");
           this.affichePlusDePhoto = true;
@@ -70,8 +72,16 @@ export class AccueilPage  implements OnInit {
           this.occasion = this.photoList[0]["name_occasion"];
           this.style = this.photoList[0]["name_style"];
           this.saison = this.photoList[0]["name_season"];
-          this.nbLike = this.nbLikeTab[0];
-          this.nbCom = this.nbComTab[0];
+          this.description = this.photoList[0]["caption_photo"];
+          if(this.description == "undefined"){
+            this.description = "Pas de decritpion";
+          }
+          this.nbLike = this.photoList[0]["nbLike"];
+          this.nbCom = this.photoList[0]["nbCom"];
+          this.nbVet = this.photoList[0]["nbVet"];
+          if(this.nbVet != 0){
+            this.hasVetement = true;
+          }
         }
       });
     });
@@ -85,8 +95,6 @@ export class AccueilPage  implements OnInit {
 
       if(this.photoList.length <= 1){
         this.photoList = this.photoList.slice(1);
-        this.nbLikeTab = this.nbLikeTab.slice(1);
-        this.nbComTab = this.nbComTab.slice(1);
         this.hasLiked = false;
         this.hasComment=false;
 
@@ -99,13 +107,20 @@ export class AccueilPage  implements OnInit {
 
         this.getDataProvider.getData(link,{headers}).subscribe(data=>{
             setTimeout(() => {
+              console.log(this.description);
                 this.hasLiked = false;
                 this.hasComment=false;
                 this.photoList.splice(0,1);
-                this.nbLikeTab.splice(0,1);
-                this.nbComTab.splice(0,1);
-                this.nbLike = this.nbLikeTab[0];
-                this.nbCom = this.nbComTab[0];
+                this.nbLike = this.photoList[0]["nbLike"];
+                this.nbCom = this.photoList[0]["nbCom"];
+                this.nbVet = this.photoList[0]["nbVet"];
+                this.description = this.photoList[0]["caption_photo"];
+                if(this.description == "undefined"){
+                  this.description = "Pas de decritpion";
+                }
+                if(this.nbVet != 0){
+                  this.hasVetement = true;
+                }
                 this.occasion = this.photoList[0]["name_occasion"];
                 this.style = this.photoList[0]["name_style"];
                 this.saison = this.photoList[0]["name_season"];
@@ -128,8 +143,6 @@ export class AccueilPage  implements OnInit {
     this.hasDisliked = true;
     if(this.photoList.length <= 1){
       this.photoList = this.photoList.slice(1);
-      this.nbLikeTab = this.nbLikeTab.slice(1);
-      this.nbComTab = this.nbComTab.slice(1);
       this.hasLiked = false;
       this.hasComment=false;
 
@@ -138,13 +151,20 @@ export class AccueilPage  implements OnInit {
       this.afficheLesPhotos = false;
     } else {
       setTimeout(() => {
+        console.log(this.description);
          this.hasDisliked = false;
          this.hasComment=false;
          this.photoList.splice(0,1);
-         this.nbLikeTab.splice(0,1);
-         this.nbComTab.splice(0,1);
-         this.nbLike = this.nbLikeTab[0];
-         this.nbCom = this.nbComTab[0];
+         this.nbLike = this.photoList[0]["nbLike"];
+         this.nbCom = this.photoList[0]["nbCom"];
+         this.nbVet = this.photoList[0]["nbVet"];
+         this.description = this.photoList[0]["caption_photo"];
+         if(this.description == "undefined"){
+           this.description = "Pas de decritpion";
+         }
+         if(this.nbVet != 0){
+           this.hasVetement = true;
+         }
          this.occasion = this.photoList[0]["name_occasion"];
          this.style = this.photoList[0]["name_style"];
          this.saison = this.photoList[0]["name_season"];
@@ -246,6 +266,11 @@ export class AccueilPage  implements OnInit {
 
     //at the end
 
+  }
+  detailsVetements(){
+    let link = "http://fiber-app.com/SERVER/getVetement.php?idPhoto="+this.photoList[0]["id_photo"];
+    let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+    let req = this.postDataProvider.postData(link,{headers});
   }
   // move(e){
   //
