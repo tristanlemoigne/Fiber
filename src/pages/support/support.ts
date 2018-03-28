@@ -47,7 +47,7 @@ export class SupportPage {
 
     this.http.post("http://fiber-app.com/SERVER/support.php",myData).subscribe(data => {
       alert("Message envoyé");
-      this.navCtrl.pop();
+      this.navCtrl.setRoot(AccueilPage);
     })
 
   }

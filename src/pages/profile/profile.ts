@@ -8,6 +8,7 @@ import { RequestOptions } from '@angular/http';
 import { FiltresPage } from '../filtres/filtres';
 import { TakePhotoPage } from '../take-photo/take-photo';
 import { AccueilPage } from '../accueil/accueil';
+import { ModifProfilPage } from '../modif-profil/modif-profil';
 
 
 @IonicPage()
@@ -24,10 +25,12 @@ export class ProfilePage implements OnInit {
   public suivi:any;
   public response:any;
   public userParams:boolean = false;
+  public userBiographie:boolean = false;
 
   public filtresPage = FiltresPage;
   public profilPage = ProfilePage;
   public takePhotoPage = TakePhotoPage;
+  public modifProfilePage = ModifProfilPage;
 
   public selectPictures: boolean = false;
   public visible: boolean = true;
@@ -110,8 +113,11 @@ export class ProfilePage implements OnInit {
   }
 
   selectAll(){
-    console.log("Sélection de toutes les photos");
-    this.selectPictures = true;
+    if(this.userParams === true){
+      console.log("Sélection de toutes les photos");
+      this.selectPictures = true;
+    }
+
   }
 
   selectOne(index){

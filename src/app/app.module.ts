@@ -15,6 +15,7 @@ import { AccueilPage } from '../pages/accueil/accueil';
 import { FiltresPage } from '../pages/filtres/filtres';
 import { SupportPage } from '../pages/support/support';
 import { ProfilePage } from '../pages/profile/profile';
+import { ModifProfilPage } from '../pages/modif-profil/modif-profil';
 import { TakePhotoPage } from '../pages/take-photo/take-photo';
 import { EnvoiPhotoPage } from '../pages/envoi-photo/envoi-photo';
 import { ConnexionPage } from '../pages/connexion/connexion';
@@ -41,6 +42,7 @@ import { GetDataProvider } from '../providers/get-data/get-data';
     TakePhotoPage,
     EnvoiPhotoPage,
     DernieresNouvellesPage,
+    ModifProfilPage,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +64,7 @@ import { GetDataProvider } from '../providers/get-data/get-data';
     TakePhotoPage,
     EnvoiPhotoPage,
     DernieresNouvellesPage,
+    ModifProfilPage,
 
   ],
   providers: [

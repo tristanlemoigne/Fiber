@@ -31,37 +31,13 @@ export class TakePhotoPage {
   public photos: any;
   public base64Image: any;
 
-
-  // takePhoto(){
-  //    const options: CameraOptions = {
-  //       quality: 50,
-  //       destinationType: this.camera.DestinationType.DATA_URL,
-  //       encodingType: this.camera.EncodingType.JPEG,
-  //       mediaType: this.camera.MediaType.PICTURE
-  //     }
-  //
-  //     this.camera.getPicture(options).then((imageData) => {
-  //      // imageData is either a base64 encoded string or a file URI
-  //      // If it's base64:
-  //      this.base64Image = 'data:image/jpeg;base64,' + imageData;
-  //
-  //
-  //      this.navCtrl.push(EnvoiPhotoPage, {
-  //        base64Image: imageData,
-  //      });
-  //      // this.photos.reverse();
-  //     }, (err) => {
-  //      // Handle error
-  //     });
-  // }
-
-
   takePhoto(): Promise<any>{
     const options: any = {
       destinationType: this.camera.DestinationType.FILE_URI,
 			mediaType: this.camera.MediaType.ALLMEDIA,
 			encodingType: this.camera.EncodingType.JPEG,
 			correctOrientation: true,
+      cameraDirection: 0,
     }
 
 	  return this.camera.getPicture(options).then((fileUri) => {

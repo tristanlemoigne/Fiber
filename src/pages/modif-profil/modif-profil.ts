@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ProfilePage } from '../profile/profile';
 
-/**
- * Generated class for the ModifProfilPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -20,6 +15,10 @@ export class ModifProfilPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ModifProfilPage');
+  }
+
+  popView(){
+    this.navCtrl.setRoot(ProfilePage);
   }
 
 }
