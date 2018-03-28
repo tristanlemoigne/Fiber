@@ -75,7 +75,7 @@ export class ProfilePage implements OnInit {
             this.loaded = true;
             console.log(data);
             this.photos=data[0];
-            // this.photos={image: data[0], icon:'checkmark-circle-outline'};
+            //this.photos=image: data[0]; {icon:'checkmark-circle-outline'};
 
             this.suivi = data[2];
             //data[1] = le token
