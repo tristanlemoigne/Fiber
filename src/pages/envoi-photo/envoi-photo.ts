@@ -33,6 +33,7 @@ export class EnvoiPhotoPage {
   public saison:any;
   public occasion:any;
   public idPhoto:any;
+  public description:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public transfer:FileTransfer, public storage:Storage,
   public instagram:Instagram, public loading:LoadingController, public alert:AlertController, public getDataProvider:GetDataProvider,
@@ -95,7 +96,7 @@ export class EnvoiPhotoPage {
           });
           loading.present();
           fileTransfer.upload(this.imageTaken,
-            'http://fiber-app.com/SERVER/postPhoto.php?occasion='+this.occasion+"&style="+this.style+"&saison="+this.saison,
+            'http://fiber-app.com/SERVER/postPhoto.php?occasion='+this.occasion+"&style="+this.style+"&saison="+this.saison+"&description="+this.description,
             options)
           .then((data)=>{
              loading.dismiss();

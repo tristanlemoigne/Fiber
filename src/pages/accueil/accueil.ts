@@ -35,6 +35,9 @@ export class AccueilPage  implements OnInit {
   public nbComTab:any;
   public nbLike:any;
   public nbCom:any;
+  public occasion:any;
+  public style:any;
+  public saison:any;
 
   public filtresPage = FiltresPage;
   public profilPage = ProfilePage;
@@ -64,6 +67,9 @@ export class AccueilPage  implements OnInit {
           this.currentPhoto = this.photoList[0]["link_photo"];
           this.authorPhoto = this.photoList[0]["login_user"];
           this.authorPhotoId = this.photoList[0]["id_user"];
+          this.occasion = this.photoList[0]["name_occasion"];
+          this.style = this.photoList[0]["name_style"];
+          this.saison = this.photoList[0]["name_season"];
           this.nbLike = this.nbLikeTab[0];
           this.nbCom = this.nbComTab[0];
         }
@@ -100,6 +106,9 @@ export class AccueilPage  implements OnInit {
                 this.nbComTab.splice(0,1);
                 this.nbLike = this.nbLikeTab[0];
                 this.nbCom = this.nbComTab[0];
+                this.occasion = this.photoList[0]["name_occasion"];
+                this.style = this.photoList[0]["name_style"];
+                this.saison = this.photoList[0]["name_season"];
                 this.currentPhoto = this.photoList[0]["link_photo"];
                 this.authorPhoto = this.photoList[0]["login_user"];
                 this.authorPhotoId = this.photoList[0]["id_user"];
@@ -136,6 +145,9 @@ export class AccueilPage  implements OnInit {
          this.nbComTab.splice(0,1);
          this.nbLike = this.nbLikeTab[0];
          this.nbCom = this.nbComTab[0];
+         this.occasion = this.photoList[0]["name_occasion"];
+         this.style = this.photoList[0]["name_style"];
+         this.saison = this.photoList[0]["name_season"];
          this.currentPhoto = this.photoList[0]["link_photo"];
          this.authorPhoto = this.photoList[0]["login_user"];
          this.authorPhotoId = this.photoList[0]["id_user"];
@@ -221,7 +233,8 @@ export class AccueilPage  implements OnInit {
     (err) => {
     },
     () => {
-      this.nbCom[0] = this.nbCom[0]+1;
+      this.nbCom = parseInt(this.nbCom[0])+1;
+      //this.nbCom[0] = this.nbCom[0]+1;
       this.commentEmpty = false;
       if(this.commentaires == null){
         this.commentaires = [this.infoCom];
