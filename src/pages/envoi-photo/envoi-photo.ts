@@ -107,17 +107,18 @@ export class EnvoiPhotoPage {
              let link = "http://fiber-app.com/SERVER/postVetement.php";
              let req = this.postData.postData(link,mydata,{headers});
              req.subscribe(data => {
+               alert(data);
              },
              (err)=>{
                alert(err.message);
              },()=>{
-               let alert = this.alert.create({
+               /*let alert = this.alert.create({
                   title: 'Partagée !',
                   subTitle: 'Photo partagée',
                   buttons: ["OK"]});
 
                 alert.present();
-                this.navCtrl.setRoot(AccueilPage);
+                this.navCtrl.setRoot(AccueilPage);*/
              });
 
           }, (err) => {

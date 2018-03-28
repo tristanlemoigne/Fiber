@@ -19,7 +19,6 @@
 
 <ion-content padding>
   <form #form = "ngForm" (ngSubmit)="onSubmit()">
-
     <ion-item no-lines>
       <input type="text" (keyup)="getUser()" placeholder="Trouver un utilisateur" [(ngModel)]="getUserName" name="getUserName" required />
     </ion-item>
@@ -30,64 +29,10 @@
       </li>
     </ul>
 
-    <ion-item>
-      <ion-label> Occasion </ion-label>
-      <ion-select>
-        <ion-option>Cours</ion-option>
-        <ion-option>Soirée entre amis</ion-option>
-        <ion-option>Chill</ion-option>
-        <ion-option>Travail</ion-option>
-        <ion-option>Sport</ion-option>
-        <ion-option>Fêtes</ion-option>
-        <ion-option>Premier rendez-vous</ion-option>
-        <ion-option>Entretien</ion-option>
-        <ion-option>Festival</ion-option>
-        <ion-option>Mariage</ion-option>
-        <ion-option>Vacances</ion-option>
-       </ion-select>
-     </ion-item>
-     <ion-item>
-       <ion-label> Saison </ion-label>
-       <ion-select>
-         <ion-option>Printemps</ion-option>
-         <ion-option>Ete</ion-option>
-         <ion-option>Automne</ion-option>
-         <ion-option>Hiver</ion-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label> Style </ion-label>
-        <ion-select>
-          <ion-option>Casual</ion-option>
-          <ion-option>Urbain</ion-option>
-          <ion-option>Business</ion-option>
-          <ion-option>Chic</ion-option>
-          <ion-option>Street</ion-option>
-          <ion-option>Sport</ion-option>
-          <ion-option>Rock</ion-option>
-          <ion-option>Bohème</ion-option>
-          <ion-option>Baroudeur</ion-option>
-          <ion-option>Autre</ion-option>
-         </ion-select>
-       </ion-item>
-
-
+    <h3 style="text-align:center"> Filtrer en fonction des vêtements </h3>
     <!-- PRECISIONS SUR LES VETEMENTS -->
     <ion-item>
-      <ion-label>VÊTEMENT</ion-label>
-      <ion-select [(ngModel)]="vetement" name="vetement" multiple="flase">
-        <ion-option value="veste">Veste</ion-option>
-        <ion-option value="tshirtCourt">T-shirt manches courtes</ion-option>
-        <ion-option value="tshitLong">T-shirt manches longues</ion-option>
-        <ion-option value="sweatWithCapuche">Sweat à capuche</ion-option>
-        <ion-option value="sweatWithoutCapuche">Sweat sans capuche</ion-option>
-        <ion-option value="jean">Jean</ion-option>
-        <ion-option value="chino">Chino</ion-option>
-        <ion-option value="pantalon">Pantalon</ion-option>
-        <ion-option value="jupe">Jupe</ion-option>
-        <ion-option value="robe">Robe</ion-option>
-        <ion-option value="marcel">Marcel</ion-option>
-      </ion-select>
+      <input placeholder="Vêtement ou accessoire" type="text" [(ngModel)]="vetement" name="vetement" required>
     </ion-item>
 
     <ion-item>
@@ -119,6 +64,7 @@
     </ion-item>
 
     <!-- PRECISIONS SUR LE LOOK -->
+    <h3 style="text-align:center"> Filtrer en fonction des vêtements </h3>
     <ion-item>
       <ion-label>OCCASION</ion-label>
       <ion-select [(ngModel)]="occasions" name="occasion" multiple="true">
@@ -171,7 +117,7 @@
         <ion-label range-right>500</ion-label>
       </ion-range>
     </ion-item>
-    
+
     <button ion-button  [disabled]="!form.form.valid" class="buttonEnvoi">Rechercher</button>
   </form>
 

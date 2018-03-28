@@ -27,6 +27,7 @@ export class ProfilePage implements OnInit {
   public userParams:boolean = false;
   public userBiographie:boolean = false;
 
+
   public filtresPage = FiltresPage;
   public profilPage = ProfilePage;
   public takePhotoPage = TakePhotoPage;
@@ -38,6 +39,7 @@ export class ProfilePage implements OnInit {
   constructor(public navCtrl: NavController, public navParams: NavParams, private getDataProvider:GetDataProvider, private storage:Storage) {
     this.user = this.navParams.get('user');
     this.userID = this.navParams.get('userID');
+    console.log("a");
   }
 
   ngOnInit(){
