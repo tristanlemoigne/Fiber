@@ -42,7 +42,11 @@
     <p>
       <i>{{nbLike}} likes</i>
       <i>{{nbCom}} commentaires</i>
-      <i>{{occasion}} {{style}} {{saison}}</i>
+      <span> {{description}}</span>
+      <i>{{occasion}} {{style}} {{saison}}</i><br />
+      <i>{{nbVet}} Vetements</i>
+      <!--BOUTON VETEMENTS-->
+      <span *ngIf="hasVetement" (click)="detailsVetements()"> IL Y A DES VETEMENTS</span>
     </p>
 
     <ion-row class="boxLikes">
