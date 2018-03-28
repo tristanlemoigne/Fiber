@@ -1,6 +1,53 @@
 page-envoi-photo {
+  form > img{
+    display: block;
+    margin: 10px auto 30px;
+    width: 40vw;
+  }
+
   input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
     color: #cacaca !important;
+  }
+
+  textarea, .text-input, .text-input-ios{
+    background-color: #f8f8f8;
+    border-radius: 50px;
+    width: 90vw;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    opacity: 100%;
+    padding-left: 20px;
+    padding-top: 15px;
+    font-size: 1.1rem;
+  }
+
+  ion-item, ion-label{
+    color: black!important;
+  }
+
+  ion-card, .ion-card{
+    border-radius: 10px!important;
+    box-shadow: 1px 1px 3px 2px rgba(0, 0, 0, 0.03)!important;
+    background-color: red;
+  }
+
+  ion-card > span{
+    color: green;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 0.8em;
+    float: right;
+  }
+
+  .facultatif{
+    color: #d2aa09;
+  }
+
+  h3, ion-card > h3{
+    margin-top: 45px!important;
+    margin-left: 15px!important;
+    margin-bottom: 30px!important;
   }
 
   ion-input, input{
@@ -14,65 +61,53 @@ page-envoi-photo {
     padding-left: 20px;
     padding-top: 0;
     margin-bottom: 10px;
-    font-size: 1.2em;
+    font-size: 1.1rem;
   }
 
-  textarea, .text-input, .text-input-ios{
-    font-size: 1.2em;
-    background-color: #f8f8f8;
-    border-radius: 20px;
-    width: 70vw;
-    margin: 0 auto;
-    margin-bottom: 10px;
-    opacity: 100%;
-    height: 100px;
-    padding: 20px;
+  input:nth-of-type(2){
+    margin-bottom: 20px;
   }
 
-
-  ion-item, ion-label{
-    color: black!important;
-  }
-
-  ion-card, .ion-card, .card{
-    box-shadow: none;
-  }
-
-  ion-card > img{
-    display: block;
-    margin: 0 auto 10px;
-    width: 50vw;
-  }
-
-  .buttonInsta{
-    margin-top: 5vh;
-  }
-
-  .buttonInsta{
+  .buttonVetement{
     display: block;
     color: #cacaca;
     box-shadow: unset !important;
     opacity: 1 !important;
-    width: 70vw;
-    margin: 3vh auto 0;
+    width: 50vw;
+    margin: 5vh auto 10px;
     border-radius: 50px;
-    padding: 25px 0;
-    font-size: 1.5em;
+    padding: 20px 0;
     border: solid 2px #cacaca;
   }
 
-  .btnEnvoi{
+  span:nth-of-type(2){
+    color: #cacaca;
+    float: left;
+    margin-left: 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .buttonTemplate{
+      display: block;
+      color: #cacaca;
+      box-shadow: unset !important;
+      opacity: 1 !important;
+      width: 70vw;
+      margin: 3vh auto 0;
+      border-radius: 50px;
+      padding: 25px 0;
+      font-size: 1.4em;
+      border: solid 2px #cacaca;
+  }
+
+  .buttonEnvoi{
     background: -webkit-linear-gradient(#f5d4c9, #b2c4dd, #42aac6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-transform: uppercase;
-    font-size: 0.9em;
+    border-color: #a7c1e0;
+    font-size: 2em;
+    margin-top: 5vh;
   }
-
-  img[alt="envoi"]{
-     transform: scaleX(-1);
-      filter: FlipH;
-  }
-
-
 }
