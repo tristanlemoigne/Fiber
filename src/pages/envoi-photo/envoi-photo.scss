@@ -93,11 +93,11 @@ page-envoi-photo {
       color: #cacaca;
       box-shadow: unset !important;
       opacity: 1 !important;
-      width: 70vw;
+      width: 60vw;
       margin: 3vh auto 0;
       border-radius: 50px;
-      padding: 25px 0;
-      font-size: 1.4em;
+      padding: 20px 0;
+      font-size: 1.2em;
       border: solid 2px #cacaca;
   }
 
@@ -107,7 +107,16 @@ page-envoi-photo {
     -webkit-text-fill-color: transparent;
     text-transform: uppercase;
     border-color: #a7c1e0;
-    font-size: 2em;
+    font-size: 1.5em;
     margin-top: 5vh;
+  }
+
+  ul{
+    list-style-type: none;
+  }
+
+  ul > li{
+    color: #cacaca;
+    margin-bottom: 20px;
   }
 }

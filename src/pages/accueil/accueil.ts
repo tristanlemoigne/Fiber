@@ -93,7 +93,7 @@ export class AccueilPage  implements OnInit {
           this.saison = this.photoList[0]["name_season"];
           this.description = this.photoList[0]["caption_photo"];
           if(this.description == "undefined"){
-            this.description = "Pas de decritpion";
+            this.description = "Pas de descritpion";
           }
           this.nbLike = this.photoList[0]["nbLike"];
           this.nbCom = this.photoList[0]["nbCom"];

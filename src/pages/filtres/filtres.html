@@ -1,6 +1,5 @@
 
 <ion-header>
-<!-- <ion-header no-border> -->
 
   <ion-navbar>
     <ion-buttons left>
@@ -124,28 +123,25 @@
   <!--FORMULAIRE POUR RAJOUTER DES TAGS A LA PHOTO
   <form #myform="ngForm" (ngSubmit)="envoiTag()">
     <ion-item>
-      <ion-label>
-        Vêtement ou accessoire
-      </ion-label>
-      <ion-select [(ngModel)]="vetement" name="vetement">
+      <ion-label>VÊTEMENT</ion-label>
+      <ion-select [(ngModel)]="vetement" name="vetement" multiple="flase">
         <ion-option value="veste">Veste</ion-option>
-        <ion-option value="blanc">T-shirt manches courtes</ion-option>
-        <ion-option value="gris">T-shirt manches longues</ion-option>
-        <ion-option value="marron">Sweat à capuche</ion-option>
-        <ion-option value="bleu">Sweat sans capuche</ion-option>
-        <ion-option value="vert">Jean</ion-option>
-        <ion-option value="rouge">Chino</ion-option>
-        <ion-option value="violet">Pantalon</ion-option>
-        <ion-option value="rose">Jupe</ion-option>
-        <ion-option value="kaki">Robe</ion-option>
-        <ion-option value="jaune">Marcel</ion-option>
+        <ion-option value="tshirtCourt">T-shirt manches courtes</ion-option>
+        <ion-option value="tshitLong">T-shirt manches longues</ion-option>
+        <ion-option value="sweatWithCapuche">Sweat à capuche</ion-option>
+        <ion-option value="sweatWithoutCapuche">Sweat sans capuche</ion-option>
+        <ion-option value="jean">Jean</ion-option>
+        <ion-option value="chino">Chino</ion-option>
+        <ion-option value="pantalon">Pantalon</ion-option>
+        <ion-option value="jupe">Jupe</ion-option>
+        <ion-option value="robe">Robe</ion-option>
+        <ion-option value="marcel">Marcel</ion-option>
       </ion-select>
     </ion-item>
+
     <ion-item>
-      <ion-label>
-        Couleur
-      </ion-label>
-      <ion-select [(ngModel)]="couleur" name="couleur">
+      <ion-label>COULEUR</ion-label>
+      <ion-select [(ngModel)]="couleur" name="couleur" multiple="true">
         <ion-option value="noir">Noir</ion-option>
         <ion-option value="blanc">Blanc</ion-option>
         <ion-option value="gris">Gris</ion-option>
@@ -159,11 +155,10 @@
         <ion-option value="jaune">Jaune</ion-option>
       </ion-select>
     </ion-item>
+
     <ion-item>
-      <ion-label>
-        Motif
-      </ion-label>
-      <ion-select [(ngModel)]="Motif" name="motif">
+      <ion-label>MOTIF</ion-label>
+      <ion-select [(ngModel)]="Motif" name="motif" multiple="true">
         <ion-option value="uni">Uni</ion-option>
         <ion-option value="raye">Rayé</ion-option>
         <ion-option value="pois">A pois</ion-option>
@@ -171,20 +166,16 @@
         <ion-option value="original">Original</ion-option>
       </ion-select>
     </ion-item>
-    <ion-item>
-      Prix (en euros) :
-      <input placeholder="25" [(ngModel)]="prix" name="prix" required>
-    </ion-item>
-    <ion-item>
-      Magasin :
-      <input type="text" (keyup)="callMaps()" placeholder="Zara" [(ngModel)]="magasin" name="magasin" required />
-    </ion-item>
-    <ul>
-      <li (click)="selectMagasin(prop)" *ngFor="let prop of propositions">
-        {{prop}}
-      </li>
-    </ul>
 
-    <button ion-button> S'inscrire </button>
-  </form>-->
+    <!-- DETAILS COMMERCIAUX -->
+    <ion-item no-lines>
+      <ion-label class="prix">PRIX (€)</ion-label>
+      <ion-range pin="true" min="0" max="500" name="saturation" [(ngModel)]="saturation" color="primary">
+        <ion-label range-left>0</ion-label>
+        <ion-label range-right>500</ion-label>
+      </ion-range>
+    </ion-item>
+
+    <button ion-button  [disabled]="!form.form.valid" class="buttonEnvoi">Rechercher</button>
+  </form>
 </ion-content>

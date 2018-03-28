@@ -6,12 +6,31 @@
       </button>
     </ion-buttons>
 
-    <ion-title>Modifier le profil</ion-title>
+    <ion-title>Profil</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
+  <div class="container">
+    <!-- RECUPERER LA PHOTO DANS LA TABLE USER ET METTRE BOOLEAN userPhoto à true -->
+    <!-- <img *ngIf="userPhoto" src={{user.photo}}/> -->
+    <img *ngIf="!userPhoto" src="assets/imgs/user_profile.png" alt="">
+    <button ion-button class="changePhoto" (click)="changePhoto()">Modifier la photo de profil</button>
+  </div>
 
+  <!-- REMPLACER LE PLACEHOLDER PAR LE LABEL CORRESPONDANT -->
+  <ion-label>Nom d'utilisateur</ion-label>
+  <input name="nameUser" [(ngModel)]="nameUser" placeholder="{{user}}">
+
+  <ion-label>Bio</ion-label>
+  <input name="bioUser" [(ngModel)]="bioUser" placeholder="{{user}}">
+
+  <ion-label>Sexe</ion-label>
+  <input name="sexeUser" [(ngModel)]="sexeUser" placeholder="{{user}}">
+
+  <ion-label>Mail</ion-label>
+  <input name="mailUser" [(ngModel)]="mailUser" placeholder="{{user}}">
+
+  <ion-label>Site web</ion-label>
+  <input name="websiteUser" [(ngModel)]="websiteUser" placeholder="{{user}}">
 </ion-content>
