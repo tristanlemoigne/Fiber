@@ -3,13 +3,6 @@ page-accueil{
       overflow: hidden;
    }
 
-
-  .card{
-    box-shadow: unset;
-    height: 67vh;
-    overflow: hidden;
-  }
-
   .card-title {
     height: 40px !important;
     padding: 2px !important;
@@ -17,13 +10,22 @@ page-accueil{
     margin: 0;
 
     position: absolute;
-    top: 7px;
+    top: 15px;
     left: 7px;
 
     background: -webkit-linear-gradient(#f7dcd3, #cbd3eb, #3baaca);
     z-index: 3;
     box-shadow: none !important;
   }
+
+  #imaage{
+    margin-bottom: 0;
+    padding-bottom: 10px;
+  }
+
+
+
+
 
    //ANIMATIONS
    img[alt="dislikeAnimation"], img[alt="likeAnimation"]{
@@ -45,7 +47,43 @@ page-accueil{
    }
 
 
+  // CARD INFOS
 
+  ion-card, .ion-card, .card-md{
+    box-shadow: 1px 1px 3px 2px rgba(0, 0, 0, 0.03);
+    // background-color: red;
+    border-radius: 0px;
+    margin-left: 16px;
+    margin-right: 16px;
+    width: auto;
+    background: linear-gradient(to right, #3baaca, #cbd3eb,#f7dcd3 );
+    height: 12vh;
+    overflow: scroll;
+  }
+
+  .informations{
+    color: #cacaca;
+    background-color: white;
+    padding: 0;
+    margin-bottom: 4px;
+  }
+
+  .stats{
+    color: #cacaca;
+    text-align: right;
+    padding-right: 16px;
+    margin: 0;
+  }
+
+  ion-card img{
+    width: 20px;
+    float: right;
+    margin-right: 10px;
+  }
+
+  // ion-content .moveOnSwipe{
+  //   background-color: red;
+  // }
 
 
 
@@ -85,7 +123,7 @@ page-accueil{
   }
 
   .margin{
-    margin-top: 7px;
+    margin-top: 15px;
     z-index: 1;
     display: block;
   }
@@ -95,7 +133,7 @@ page-accueil{
      background-color: white;
      width: 100%;
      height: 55vh;
-     top: 14vh;
+     top: 19vh;
      padding: 0 15px;
      box-shadow: 0px -5px 20px grey;
      font-size: 1.7rem;

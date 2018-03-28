@@ -110,4 +110,13 @@ page-envoi-photo {
     font-size: 1.5em;
     margin-top: 5vh;
   }
+
+  ul{
+    list-style-type: none;
+  }
+
+  ul > li{
+    color: #cacaca;
+    margin-bottom: 20px;
+  }
 }

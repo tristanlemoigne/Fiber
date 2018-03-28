@@ -1,6 +1,5 @@
 
 <ion-header>
-<!-- <ion-header no-border> -->
 
   <ion-navbar>
     <ion-buttons left>
@@ -30,47 +29,50 @@
       </li>
     </ul>
 
+    <!-- PRECISIONS SUR LE LOOK -->
     <ion-item>
-      <ion-label> Occasion </ion-label>
-      <ion-select>
-        <ion-option>Cours</ion-option>
-        <ion-option>Soirée entre amis</ion-option>
-        <ion-option>Chill</ion-option>
-        <ion-option>Travail</ion-option>
-        <ion-option>Sport</ion-option>
-        <ion-option>Fêtes</ion-option>
-        <ion-option>Premier rendez-vous</ion-option>
-        <ion-option>Entretien</ion-option>
-        <ion-option>Festival</ion-option>
-        <ion-option>Mariage</ion-option>
-        <ion-option>Vacances</ion-option>
-       </ion-select>
-     </ion-item>
-     <ion-item>
-       <ion-label> Saison </ion-label>
-       <ion-select>
-         <ion-option>Printemps</ion-option>
-         <ion-option>Ete</ion-option>
-         <ion-option>Automne</ion-option>
-         <ion-option>Hiver</ion-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label> Style </ion-label>
-        <ion-select>
-          <ion-option>Casual</ion-option>
-          <ion-option>Urbain</ion-option>
-          <ion-option>Business</ion-option>
-          <ion-option>Chic</ion-option>
-          <ion-option>Street</ion-option>
-          <ion-option>Sport</ion-option>
-          <ion-option>Rock</ion-option>
-          <ion-option>Bohème</ion-option>
-          <ion-option>Baroudeur</ion-option>
-          <ion-option>Autre</ion-option>
-         </ion-select>
-       </ion-item>
+      <ion-label>OCCASION</ion-label>
+      <ion-select [(ngModel)]="occasions" name="occasion" multiple="true">
+        <ion-option value="cours">Aller en cours</ion-option>
+        <ion-option value="amis">Soirée entre amis</ion-option>
+        <ion-option value="chill">Chill</ion-option>
+        <ion-option value="travail">Au travail</ion-option>
+        <ion-option value="sport">Aller au sport</ion-option>
+        <ion-option value="fete">Pour les fêtes</ion-option>
+        <ion-option value="cocktail">Aller à un cocktail / Séminaire</ion-option>
+        <ion-option value="rdv">Premier rendez-vous</ion-option>
+        <ion-option value="entretien">Entretien</ion-option>
+        <ion-option value="festival">En Festival</ion-option>
+        <ion-option value="mariage">Mariage</ion-option>
+        <ion-option value="vacances">En vacances</ion-option>
+      </ion-select>
+    </ion-item>
 
+    <ion-item>
+      <ion-label>SAISON</ion-label>
+      <ion-select [(ngModel)]="saisons" name="saison" multiple="false">
+        <ion-option value="printemps">Printemps</ion-option>
+        <ion-option value="ete">Été</ion-option>
+        <ion-option value="automne">Automne</ion-option>
+        <ion-option value="hiver">Hiver</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>STYLE</ion-label>
+      <ion-select [(ngModel)]="styles" name="style" multiple="true">
+        <ion-option value="casual">Casual</ion-option>
+        <ion-option value="urbain">Urbain</ion-option>
+        <ion-option value="business">Business</ion-option>
+        <ion-option value="chic">Chic</ion-option>
+        <ion-option value="street">Street</ion-option>
+        <ion-option value="sport">Sport</ion-option>
+        <ion-option value="rock">Rock</ion-option>
+        <ion-option value="boheme">Bohème</ion-option>
+        <ion-option value="baroudeur">Baroudeur</ion-option>
+        <ion-option value="autre">Autre</ion-option>
+      </ion-select>
+    </ion-item>
 
     <!-- PRECISIONS SUR LES VETEMENTS -->
     <ion-item>
@@ -118,51 +120,6 @@
       </ion-select>
     </ion-item>
 
-    <!-- PRECISIONS SUR LE LOOK -->
-    <ion-item>
-      <ion-label>OCCASION</ion-label>
-      <ion-select [(ngModel)]="occasions" name="occasion" multiple="true">
-        <ion-option value="cours">Aller en cours</ion-option>
-        <ion-option value="amis">Soirée entre amis</ion-option>
-        <ion-option value="chill">Chill</ion-option>
-        <ion-option value="travail">Au travail</ion-option>
-        <ion-option value="sport">Aller au sport</ion-option>
-        <ion-option value="fete">Pour les fêtes</ion-option>
-        <ion-option value="cocktail">Aller à un cocktail / Séminaire</ion-option>
-        <ion-option value="rdv">Premier rendez-vous</ion-option>
-        <ion-option value="entretien">Entretien</ion-option>
-        <ion-option value="festival">En Festival</ion-option>
-        <ion-option value="mariage">Mariage</ion-option>
-        <ion-option value="vacances">En vacances</ion-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>SAISON</ion-label>
-      <ion-select [(ngModel)]="saisons" name="saison" multiple="false">
-        <ion-option value="printemps">Printemps</ion-option>
-        <ion-option value="ete">Été</ion-option>
-        <ion-option value="automne">Automne</ion-option>
-        <ion-option value="hiver">Hiver</ion-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>STYLE</ion-label>
-      <ion-select [(ngModel)]="styles" name="style" multiple="true">
-        <ion-option value="casual">Casual</ion-option>
-        <ion-option value="urbain">Urbain</ion-option>
-        <ion-option value="business">Business</ion-option>
-        <ion-option value="chic">Chic</ion-option>
-        <ion-option value="street">Street</ion-option>
-        <ion-option value="sport">Sport</ion-option>
-        <ion-option value="rock">Rock</ion-option>
-        <ion-option value="boheme">Bohème</ion-option>
-        <ion-option value="baroudeur">Baroudeur</ion-option>
-        <ion-option value="autre">Autre</ion-option>
-      </ion-select>
-    </ion-item>
-
     <!-- DETAILS COMMERCIAUX -->
     <ion-item no-lines>
       <ion-label class="prix">PRIX (€)</ion-label>
@@ -171,74 +128,7 @@
         <ion-label range-right>500</ion-label>
       </ion-range>
     </ion-item>
-    
+
     <button ion-button  [disabled]="!form.form.valid" class="buttonEnvoi">Rechercher</button>
   </form>
-
-  <!--FORMULAIRE POUR RAJOUTER DES TAGS A LA PHOTO
-  <form #myform="ngForm" (ngSubmit)="envoiTag()">
-    <ion-item>
-      <ion-label>
-        Vêtement ou accessoire
-      </ion-label>
-      <ion-select [(ngModel)]="vetement" name="vetement">
-        <ion-option value="veste">Veste</ion-option>
-        <ion-option value="blanc">T-shirt manches courtes</ion-option>
-        <ion-option value="gris">T-shirt manches longues</ion-option>
-        <ion-option value="marron">Sweat à capuche</ion-option>
-        <ion-option value="bleu">Sweat sans capuche</ion-option>
-        <ion-option value="vert">Jean</ion-option>
-        <ion-option value="rouge">Chino</ion-option>
-        <ion-option value="violet">Pantalon</ion-option>
-        <ion-option value="rose">Jupe</ion-option>
-        <ion-option value="kaki">Robe</ion-option>
-        <ion-option value="jaune">Marcel</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        Couleur
-      </ion-label>
-      <ion-select [(ngModel)]="couleur" name="couleur">
-        <ion-option value="noir">Noir</ion-option>
-        <ion-option value="blanc">Blanc</ion-option>
-        <ion-option value="gris">Gris</ion-option>
-        <ion-option value="marron">Marron</ion-option>
-        <ion-option value="bleu">Bleu</ion-option>
-        <ion-option value="vert">Vert</ion-option>
-        <ion-option value="rouge">Rouge</ion-option>
-        <ion-option value="violet">Violet</ion-option>
-        <ion-option value="rose">Rose</ion-option>
-        <ion-option value="kaki">Kaki</ion-option>
-        <ion-option value="jaune">Jaune</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        Motif
-      </ion-label>
-      <ion-select [(ngModel)]="Motif" name="motif">
-        <ion-option value="uni">Uni</ion-option>
-        <ion-option value="raye">Rayé</ion-option>
-        <ion-option value="pois">A pois</ion-option>
-        <ion-option value="chine">Chiné</ion-option>
-        <ion-option value="original">Original</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      Prix (en euros) :
-      <input placeholder="25" [(ngModel)]="prix" name="prix" required>
-    </ion-item>
-    <ion-item>
-      Magasin :
-      <input type="text" (keyup)="callMaps()" placeholder="Zara" [(ngModel)]="magasin" name="magasin" required />
-    </ion-item>
-    <ul>
-      <li (click)="selectMagasin(prop)" *ngFor="let prop of propositions">
-        {{prop}}
-      </li>
-    </ul>
-
-    <button ion-button> S'inscrire </button>
-  </form>-->
 </ion-content>
