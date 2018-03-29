@@ -68,11 +68,15 @@ export class FiltresPage implements OnInit{
     this.propositions = [];
   }
   getUser(){
-    let url = "http://fiber-app.com/SERVER/getUserList.php?username="+this.getUserName;
-    let promise = this.getDataProvider.getData(url);
-    promise.subscribe(data=>{
-      this.userList=data;
-    });
+    if(this.getUserName == ""){
+      this.userList = [];
+    } else{
+      let url = "http://fiber-app.com/SERVER/getUserList.php?username="+this.getUserName;
+      let promise = this.getDataProvider.getData(url);
+      promise.subscribe(data=>{
+        this.userList=data;
+      });
+    }
   }
 
   selectUser(user){
