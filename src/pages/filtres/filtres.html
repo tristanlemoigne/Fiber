@@ -28,42 +28,7 @@
       </li>
     </ul>
 
-    <h3 style="text-align:center"> Filtrer en fonction des vêtements </h3>
-    <!-- PRECISIONS SUR LES VETEMENTS -->
-    <ion-item>
-      <input placeholder="Vêtement ou accessoire" type="text" [(ngModel)]="vetement" name="vetement" required>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>COULEUR</ion-label>
-      <ion-select [(ngModel)]="couleur" name="couleur" multiple="false">
-        <ion-option value="1">Noir</ion-option>
-        <ion-option value="2">Blanc</ion-option>
-        <ion-option value="3">Gris</ion-option>
-        <ion-option value="4">Marron</ion-option>
-        <ion-option value="5">Bleu</ion-option>
-        <ion-option value="6">Vert</ion-option>
-        <ion-option value="7">Rouge</ion-option>
-        <ion-option value="8">Violet</ion-option>
-        <ion-option value="9">Rose</ion-option>
-        <ion-option value="10">Kaki</ion-option>
-        <ion-option value="11">Jaune</ion-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>MOTIF</ion-label>
-      <ion-select [(ngModel)]="motif" name="motif" multiple="false">
-        <ion-option value="1">Uni</ion-option>
-        <ion-option value="2">Rayé</ion-option>
-        <ion-option value="3">A pois</ion-option>
-        <ion-option value="4">Chiné</ion-option>
-        <ion-option value="5">Original</ion-option>
-      </ion-select>
-    </ion-item>
-
     <!-- PRECISIONS SUR LE LOOK -->
-    <h3 style="text-align:center"> Filtrer en fonction des vêtements </h3>
     <ion-item>
       <ion-label>OCCASION</ion-label>
       <ion-select [(ngModel)]="occasions" name="occasion" multiple="false">
@@ -107,6 +72,41 @@
         <ion-option value="10">Autre</ion-option>
       </ion-select>
     </ion-item>
+
+    <!-- PRECISIONS SUR LES VETEMENTS -->
+    <ion-item>
+      <input class="rechercheVetement" placeholder="Vêtement ou accessoire" type="text" [(ngModel)]="vetement" name="vetement" required>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>COULEUR</ion-label>
+      <ion-select [(ngModel)]="couleur" name="couleur" multiple="false">
+        <ion-option value="1">Noir</ion-option>
+        <ion-option value="2">Blanc</ion-option>
+        <ion-option value="3">Gris</ion-option>
+        <ion-option value="4">Marron</ion-option>
+        <ion-option value="5">Bleu</ion-option>
+        <ion-option value="6">Vert</ion-option>
+        <ion-option value="7">Rouge</ion-option>
+        <ion-option value="8">Violet</ion-option>
+        <ion-option value="9">Rose</ion-option>
+        <ion-option value="10">Kaki</ion-option>
+        <ion-option value="11">Jaune</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>MOTIF</ion-label>
+      <ion-select [(ngModel)]="motif" name="motif" multiple="false">
+        <ion-option value="1">Uni</ion-option>
+        <ion-option value="2">Rayé</ion-option>
+        <ion-option value="3">A pois</ion-option>
+        <ion-option value="4">Chiné</ion-option>
+        <ion-option value="5">Original</ion-option>
+      </ion-select>
+    </ion-item>
+
+
 
     <!-- DETAILS COMMERCIAUX -->
     <ion-item no-lines>

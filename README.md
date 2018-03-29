@@ -43,9 +43,3 @@ ATTENTION : Télécharger les modules suivant :
  ionic cordova plugin add cordova-plugin-crop
 
  npm install --save @ionic-native/crop
-
- - Base64 Converter :
-
-ionic cordova plugin add com-badrit-base64
-
- npm install --save @ionic-native/base64

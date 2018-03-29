@@ -6,11 +6,15 @@ page-filtres {
   input{
     display: block;
     width: 80vw;
-    margin: 0 auto 2vh;
+    margin: 0 auto 0;
     background-color: #f8f8f8;
     border: none;
     border-radius: 50px;
     padding: 10px 20px;
+  }
+
+  .rechercheVetement{
+    margin: 3vh auto 2vh;
   }
 
   .buttonEnvoi{
@@ -39,7 +43,7 @@ page-filtres {
 
   .prix{
     margin: 0;
-    margin-top: 5vh;
+    margin-top: 3vh;
     z-index: 99;
     text-align: left;
   }
