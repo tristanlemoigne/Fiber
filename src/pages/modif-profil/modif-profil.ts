@@ -32,6 +32,7 @@ export class ModifProfilPage implements OnInit{
   public oldBio:any;
   public placeholderSite:any;
   public placeholderBio:any;
+  public test:any;
 
 
 
@@ -117,7 +118,8 @@ export class ModifProfilPage implements OnInit{
           loading.dismiss();
           let failTab = [];
           let fail = false;
-          for(let i=0;i<data.length;i++){
+          this.test = data;
+          for(let i=0;i<this.test.length;i++){
             if(!data[i]){
               fail = true;
               failTab.push(i);
