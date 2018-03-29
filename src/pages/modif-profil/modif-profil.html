@@ -20,17 +20,26 @@
 
   <!-- REMPLACER LE PLACEHOLDER PAR LE LABEL CORRESPONDANT -->
   <ion-label>Nom d'utilisateur</ion-label>
-  <input name="nameUser" [(ngModel)]="nameUser" placeholder="{{user}}">
+  <input name="nameUser" [(ngModel)]="newLogin" placeholder="{{Login}}">
 
   <ion-label>Bio</ion-label>
-  <input name="bioUser" [(ngModel)]="bioUser" placeholder="{{user}}">
-
+  <input name="bioUser" [(ngModel)]="newBio" placeholder="{{placeholderBio}}">
   <ion-label>Sexe</ion-label>
-  <input name="sexeUser" [(ngModel)]="sexeUser" placeholder="{{user}}">
+  <ion-item>
+
+    <ion-select [(ngModel)]="newSex" name="style" placeholder="{{newSex}}" multiple="false">
+      <ion-option value="1">Femme</ion-option>
+      <ion-option value="2">Homme</ion-option>
+      <ion-option value="3">Autre</ion-option>
+    </ion-select>
+  </ion-item>
+  <!--<input name="sexeUser" [(ngModel)]="sexeUser" placeholder="{{user}}">-->
 
   <ion-label>Mail</ion-label>
-  <input name="mailUser" [(ngModel)]="mailUser" placeholder="{{user}}">
+  <input name="mailUser" [(ngModel)]="newMail" placeholder="{{newMail}}">
 
   <ion-label>Site web</ion-label>
-  <input name="websiteUser" [(ngModel)]="websiteUser" placeholder="{{user}}">
+  <input name="websiteUser" [(ngModel)]="newSite" placeholder="{{placeholderSite}}">
+
+  <button (click)="modifier()"></button>
 </ion-content>
