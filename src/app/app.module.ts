@@ -27,6 +27,7 @@ import { SettingsService } from '../services/settings';
 import { PostDataProvider } from '../providers/post-data/post-data';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { GetDataProvider } from '../providers/get-data/get-data';
+import { AbsoluteDrag } from '../directives/absolute-drag/absolute-drag';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { GetDataProvider } from '../providers/get-data/get-data';
     EnvoiPhotoPage,
     DernieresNouvellesPage,
     ModifProfilPage,
+    AbsoluteDrag
   ],
   imports: [
     BrowserModule,

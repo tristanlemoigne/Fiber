@@ -11,6 +11,8 @@ import { PostDataProvider } from '../../providers/post-data/post-data';
 import { FiltresPage } from '../filtres/filtres';
 import { ProfilePage } from '../profile/profile';
 import { TakePhotoPage } from '../take-photo/take-photo';
+import { AbsoluteDrag } from '../../directives/absolute-drag/absolute-drag';
+
 
 @Component({
   selector: 'page-accueil',
@@ -70,6 +72,9 @@ export class AccueilPage  implements OnInit {
   public afficheLesPhotos: boolean = true;
 
   public plusAffiche: boolean = true;
+  public executed: boolean = true;
+
+  @ViewChild(AbsoluteDrag) vc:AbsoluteDrag;
 
   constructor (private modalCtrl: ModalController, private getDataProvider:GetDataProvider, private nav: NavController, public storage: Storage, public postDataProvider: PostDataProvider) {
       this.data.lien = '';
@@ -106,9 +111,36 @@ export class AccueilPage  implements OnInit {
         }
       });
     });
+
+    // EXECUTION DE VERIFSWIPE TOUTES LES 20ms
+    let interval = setInterval(()=> {
+      this.verifSwipe()
+    }, 1)
   }
 
+  verifSwipe(){
+    if(this.executed){
+      console.log(this.vc.newLeft)
+
+      if(this.vc.newLeft >= 225){
+        this.like()
+        setTimeout(()=> {
+          this.executed = true;
+        }, 1000)
+      }
+
+      if(this.vc.newLeft <= -225){
+        this.dislike()
+        setTimeout(()=> {
+          this.executed = true;
+        }, 1000)
+      }
+    }
+  }
+
+
   like(){
+    this.executed = false;
     this.plusAffiche = true;
     this.afficheVetement = false;
     this.commentaires = [];
@@ -159,11 +191,15 @@ export class AccueilPage  implements OnInit {
       }
 
     });
+
     // Send like to bdd
     this.hasLiked = true;
+
+
   }
 
   dislike(){
+    this.executed = false;
     this.plusAffiche = true;
     this.afficheVetement = false;
     this.commentaires = [];
@@ -212,7 +248,40 @@ export class AccueilPage  implements OnInit {
     if (e.direction == 4) {
       this.like();
     }
+
+    console.log(e)
+    // var _windowSize = {w: window.innerWidth, h: window.innerHeight};
+    // var _mouseX = (e.clientX / _windowSize.w) * 2 - 1;
+    //
+    // console.log(_mouseX);
+    let carte = document.getElementById("carte");
+    console.log(carte)
+
+
   }
+
+
+  move(e){
+
+    var _windowSize = {w: window.innerWidth, h: window.innerHeight};
+    var _mouseX = (e.clientX / _windowSize.w) * 2 - 1;
+
+
+
+    console.log(_mouseX);
+    console.log("ça bouge");
+
+    var carte = document.getElementById("carte");
+
+    carte.style.transform = "translateX(" + _mouseX*200 + "px)";
+
+
+    // console.log(img.style.transform);
+    // img.translate = (Math.sin(e.clientX));
+
+  }
+
+
 
 
 
@@ -251,9 +320,6 @@ export class AccueilPage  implements OnInit {
       this.afficheVetement = false;
     }
   }
-
-
-
 
   commenter(){
      if(this.hasComment === true)
@@ -326,22 +392,7 @@ export class AccueilPage  implements OnInit {
   }
 
 
-  // move(e){
-  //
-  //   var _windowSize = {w: window.innerWidth, h: window.innerHeight};
-  //   var _mouseX = (e.clientX / _windowSize.w) * 2 - 1;
-  //
-  //
-  //
-  //   console.log(_mouseX);
-  //
-  //   var img = document.getElementById("card");
-  //   img.style.transform = "translateX(" + _mouseX*200 + "px)";
-  //
-  //
-  //   // console.log(img.style.transform);
-  //   // img.translate = (Math.sin(e.clientX));
-  //
-  // }
+
+
 
 }

@@ -26,7 +26,7 @@
 </ion-content>
 
 <ion-content *ngIf="afficheLesPhotos" class="content">
-  <div (swipe)="swipeEvent($event)">
+  <div id="carte" absolute-drag startLeft="0"	>
     <button ion-button round no-lines detail-none class="card-title" (click)="clickProfile()">
       <button ion-button round no-lines detail-none class="border" >
         <b>{{this.authorPhoto}}</b>
@@ -34,10 +34,10 @@
     </button>
 
     <ion-card [ngClass]="{'overflow': (plusAffiche === false)}">
-      <img *ngIf="hasDisliked" alt="dislikeAnimation" src="assets/imgs/dislike.png">
-      <img *ngIf="hasLiked" alt="likeAnimation" src="assets/imgs/like.png">
+      <img *ngIf="hasDisliked" alt="dislikeAnimation" src="assets/imgs/dislike2.png">
+      <img *ngIf="hasLiked" alt="likeAnimation" src="assets/imgs/like2.png">
 
-      <img id="imaage" class="margin" src={{this.currentPhoto}}/>
+      <img id="imaage" src={{this.currentPhoto}}/>
       <p class="stats">{{nbCom}} commentaires &nbsp; &nbsp;{{nbLike}} likes</p>
 
       <p class="informations">
