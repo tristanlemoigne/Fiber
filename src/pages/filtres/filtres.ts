@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GetDataProvider } from '../../providers/get-data/get-data';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ProfilePage } from '../profile/profile';
-
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the FiltresPage page.
@@ -21,9 +21,9 @@ import { ProfilePage } from '../profile/profile';
 })
 export class FiltresPage implements OnInit{
 
-  public vetement:string;
-  public motif:string;
-  public couleur:string;
+  public vetement:any;
+  public motif:any;
+  public couleur:any;
   public prix:number;
   public magasin:string;
   public key:string='AIzaSyDIXgIkeXIofkhvFOblJZ0DnwDKQjXtc4Y';
@@ -32,8 +32,13 @@ export class FiltresPage implements OnInit{
   public propositions:any;
   public getUserName:string;
   public userList:any;
+  public token:string;
+  public styles:any;
+  public occasions:any;
+  public saisons:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public getDataProvider:GetDataProvider, private location:Geolocation) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public getDataProvider:GetDataProvider, private location:Geolocation,
+  private storage:Storage) {
   }
   ngOnInit(){
     this.location.getCurrentPosition().then((resp) => {
@@ -85,7 +90,23 @@ export class FiltresPage implements OnInit{
       userID:user[1]
     });
   }
-
+  filtrer(){
+    this.storage.get("token").then((val) => {
+      this.token = val;
+      let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+      let link =
+      "http://fiber-app.com/SERVER/getPhotoFiltrees.php?style="+this.styles+"&occasion="+this.occasions+"&saison="+this.saisons+
+      "&couleur="+this.couleur+"&motif="+this.motif+"&vetement="+this.vetement+"&prix="+this.prix;
+      let req = this.getDataProvider.getData(link,{headers});
+      req.subscribe(data=>{
+        this.navCtrl.push(AccueilPage,{
+          photos:data,
+          filtres:true,
+        });
+        console.log(data);
+      });
+    });
+  }
   popView(){
     this.navCtrl.setRoot(AccueilPage)
   }

@@ -39,7 +39,6 @@ export class ProfilePage implements OnInit {
   constructor(public navCtrl: NavController, public navParams: NavParams, private getDataProvider:GetDataProvider, private storage:Storage) {
     this.user = this.navParams.get('user');
     this.userID = this.navParams.get('userID');
-    console.log("a");
   }
 
   ngOnInit(){

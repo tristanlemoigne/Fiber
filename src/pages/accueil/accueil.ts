@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { ModalController } from 'ionic-angular';
-import { NavController} from 'ionic-angular';
+import { NavController, NavParams} from 'ionic-angular';
 import { GetDataProvider } from '../../providers/get-data/get-data';
 import { ComPredefiniPage } from '../com-predefini/com-predefini';
 import { Storage } from '@ionic/storage';
@@ -76,41 +76,67 @@ export class AccueilPage  implements OnInit {
 
   @ViewChild(AbsoluteDrag) vc:AbsoluteDrag;
 
-  constructor (private modalCtrl: ModalController, private getDataProvider:GetDataProvider, private nav: NavController, public storage: Storage, public postDataProvider: PostDataProvider) {
+  public filtres:boolean = false;
+  public photoListFiltrees:any;
+
+  constructor (private modalCtrl: ModalController, private getDataProvider:GetDataProvider, private nav: NavController,
+    public storage: Storage, public postDataProvider: PostDataProvider, public navParams:NavParams) {
+      this.photoListFiltrees = this.navParams.get("photos");
+      this.filtres = this.navParams.get("filtres");
       this.data.lien = '';
     }
   ngOnInit(){
-    this.storage.get("token").then((val) => {
-      this.token = val;
-      let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
-      let link = "http://fiber-app.com/SERVER/getPhoto.php";
-      this.getDataProvider.getData(link,{headers}).subscribe(data=>{
-        console.log(data);
-        this.photoList = data;
-        if(data === null || data.byteLength <= 0 || data === undefined || this.photoList.length <= 1){
-          console.log("PLus de photos à afficher");
-          this.affichePlusDePhoto = true;
-          this.afficheLesPhotos = false;
-        } else {
-          this.currentPhoto = this.photoList[0]["link_photo"];
-          this.authorPhoto = this.photoList[0]["login_user"];
-          this.authorPhotoId = this.photoList[0]["id_user"];
-          this.occasion = this.photoList[0]["name_occasion"];
-          this.style = this.photoList[0]["name_style"];
-          this.saison = this.photoList[0]["name_season"];
-          this.description = this.photoList[0]["caption_photo"];
-          if(this.description == "undefined"){
-            this.description = "Pas de descritpion";
+    if(!this.filtres){
+      this.storage.get("token").then((val) => {
+        this.token = val;
+        let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+        let link = "http://fiber-app.com/SERVER/getPhoto.php";
+        this.getDataProvider.getData(link,{headers}).subscribe(data=>{
+          console.log(data);
+          this.photoList = data;
+          if(data === null || data.byteLength <= 0 || data === undefined || this.photoList.length <= 1){
+            console.log("PLus de photos à afficher");
+            this.affichePlusDePhoto = true;
+            this.afficheLesPhotos = false;
+          } else {
+            this.currentPhoto = this.photoList[0]["link_photo"];
+            this.authorPhoto = this.photoList[0]["login_user"];
+            this.authorPhotoId = this.photoList[0]["id_user"];
+            this.occasion = this.photoList[0]["name_occasion"];
+            this.style = this.photoList[0]["name_style"];
+            this.saison = this.photoList[0]["name_season"];
+            this.description = this.photoList[0]["caption_photo"];
+            if(this.description == "undefined"){
+              this.description = "Pas de descritpion";
+            }
+            this.nbLike = this.photoList[0]["nbLike"];
+            this.nbCom = this.photoList[0]["nbCom"];
+            this.nbVet = this.photoList[0]["nbVet"];
+            if(this.nbVet != 0){
+              this.hasVetement = true;
+            }
           }
-          this.nbLike = this.photoList[0]["nbLike"];
-          this.nbCom = this.photoList[0]["nbCom"];
-          this.nbVet = this.photoList[0]["nbVet"];
-          if(this.nbVet != 0){
-            this.hasVetement = true;
-          }
-        }
+        });
       });
-    });
+    }  else{
+        this.currentPhoto = this.photoListFiltrees[0]["link_photo"];
+        this.authorPhoto = this.photoListFiltrees[0]["login_user"];
+        this.authorPhotoId = this.photoListFiltrees[0]["id_user"];
+        this.occasion = this.photoListFiltrees[0]["name_occasion"];
+        this.style = this.photoListFiltrees[0]["name_style"];
+        this.saison = this.photoListFiltrees[0]["name_season"];
+        this.description = this.photoListFiltrees[0]["caption_photo"];
+        if(this.description == "undefined"){
+          this.description = "Pas de descritpion";
+        }
+        this.nbLike = this.photoListFiltrees[0]["nbLike"];
+        this.nbCom = this.photoListFiltrees[0]["nbCom"];
+        this.nbVet = this.photoListFiltrees[0]["nbVet"];
+        if(this.nbVet != 0){
+          this.hasVetement = true;
+        }
+        this.photoList = this.photoListFiltrees;
+      }
 
     // EXECUTION DE VERIFSWIPE TOUTES LES 20ms
     let interval = setInterval(()=> {
@@ -135,7 +161,7 @@ export class AccueilPage  implements OnInit {
           this.executed = true;
         }, 1000)
       }
-    }
+    }  
   }
 
 
