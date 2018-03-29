@@ -69,6 +69,8 @@ export class AccueilPage  implements OnInit {
   public affichePlusDePhoto: boolean = false;
   public afficheLesPhotos: boolean = true;
 
+  public plusAffiche: boolean = true;
+
   constructor (private modalCtrl: ModalController, private getDataProvider:GetDataProvider, private nav: NavController, public storage: Storage, public postDataProvider: PostDataProvider) {
       this.data.lien = '';
     }
@@ -107,6 +109,8 @@ export class AccueilPage  implements OnInit {
   }
 
   like(){
+    this.plusAffiche = true;
+    this.afficheVetement = false;
     this.commentaires = [];
     this.storage.get("token").then((val) => {
       this.token = val;
@@ -135,7 +139,7 @@ export class AccueilPage  implements OnInit {
                 this.nbVet = this.photoList[0]["nbVet"];
                 this.description = this.photoList[0]["caption_photo"];
                 if(this.description == "undefined"){
-                  this.description = "Pas de decritpion";
+                  this.description = "Pas de descritpion";
                 }
                 if(this.nbVet != 0){
                   this.hasVetement = true;
@@ -160,6 +164,8 @@ export class AccueilPage  implements OnInit {
   }
 
   dislike(){
+    this.plusAffiche = true;
+    this.afficheVetement = false;
     this.commentaires = [];
     this.hasDisliked = true;
     if(this.photoList.length <= 1){
@@ -220,6 +226,34 @@ export class AccueilPage  implements OnInit {
       userID:this.authorPhotoId
     });
   }
+
+  afficherVetement(){
+    if (this.plusAffiche === true){
+      this.plusAffiche = false;
+      this.afficheVetement = true;
+      if(this.nbVet > 0){
+        let link = "http://fiber-app.com/SERVER/getVetement.php?idPhoto="+this.photoList[0]["id_photo"];
+        let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+        let req = this.postDataProvider.postData(link,{headers});
+        req.subscribe(data =>{
+          this.hasVetement = true;
+          this.listeVetement = data;
+          console.log(this.listeVetement);
+        },
+        (err) =>{
+
+        },()=>{
+
+        });
+      }
+    } else {
+      this.plusAffiche = true;
+      this.afficheVetement = false;
+    }
+  }
+
+
+
 
   commenter(){
      if(this.hasComment === true)
@@ -290,21 +324,8 @@ export class AccueilPage  implements OnInit {
     //at the end
 
   }
-  detailsVetements(){
-    let link = "http://fiber-app.com/SERVER/getVetement.php?idPhoto="+this.photoList[0]["id_photo"];
-    let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
-    let req = this.postDataProvider.postData(link,{headers});
-    req.subscribe(data =>{
-      this.afficheVetement = true;
-      this.listeVetement = data;
-      console.log(this.listeVetement);
-    },
-    (err) =>{
 
-    },()=>{
 
-    });
-  }
   // move(e){
   //
   //   var _windowSize = {w: window.innerWidth, h: window.innerHeight};

@@ -26,45 +26,45 @@
 </ion-content>
 
 <ion-content *ngIf="afficheLesPhotos" class="content">
-  <div class="moveOnSwipe"  (swipe)="swipeEvent($event)">
+  <div (swipe)="swipeEvent($event)">
     <button ion-button round no-lines detail-none class="card-title" (click)="clickProfile()">
       <button ion-button round no-lines detail-none class="border" >
         <b>{{this.authorPhoto}}</b>
       </button>
     </button>
 
-    <!-- Absolute + white -->
+    <ion-card [ngClass]="{'overflow': (plusAffiche === false)}">
+      <img *ngIf="hasDisliked" alt="dislikeAnimation" src="assets/imgs/dislike.png">
+      <img *ngIf="hasLiked" alt="likeAnimation" src="assets/imgs/like.png">
 
-    <img *ngIf="hasDisliked" alt="dislikeAnimation" src="assets/imgs/dislike.png">
-    <img *ngIf="hasLiked" alt="likeAnimation" src="assets/imgs/like.png">
+      <img id="imaage" class="margin" src={{this.currentPhoto}}/>
+      <p class="stats">{{nbCom}} commentaires &nbsp; &nbsp;{{nbLike}} likes</p>
 
-    <img padding id="imaage" class="margin" src={{this.currentPhoto}} />
-    <p class="stats">{{nbCom}} commentaires &nbsp; &nbsp; {{nbLike}} likes</p>
-
-    <ion-card>
       <p class="informations">
         {{description}}<br /><br />
 
-        <b>Occasion</b> &nbsp;&nbsp;
-        <b>Saison</b> &nbsp;&nbsp;
-        <b>Style</b>
-        <img src="assets/imgs/plus.png"><br /><br />
-
-        <i>{{occasion}} {{style}} {{saison}}</i><br />
-        <i>{{nbVet}} Vetements</i>
-        <!--BOUTON VETEMENTS-->
-        <span *ngIf="hasVetement" (click)="detailsVetements()"> IL Y A DES VETEMENTS</span>
+        <b>{{occasion}}</b> &nbsp;&nbsp;
+        <b>{{saison}}</b> &nbsp;&nbsp;
+        <b>{{style}} </b>
+        <img *ngIf="plusAffiche" src="assets/imgs/plus.png" (click)="afficherVetement()">
+        <img *ngIf="!plusAffiche" src="assets/imgs/moins.png" (click)="afficherVetement()"><br /><br />
       </p>
 
-      <!--AFFICHAGE DES VETEMENTS -->
-      <ul *ngIf="afficheVetement">
-        <li *ngFor="let vet of listeVetement" >
-          Nom : {{vet.name_cloth}}
-          <!-- FAIRE vet.price_cloth pour le prix et vet.name_store pour le magasin
-          On peut aussi faire vet.name_color pour la couleur, vet.name_pattern pour le motif -->
-        </li>
-        <br />
-      </ul>
+      <div class="afficheVetements" *ngIf="afficheVetement">
+        <b>{{nbVet}} Vetements</b>
+
+        <!--AFFICHAGE DES VETEMENTS -->
+        <ul *ngIf="hasVetement">
+          <li *ngFor="let vet of listeVetement" >
+            <b>Nom :</b> {{vet.name_cloth}}<br />
+            <b>Couleur :</b> {{vet.name_color}}<br />
+            <b>Motif :</b> {{vet.name_pattern}}<br />
+            <b>Prix :</b> {{vet.name_cloth}}<br />
+            <b>Magasin :</b> {{vet.name_store}}
+          </li>
+          <br /><br />
+        </ul>
+      </div>
     </ion-card>
   </div>
 
