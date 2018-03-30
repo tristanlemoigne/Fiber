@@ -139,30 +139,30 @@ export class AccueilPage  implements OnInit {
       }
 
     // EXECUTION DE VERIFSWIPE TOUTES LES 20ms
-    let interval = setInterval(()=> {
-      this.verifSwipe()
-    }, 1)
+    // let interval = setInterval(()=> {
+    //   this.verifSwipe()
+    // }, 1)
   }
 
-  verifSwipe(){
-    if(this.executed){
-      console.log(this.vc.newLeft)
-
-      if(this.vc.newLeft >= 225){
-        this.like()
-        setTimeout(()=> {
-          this.executed = true;
-        }, 1000)
-      }
-
-      if(this.vc.newLeft <= -225){
-        this.dislike()
-        setTimeout(()=> {
-          this.executed = true;
-        }, 1000)
-      }
-    }  
-  }
+  // verifSwipe(){
+  //   if(this.executed){
+  //     console.log(this.vc.newLeft)
+  //
+  //     if(this.vc.newLeft >= 225){
+  //       this.like()
+  //       setTimeout(()=> {
+  //         this.executed = true;
+  //       }, 1000)
+  //     }
+  //
+  //     if(this.vc.newLeft <= -225){
+  //       this.dislike()
+  //       setTimeout(()=> {
+  //         this.executed = true;
+  //       }, 1000)
+  //     }
+  //   }
+  // }
 
 
   like(){
@@ -274,16 +274,6 @@ export class AccueilPage  implements OnInit {
     if (e.direction == 4) {
       this.like();
     }
-
-    console.log(e)
-    // var _windowSize = {w: window.innerWidth, h: window.innerHeight};
-    // var _mouseX = (e.clientX / _windowSize.w) * 2 - 1;
-    //
-    // console.log(_mouseX);
-    let carte = document.getElementById("carte");
-    console.log(carte)
-
-
   }
 
 

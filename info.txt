@@ -1,3 +1,9 @@
+Node version: v8.9.1
+
+Cordova version: 8.0.0
+
+Config.xml file: 
+
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Fiber</name>
@@ -103,3 +109,14 @@
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <engine name="android" spec="~7.0.0" />
 </widget>
+
+
+Plugins: 
+
+com-badrit-base64,cordova-instagram-plugin,cordova-plugin-camera,cordova-plugin-crop,cordova-plugin-device,cordova-plugin-email-composer,cordova-plugin-file,cordova-plugin-file-transfer,cordova-plugin-geolocation,cordova-plugin-inappbrowser,cordova-plugin-ionic-webview,cordova-plugin-ios-camera-permissions,cordova-plugin-nativestorage,cordova-plugin-splashscreen,cordova-plugin-whitelist,cordova-sqlite-storage,cordova-universal-clipboard,info.protonet.imageresizer,ionic-plugin-keyboard
+
+Error retrieving Android platform information: 
+Android SDK is not set up properly. Make sure that the Android SDK 'tools' and 'platform-tools' directories are in the PATH variable. 
+
+Error: android: Command failed with exit code ENOENT
+
