@@ -380,34 +380,33 @@ export class AccueilPage  implements OnInit {
   }
 
   envoyerCommentaire(){
-    console.log(this.postCom);
-    let mydata = JSON.stringify({com: this.postCom});
-    let link = "http://fiber-app.com/SERVER/postCom.php?id_photo="+this.photoList[0]["id_photo"];
-    let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
-    let req = this.postDataProvider.postData(link,mydata,{headers});
-    req.subscribe(data => {
-      this.infoCom = data;
-      console.log(data);
-    },
-    (err) => {
-    },
-    () => {
-      this.nbCom = parseInt(this.nbCom[0])+1;
-      //this.nbCom[0] = this.nbCom[0]+1;
-      this.commentEmpty = false;
-      if(this.commentaires == null){
-        this.commentaires = [this.infoCom];
-      } else{
-        this.commentaires.push(this.infoCom);
-      }
-      this.postCom="";
-    });
+    if(this.postCom === undefined || this.postCom === ""){
+      console.log("Aucun commentaire écrit")
+    } else {
+      let mydata = JSON.stringify({com: this.postCom});
 
-    //at the end
-
+      let link = "http://fiber-app.com/SERVER/postCom.php?id_photo="+this.photoList[0]["id_photo"];
+      let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+      let req = this.postDataProvider.postData(link,mydata,{headers});
+      req.subscribe(data => {
+        this.infoCom = data;
+        // console.log(data);
+      },
+      (err) => {
+      },
+      () => {
+        this.nbCom = parseInt(this.nbCom[0])+1;
+        //this.nbCom[0] = this.nbCom[0]+1;
+        this.commentEmpty = false;
+        if(this.commentaires == null){
+          this.commentaires = [this.infoCom];
+        } else{
+          this.commentaires.push(this.infoCom);
+        }
+        this.postCom="";
+      });
+    }
   }
-
-
 
 
 
