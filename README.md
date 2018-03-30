@@ -43,3 +43,12 @@ ATTENTION : Télécharger les modules suivant :
  ionic cordova plugin add cordova-plugin-crop
 
  npm install --save @ionic-native/crop
+
+
+ - REINSTALLATION COMPLETE :
+
+ npm install
+ 
+ ionic cordova prepare
+
+ ionic cordova run android

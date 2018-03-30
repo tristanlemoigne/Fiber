@@ -3,12 +3,7 @@ import { IonicPage, NavController, AlertController, LoadingController } from 'io
 import { PostDataProvider } from '../../providers/post-data/post-data';
 import { Storage } from '@ionic/storage';
 import { MyApp } from '../../app/app.component';
-/**
- * Generated class for the ConnexionPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -29,7 +24,7 @@ export class ConnexionPage {
     let link = "http://fiber-app.com/SERVER/connexion.php";
     let req = this.postDataProvider.postData(link,myData);
     var loading = this.loading.create({
-      content: "Envoi des données"
+      content: "Connexion"
     });
     loading.present();
     req.subscribe(data=>{

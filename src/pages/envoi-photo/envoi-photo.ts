@@ -16,7 +16,6 @@ import { AccueilPage } from '../accueil/accueil';
 })
 export class EnvoiPhotoPage {
   public imageTaken:string;
-  public imageGallery:string;
   public token:string;
   public tags:any;
   public vetement:string;
@@ -39,7 +38,6 @@ export class EnvoiPhotoPage {
   public instagram:Instagram, public loading:LoadingController, public alert:AlertController, public getDataProvider:GetDataProvider,
   private location:Geolocation, public postData:PostDataProvider) {
     this.imageTaken = this.navParams.get('base64Image');
-    this.imageGallery = this.navParams.get('imageSrc');
   }
 
   ngOnInit(){
@@ -127,50 +125,6 @@ export class EnvoiPhotoPage {
 
         });
       }
-      if(this.imageGallery){
-        let fileTransfer: FileTransferObject = this.transfer.create();
-        this.storage.get("token").then((val) =>{
-          this.token=val;
-          let options: FileUploadOptions = {
-            fileKey: 'file',
-            fileName:"test.jpg",
-            params:{},
-            headers:{Authorization: "Bearer "+this.token}
-          }
-          var loading = this.loading.create({
-            content: "Envoi des données"
-          });
-
-          loading.present();
-          fileTransfer.upload(this.imageGallery, 'http://fiber-app.com/SERVER/postPhoto.php', options)
-          .then((data)=>{
-             loading.dismiss();
-             this.idPhoto = data.response;
-             let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
-             let mydata = JSON.stringify({vetements: this.vetements,
-                                          idPhoto:this.idPhoto});
-             let link = "http://fiber-app.com/SERVER/postVetement.php";
-             let req = this.postData.postData(link,mydata,{headers});
-             req.subscribe(data => {
-             },
-             (err)=>{
-               alert(err.message);
-             },()=>{
-               let alert = this.alert.create({
-                  title: 'Partagée !',
-                  subTitle: 'Photo partagée',
-                  buttons: ["OK"]});
-
-                alert.present();
-                this.navCtrl.setRoot(AccueilPage);
-             });
-
-          }, (err) => {
-            alert("Erreur"+JSON.stringify(err));
-          });
-
-        });
-      }
     }
   }
 
@@ -178,11 +132,6 @@ export class EnvoiPhotoPage {
     if(this.instagram.isInstalled()){
       if(this.imageTaken){
         this.instagram.share(this.imageTaken)
-        .then(()=>alert("shared"))
-        .catch((error:any)=>alert("error"));
-      }
-      if(this.imageGallery){
-        this.instagram.share(this.imageGallery)
         .then(()=>alert("shared"))
         .catch((error:any)=>alert("error"));
       }

@@ -14,7 +14,6 @@
   <form #myform="ngForm" (ngSubmit)="envoiTag()">
 
     <img [src]="imageTaken"  *ngIf="imageTaken"  />
-    <img [src]="imageGallery"  *ngIf="imageGallery"  />
 
     <!-- INFORMATIONS OBLIGATOIRES -->
     <ion-textarea placeholder="Ajouter une description de votre photo ici..." type="text" maxlength="100" [(ngModel)]="description" name="description" required></ion-textarea>
