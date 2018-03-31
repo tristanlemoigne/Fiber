@@ -38,7 +38,7 @@ export class SelectedPhotoPage {
         {
           text: 'Supprimer',
           handler: () => {
-            console.log("suppression de la photo")    // SUPPRIMER LA PHOTO DE LA BDD
+            console.log("suppression de la photo")    // SUPPRIMER LA PHOTO DE LA BDD (this.imageSelectionne)
             this.popView()
           }
         }
