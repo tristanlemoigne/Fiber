@@ -33,6 +33,7 @@ export class ModifProfilPage implements OnInit{
   public placeholderSite:any;
   public placeholderBio:any;
   public test:any;
+  public photo:any;
 
 
 
@@ -57,6 +58,7 @@ export class ModifProfilPage implements OnInit{
           this.newMail = data["mail_user"];
           this.newSex = data["sex_user"];
           this.newSite = data["website_user"];
+          this.photo = data["photo_user"];
           this.oldLogin = this.newLogin;
           this.oldBio = this.newBio;
           this.oldMail = this.newMail;
@@ -82,6 +84,9 @@ export class ModifProfilPage implements OnInit{
           }
           if(this.newBio == ""){
             this.placeholderBio = "Votre biographie";
+          }
+          if(this.photo != ""){
+            this.userPhoto = true;
           }
           // console.log(data);
         });
@@ -194,27 +199,17 @@ export class ModifProfilPage implements OnInit{
         });
         loading.present();
         fileTransfer.upload(path,
-          'http://fiber-app.com/SERVER/updateInfo.php?photo=true')  //ATTENTION ICI ?
+          'http://fiber-app.com/SERVER/updatePhoto.php')
         .then((data)=>{
            loading.dismiss();
            this.idPhoto = data.response;
-           let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
-           let mydata = JSON.stringify({idPhoto:this.idPhoto});
-           let link = "http://fiber-app.com/SERVER/postVetement.php"; // ICI AUSSI ?
-           let req = this.postData.postData(link,mydata,{headers});
-           req.subscribe(data => {
-           },
-           (err)=>{
-             alert(err.message);
-           },()=>{
-             let alert = this.alert.create({
-                title: 'Enregistrée !',
-                subTitle: 'Photo de profil enregistrée',
-                buttons: ["OK"]});
+           let alert = this.alert.create({
+              title: 'Enregistrée !',
+              subTitle: 'Photo de profil enregistrée',
+              buttons: ["OK"]});
 
-              alert.present();
-              this.navCtrl.setRoot(ProfilePage);
-           });
+            alert.present();
+            this.navCtrl.setRoot(ProfilePage);
 
         }, (err) => {
           alert("Erreur"+JSON.stringify(err));

@@ -59,11 +59,15 @@ export class ProfilePage implements OnInit {
             this.photos=data[0];
             this.bio = data[2]["bio"];
             this.user = data[1]["login"];
+            this.photoProfil = data[2]["photo"];
             if(this.bio == ""){
               this.bio = this.user+" n'a pas encore de biographie";
             }
+            if(this.photoProfil != ""){
+              this.userPhoto = true;
+            }
 
-            this.photoProfil = data[2]["photo"];
+
             //
             // data = data[0].json()
             // // this.photos={image: JSON.stringify(data[0])};

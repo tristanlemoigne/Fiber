@@ -13,7 +13,7 @@
 <ion-content padding>
   <div class="container">
     <!-- RECUPERER LA PHOTO DANS LA TABLE USER ET METTRE BOOLEAN userPhoto à true -->
-    <!-- <img *ngIf="userPhoto" src={{user.photo}}/> -->
+    <img *ngIf="userPhoto" src={{photo}}/>
     <img *ngIf="!userPhoto" src="assets/imgs/user_profile.png" alt="">
     <button ion-button class="changePhoto" (click)="changePhoto()">Modifier la photo de profil</button>
   </div>
