@@ -10,7 +10,7 @@ page-profile {
 
   .right{
     display: inline-block;
-    padding-left: 10vw;
+    padding-left: 7vw;
     position: absolute;
     top: 16px;
     height: 100px;
@@ -29,8 +29,8 @@ page-profile {
     color: #cacaca;
     border: solid 1px #cacaca;
     border-radius: 50px;
-    padding: 10px 20px ;
-    width: 35vw;
+    padding: 5px 10px ;
+    width: 30vw;
   }
 
   .col:nth-of-type(1), .col:nth-of-type(2){
@@ -48,11 +48,18 @@ page-profile {
     right: 10px;
   }
 
+  h2{
+    margin: 0;
+    padding-top: 5px;
+  }
 
   p{
     width: 50vw;
     color: #cacaca;
     font-size: 1.1em;
+    margin: 0;
+    margin-bottom: 7px;
+    margin-top: 5px;
   }
 
   .noBio{
