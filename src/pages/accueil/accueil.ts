@@ -248,7 +248,7 @@ export class AccueilPage  implements OnInit {
          this.nbVet = this.photoList[0]["nbVet"];
          this.description = this.photoList[0]["caption_photo"];
          if(this.description == "undefined"){
-           this.description = "Pas de decritpion";
+           this.description = "Pas de descritpion";
          }
          if(this.nbVet != 0){
            this.hasVetement = true;
@@ -322,6 +322,14 @@ export class AccueilPage  implements OnInit {
         req.subscribe(data =>{
           this.hasVetement = true;
           this.listeVetement = data;
+          for(let i = 0;i<this.listeVetement.length;i++){
+            if(this.listeVetement[i].price_cloth == null){
+              this.listeVetement[i].price_cloth = "Prix non renseigné";
+            }
+            if(this.listeVetement[i].name_store == null){
+              this.listeVetement[i].name_store = "Magasin non renseigné";
+            }
+          }
           console.log(this.listeVetement);
         },
         (err) =>{

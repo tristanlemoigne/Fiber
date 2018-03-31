@@ -117,70 +117,7 @@
       </ion-range>
     </ion-item>
 
-    <button ion-button  [disabled]="!form.form.valid" class="buttonEnvoi">Rechercher</button>
+    <button ion-button  (click)="filtrer()"  class="buttonEnvoi">Rechercher</button>
   </form>
-
-  <!--FORMULAIRE POUR RAJOUTER DES TAGS A LA PHOTO
-  <form #myform="ngForm" (ngSubmit)="envoiTag()">
-    <ion-item>
-      <ion-label>VÊTEMENT</ion-label>
-      <ion-select [(ngModel)]="vetement" name="vetement" multiple="flase">
-        <ion-option value="veste">Veste</ion-option>
-        <ion-option value="tshirtCourt">T-shirt manches courtes</ion-option>
-        <ion-option value="tshitLong">T-shirt manches longues</ion-option>
-        <ion-option value="sweatWithCapuche">Sweat à capuche</ion-option>
-        <ion-option value="sweatWithoutCapuche">Sweat sans capuche</ion-option>
-        <ion-option value="jean">Jean</ion-option>
-        <ion-option value="chino">Chino</ion-option>
-        <ion-option value="pantalon">Pantalon</ion-option>
-        <ion-option value="jupe">Jupe</ion-option>
-        <ion-option value="robe">Robe</ion-option>
-        <ion-option value="marcel">Marcel</ion-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>COULEUR</ion-label>
-      <ion-select [(ngModel)]="couleur" name="couleur" multiple="true">
-        <ion-option value="noir">Noir</ion-option>
-        <ion-option value="blanc">Blanc</ion-option>
-        <ion-option value="gris">Gris</ion-option>
-        <ion-option value="marron">Marron</ion-option>
-        <ion-option value="bleu">Bleu</ion-option>
-        <ion-option value="vert">Vert</ion-option>
-        <ion-option value="rouge">Rouge</ion-option>
-        <ion-option value="violet">Violet</ion-option>
-        <ion-option value="rose">Rose</ion-option>
-        <ion-option value="kaki">Kaki</ion-option>
-        <ion-option value="jaune">Jaune</ion-option>
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>MOTIF</ion-label>
-      <ion-select [(ngModel)]="Motif" name="motif" multiple="true">
-        <ion-option value="uni">Uni</ion-option>
-        <ion-option value="raye">Rayé</ion-option>
-        <ion-option value="pois">A pois</ion-option>
-        <ion-option value="chine">Chiné</ion-option>
-        <ion-option value="original">Original</ion-option>
-      </ion-select>
-    </ion-item>
-
-     DETAILS COMMERCIAUX
-    <ion-item no-lines>
-      <ion-label class="prix">PRIX (€)</ion-label>
-      <ion-range pin="true" min="0" max="500" name="saturation" [(ngModel)]="saturation" color="primary">
-        <ion-label range-left>0</ion-label>
-        <ion-label range-right>500</ion-label>
-      </ion-range>
-    </ion-item>
-
-    <button ion-button  [disabled]="!form.form.valid" class="buttonEnvoi">Rechercher</button>
-=======
-    <button ion-button class="buttonEnvoi" (click)="filtrer()">Rechercher</button>
->>>>>>> 9bab5a13448b61ed4a4c717174ab0f95a4411c3a
-  </form>
--->
 
 </ion-content>
