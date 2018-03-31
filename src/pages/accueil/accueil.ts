@@ -186,7 +186,7 @@ export class AccueilPage  implements OnInit {
         let link = "http://fiber-app.com/SERVER/likePhoto.php?id_photo="+this.photoList[0]["id_photo"];
 
         this.getDataProvider.getData(link,{headers}).subscribe(data=>{
-            setTimeout(() => {
+            // setTimeout(() => {
               console.log(this.description);
                 this.hasLiked = false;
                 this.hasComment=false;
@@ -209,7 +209,7 @@ export class AccueilPage  implements OnInit {
                 this.currentPhoto = this.photoList[0]["link_photo"];
                 this.authorPhoto = this.photoList[0]["login_user"];
                 this.authorPhotoId = this.photoList[0]["id_user"];
-            },300)
+            // },300)
           //data[1] = le token
         })
 
@@ -244,7 +244,7 @@ export class AccueilPage  implements OnInit {
         let link = "http://fiber-app.com/SERVER/nextPhoto.php?id_photo="+this.photoList[0]["id_photo"];
 
         this.getDataProvider.getData(link,{headers}).subscribe(data=>{
-          setTimeout(() => {
+          // setTimeout(() => {
             console.log(this.description);
              this.hasDisliked = false;
              this.hasComment=false;
@@ -267,7 +267,7 @@ export class AccueilPage  implements OnInit {
              this.currentPhoto = this.photoList[0]["link_photo"];
              this.authorPhoto = this.photoList[0]["login_user"];
              this.authorPhotoId = this.photoList[0]["id_user"];
-          },300);
+          // },300);
         });
       }
     });

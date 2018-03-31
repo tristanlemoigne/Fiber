@@ -212,7 +212,9 @@ export class ModifProfilPage implements OnInit{
               buttons: ["OK"]});
 
             alert.present();
-            this.navCtrl.setRoot(ProfilePage);
+            this.photo = path;
+            this.userPhoto = true;
+            // this.navCtrl.setRoot(ProfilePage);
 
         }, (err) => {
           alert("Erreur"+JSON.stringify(err));
