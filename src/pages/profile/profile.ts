@@ -27,7 +27,7 @@ export class ProfilePage implements OnInit {
   public response:any;
   public userParams:boolean = false;
   public userBiographie:boolean = false;
-
+  public photoProfil:any;
 
   public filtresPage = FiltresPage;
   public profilPage = ProfilePage;
@@ -52,38 +52,27 @@ export class ProfilePage implements OnInit {
           let link = "http://fiber-app.com/SERVER/profile.php";
           let req = this.getDataProvider.getData(link,{headers});
           req.subscribe(data=>{
+            console.log(data);
             this.loaded = false;
             this.userParams = true;
             this.photos=data[0];
+            this.bio = data[2]["bio"];
+            this.user = data[1]["login"];
+            if(this.bio == ""){
+              this.bio = this.user+" n'a pas encore de biographie";
+            }
+
+            this.photoProfil = data[2]["photo"];
             //
             // data = data[0].json()
             // // this.photos={image: JSON.stringify(data[0])};
             // console.log(data)
             // // this.photos={image: data[0], icon:'checkmark-circle-outline'};
 
-            this.user = data[1]["login"];
+
             //data[1] = le token
           })
       });
-
-      // Récupération de la biographie de l'utilisateur actuel
-      this.storage.get("token").then((val) => {
-          this.token = val;
-          let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
-          let link = "http://fiber-app.com/SERVER/getInfo.php";
-          let req = this.getDataProvider.getData(link,{headers});
-
-          req.subscribe(data=>{
-            console.log(data)
-            // if(data[2] = " "){
-            if(data[2] === ""){
-              console.log("Bio non modifiée")
-            } else {
-              this.userBiographie = true
-              this.bio = data[2]
-            }
-          });
-      })
 
     } else{
       console.log("ooo");
@@ -97,6 +86,11 @@ export class ProfilePage implements OnInit {
             this.loaded = true;
             console.log(data);
             this.photos=data[0];
+            this.bio = data[3]["bio"];
+            if(this.bio == ""){
+              this.bio = this.user+" n'a pas encore de biographie";
+            }
+            this.photoProfil = data[3]["photo"];
             //this.photos=image: data[0]; {icon:'checkmark-circle-outline'};
 
             this.suivi = data[2];
