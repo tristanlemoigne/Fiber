@@ -89,7 +89,7 @@ export class ModifProfilPage implements OnInit{
           if(this.newBio == ""){
             this.placeholderBio = "Votre biographie";
           }
-          console.log(data);
+          // console.log(data);
         });
 
     });
@@ -168,6 +168,7 @@ export class ModifProfilPage implements OnInit{
     });
 
   }
+
   private changePhoto (): void {
     let cameraOptions = {
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,

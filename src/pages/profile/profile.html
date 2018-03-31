@@ -25,7 +25,7 @@
     <div>
 
       <h2>{{user}}</h2>
-      <p *ngIf="userBiographie">{{user.biographie}}</p>
+      <p *ngIf="userBiographie">{{bio}}</p>
       <p class="noBio" *ngIf="!userBiographie"><span *ngIf="!userParams">{{user}} n'a</span><span *ngIf="userParams">Vous n'avez</span> pas encore de biographie</p>
 
       <!--DIV CACHE TANT QU'ON SAIT PAS SI L'UTILISATEUR EST ABONNE OU PAS-->

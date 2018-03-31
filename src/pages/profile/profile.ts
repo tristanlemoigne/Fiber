@@ -19,6 +19,7 @@ import { ModifProfilPage } from '../modif-profil/modif-profil';
 export class ProfilePage implements OnInit {
   public loaded:boolean = false;
   public user:string;
+  public bio:string;
   public token:string;
   public photos:any;
   public userID:any;
@@ -64,6 +65,26 @@ export class ProfilePage implements OnInit {
             //data[1] = le token
           })
       });
+
+      // Récupération de la biographie de l'utilisateur actuel
+      this.storage.get("token").then((val) => {
+          this.token = val;
+          let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+          let link = "http://fiber-app.com/SERVER/getInfo.php";
+          let req = this.getDataProvider.getData(link,{headers});
+
+          req.subscribe(data=>{
+            console.log(data)
+            // if(data[2] = " "){
+            if(data[2] === ""){
+              console.log("Bio non modifiée")
+            } else {
+              this.userBiographie = true
+              this.bio = data[2]
+            }
+          });
+      })
+
     } else{
       console.log("ooo");
       this.storage.get("token").then((val) => {

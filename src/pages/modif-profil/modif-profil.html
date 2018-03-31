@@ -24,16 +24,6 @@
 
   <ion-label>Bio</ion-label>
   <input name="bioUser" [(ngModel)]="newBio" placeholder="{{placeholderBio}}">
-  <ion-label>Sexe</ion-label>
-  <ion-item>
-
-    <ion-select [(ngModel)]="newSex" name="style" placeholder="{{newSex}}" multiple="false">
-      <ion-option value="1">Femme</ion-option>
-      <ion-option value="2">Homme</ion-option>
-      <ion-option value="3">Autre</ion-option>
-    </ion-select>
-  </ion-item>
-  <!--<input name="sexeUser" [(ngModel)]="sexeUser" placeholder="{{user}}">-->
 
   <ion-label>Mail</ion-label>
   <input name="mailUser" [(ngModel)]="newMail" placeholder="{{newMail}}">
@@ -41,5 +31,14 @@
   <ion-label>Site web</ion-label>
   <input name="websiteUser" [(ngModel)]="newSite" placeholder="{{placeholderSite}}">
 
-  <button (click)="modifier()"></button>
+  <ion-label class="sexe">Sexe</ion-label>
+  <ion-item no-lines>
+    <ion-select [(ngModel)]="newSex" name="style" placeholder="{{newSex}}" multiple="false">
+      <ion-option class="pink" value="1">Femme</ion-option>
+      <ion-option class="blue" value="2">Homme</ion-option>
+      <ion-option class="green" value="3">Autre</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <button ion-button class="modifier" (click)="modifier()">Enregistrer</button>
 </ion-content>
