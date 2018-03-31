@@ -19,8 +19,8 @@
 
 
 <ion-content padding>
-  <!-- <img *ngIf="userPhoto" src={{user.photo}}/> -->
-  <img src="assets/imgs/user_profile.png" width=100 alt="">
+  <img *ngIf="userPhoto" src={{user.photo}}/>
+  <img *ngIf="!userPhoto" src="assets/imgs/user_profile.png" width=100 alt="">
   <div class="right">
     <div>
 
@@ -40,9 +40,9 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col col-4 class="overview" *ngFor="let photo of photos; let i = index" (press)="selectAll()">
-        <ion-icon [name]="visible ? 'checkmark-circle-outline' :'checkmark-circle'" class="selectPictures" *ngIf="selectPictures" (click)="selectOne(i)"></ion-icon>
-        <img src={{photo}}/>
+      <ion-col  col-4 class="overview" *ngFor="let photo of photos; let i = index">
+        <!-- <ion-icon [name]="visible ? 'checkmark-circle-outline' :'checkmark-circle'" class="selectPictures" *ngIf="selectPictures" (click)="selectOne(i)"></ion-icon> -->
+        <img (click)="selectOne(i)" src={{photo}} />
       </ion-col>
     </ion-row>
   </ion-grid>

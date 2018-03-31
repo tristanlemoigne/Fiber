@@ -9,6 +9,7 @@ import { FiltresPage } from '../filtres/filtres';
 import { TakePhotoPage } from '../take-photo/take-photo';
 import { AccueilPage } from '../accueil/accueil';
 import { ModifProfilPage } from '../modif-profil/modif-profil';
+import { SelectedPhotoPage } from '../selected-photo/selected-photo';
 
 
 @IonicPage()
@@ -26,7 +27,9 @@ export class ProfilePage implements OnInit {
   public suivi:any;
   public response:any;
   public userParams:boolean = false;
+  public userPhoto:boolean = false;
   public userBiographie:boolean = false;
+  public className: string;
 
 
   public filtresPage = FiltresPage;
@@ -34,7 +37,6 @@ export class ProfilePage implements OnInit {
   public takePhotoPage = TakePhotoPage;
   public modifProfilePage = ModifProfilPage;
 
-  public selectPictures: boolean = false;
   public visible: boolean = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private getDataProvider:GetDataProvider, private storage:Storage) {
@@ -134,23 +136,17 @@ export class ProfilePage implements OnInit {
 
   }
 
-  selectAll(){
-    if(this.userParams === true){
-      console.log("Sélection de toutes les photos");
-      this.selectPictures = true;
-    }
-
-  }
-
   selectOne(index){
-    console.log("Sélection de la photo " + index)
-    // this.visible = !this.visible;
+    // console.log("Sélection de la photo " + index)
     // console.log(this.photos[index])
+    if(this.userParams === true){
+      this.navCtrl.setRoot(SelectedPhotoPage, {
+        imageSelectionne: this.photos[index]
+      })
+    }
   }
 
-  unSelect(){
-    this.selectPictures = false;
-  }
+
 
 
   load(page: any){

@@ -92,7 +92,6 @@ export class AccueilPage  implements OnInit {
         let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
         let link = "http://fiber-app.com/SERVER/getPhoto.php";
         this.getDataProvider.getData(link,{headers}).subscribe(data=>{
-          console.log(data);
           this.photoList = data;
           if(data === null || data.byteLength <= 0 || data === undefined || this.photoList.length <= 1){
             console.log("PLus de photos à afficher");
@@ -356,7 +355,7 @@ export class AccueilPage  implements OnInit {
            //METTRE BOUTON POUR COMMENTAIRES PREDEFINIS
            console.log("user");
          }
-         console.log(data);
+         // console.log(data);
          //data[1] = le token
        })
      });
@@ -368,7 +367,7 @@ export class AccueilPage  implements OnInit {
       let req = this.getDataProvider.getData(link,{headers});
       req.subscribe(data=>{
         this.commentaires = data;
-        console.log(this.commentaires);
+        // console.log(this.commentaires);
         if(this.commentaires == null){
           this.commentEmpty = true;
         }
