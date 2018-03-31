@@ -36,14 +36,14 @@ export class EnvoiPhotoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public transfer:FileTransfer, public storage:Storage,
   public instagram:Instagram, public loading:LoadingController, public alert:AlertController, public getDataProvider:GetDataProvider,
-  private location:Geolocation, public postData:PostDataProvider) {
+  public location:Geolocation, public postData:PostDataProvider) {
     this.imageTaken = this.navParams.get('base64Image');
   }
 
   ngOnInit(){
     this.location.getCurrentPosition().then((resp) => {
-      this.lat = resp.coords.latitude
-      this.long = resp.coords.longitude
+      this.lat = resp.coords.latitude;
+      this.long = resp.coords.longitude;
     }).catch((error) => {
       alert('Error getting location'+error);
     });
@@ -61,16 +61,12 @@ export class EnvoiPhotoPage {
     let headers = new HttpHeaders().set("Access-Control-Allow-Origin","*");
     let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.lat+","+this.long+
     "&radius=10000&type=clothing_store&keyword="+this.magasin+"&key="+this.key;
+    alert(url);
     let promise = this.getDataProvider.getData(url,{headers});
     promise.subscribe(data=>{
       for(let i =0; i<data["results"].length;i++){
         this.propositions[i] = [data["results"][i].name+ " " +data["results"][i].vicinity,data["results"][i].name,data["results"][i].vicinity];
       }
-
-      /*for(let i=0;i<data.results.length;i++){
-
-      }
-      data.results*/
     })
   }
 
@@ -105,18 +101,26 @@ export class EnvoiPhotoPage {
              let link = "http://fiber-app.com/SERVER/postVetement.php";
              let req = this.postData.postData(link,mydata,{headers});
              req.subscribe(data => {
-               alert(data);
+               if(data["response"] == "fail"){
+                 let alert = this.alert.create({
+                    title: 'Erreur',
+                    subTitle: 'Photo non partagée, veuillez réessayer',
+                    buttons: ["OK"]});
+
+                  alert.present();
+               } else{
+                 let alert = this.alert.create({
+                    title: 'Partagée !',
+                    subTitle: 'Photo partagée',
+                    buttons: ["OK"]});
+
+                  alert.present();
+               }
              },
              (err)=>{
                alert(err.message);
              },()=>{
-               /*let alert = this.alert.create({
-                  title: 'Partagée !',
-                  subTitle: 'Photo partagée',
-                  buttons: ["OK"]});
-
-                alert.present();
-                this.navCtrl.setRoot(AccueilPage);*/
+                this.navCtrl.setRoot(AccueilPage);
              });
 
           }, (err) => {
@@ -149,10 +153,17 @@ export class EnvoiPhotoPage {
         vetement:this.vetement,
         couleur:this.couleur,
         motif:this.motif,
-        prix:this.prix,
-        nomMagasin:this.magasin[1],
-        adresseMagasin:this.magasin[2]
+        prix:null,
+        nomMagasin:null,
+        adresseMagasin:null
       };
+      if(this.prix != undefined){
+        vet.prix = this.prix;
+      }
+      if(this.magasin != undefined){
+        vet.nomMagasin = this.magasin[1],
+        vet.adresseMagasin = this.magasin[2]
+      }
       this.vetements.push(vet);
       alert("Vêtement ajouté à la photo");
       this.vetement = "";
