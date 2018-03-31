@@ -229,40 +229,48 @@ export class AccueilPage  implements OnInit {
     this.afficheVetement = false;
     this.commentaires = [];
     this.hasDisliked = true;
-    if(this.photoList.length <= 1){
-      this.photoList = this.photoList.slice(1);
-      this.hasLiked = false;
-      this.hasComment=false;
+    this.storage.get("token").then((val) => {
+      this.token = val;
+      let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+      if(this.photoList.length <= 1){
+        this.photoList = this.photoList.slice(1);
+        this.hasLiked = false;
+        this.hasComment=false;
 
-      console.log("PLus de photos à afficher");
-      this.affichePlusDePhoto = true;
-      this.afficheLesPhotos = false;
-    } else {
-      setTimeout(() => {
-        console.log(this.description);
-         this.hasDisliked = false;
-         this.hasComment=false;
-         this.photoList.splice(0,1);
-         this.nbLike = this.photoList[0]["nbLike"];
-         this.nbCom = this.photoList[0]["nbCom"];
-         this.nbVet = this.photoList[0]["nbVet"];
-         this.description = this.photoList[0]["caption_photo"];
-         if(this.description == "undefined"){
-           this.description = "Pas de descritpion";
-         }
-         if(this.nbVet != 0){
-           this.hasVetement = true;
-         } else{
-           this.hasVetement = false;
-         }
-         this.occasion = this.photoList[0]["name_occasion"];
-         this.style = this.photoList[0]["name_style"];
-         this.saison = this.photoList[0]["name_season"];
-         this.currentPhoto = this.photoList[0]["link_photo"];
-         this.authorPhoto = this.photoList[0]["login_user"];
-         this.authorPhotoId = this.photoList[0]["id_user"];
-      },300);
-    }
+        console.log("PLus de photos à afficher");
+        this.affichePlusDePhoto = true;
+        this.afficheLesPhotos = false;
+      } else {
+        let link = "http://fiber-app.com/SERVER/nextPhoto.php?id_photo="+this.photoList[0]["id_photo"];
+
+        this.getDataProvider.getData(link,{headers}).subscribe(data=>{
+          setTimeout(() => {
+            console.log(this.description);
+             this.hasDisliked = false;
+             this.hasComment=false;
+             this.photoList.splice(0,1);
+             this.nbLike = this.photoList[0]["nbLike"];
+             this.nbCom = this.photoList[0]["nbCom"];
+             this.nbVet = this.photoList[0]["nbVet"];
+             this.description = this.photoList[0]["caption_photo"];
+             if(this.description == "undefined"){
+               this.description = "Pas de descritpion";
+             }
+             if(this.nbVet != 0){
+               this.hasVetement = true;
+             } else{
+               this.hasVetement = false;
+             }
+             this.occasion = this.photoList[0]["name_occasion"];
+             this.style = this.photoList[0]["name_style"];
+             this.saison = this.photoList[0]["name_season"];
+             this.currentPhoto = this.photoList[0]["link_photo"];
+             this.authorPhoto = this.photoList[0]["login_user"];
+             this.authorPhotoId = this.photoList[0]["id_user"];
+          },300);
+        });
+      }
+    });
   }
 
   swipeEvent(e){
