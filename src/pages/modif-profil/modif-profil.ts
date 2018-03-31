@@ -33,7 +33,8 @@ export class ModifProfilPage implements OnInit{
   public placeholderSite:any;
   public placeholderBio:any;
   public test:any;
-  public photo:any;
+  public oldPhoto:any;
+  public newPhoto:any;
 
 
 
@@ -58,12 +59,13 @@ export class ModifProfilPage implements OnInit{
           this.newMail = data["mail_user"];
           this.newSex = data["sex_user"];
           this.newSite = data["website_user"];
-          this.photo = data["photo_user"];
+          this.newPhoto = data["photo_user"];
           this.oldLogin = this.newLogin;
           this.oldBio = this.newBio;
           this.oldMail = this.newMail;
           this.oldSex = this.newSex;
           this.oldSite = this.newSite;
+          this.oldPhoto = this.newPhoto;
           if(this.newSite ==""){
             this.placeholderSite = "Adresse de votre site web";
           }
@@ -85,10 +87,6 @@ export class ModifProfilPage implements OnInit{
           if(this.newBio == ""){
             this.placeholderBio = "Votre biographie";
           }
-          if(this.photo != ""){
-            this.userPhoto = true;
-          }
-          // console.log(data);
         });
 
     });
@@ -104,10 +102,12 @@ export class ModifProfilPage implements OnInit{
                                      newSex: this.newSex,
                                      newBio: this.newBio,
                                      newSite: this.newSite,
+                                     newPhoto: this.newPhoto,
                                      oldLogin: this.oldLogin,
                                      oldBio: this.oldBio,
                                      oldMail: this.oldMail,
                                      oldSex: this.oldSex,
+                                     oldPhoto : this.oldPhoto,
                                      oldSite: this.oldSite});
         let link = "http://fiber-app.com/SERVER/updateInfo.php";
         let req = this.postData.postData(link,mydata,{headers});
@@ -187,40 +187,41 @@ export class ModifProfilPage implements OnInit{
     })
     // PATH = PHOTO PRISE APRES CROP
     .then((path) => {
-      let fileTransfer: FileTransferObject = this.transfer.create();
-      this.storage.get("token").then((val) =>{
-        this.token=val;
-        let options: FileUploadOptions = {
-          fileKey: 'file',
-          fileName:"test.jpg",
-          params:{},
-          headers:{Authorization: "Bearer "+this.token}
-        }
-        var loading = this.loading.create({
-          content: "Enregistrement de la photo"
-        });
-        loading.present();
-
-        fileTransfer.upload(path,
-          'http://fiber-app.com/SERVER/updatePhoto.php')
-        .then((data)=>{
-           loading.dismiss();
-           this.idPhoto = data.response;
-           let alert = this.alert.create({
-              title: 'Enregistrée !',
-              subTitle: 'Photo de profil enregistrée',
-              buttons: ["OK"]});
-
-            alert.present();
-            this.photo = path;
-            this.userPhoto = true;
-            // this.navCtrl.setRoot(ProfilePage);
-
-        }, (err) => {
-          alert("Erreur"+JSON.stringify(err));
-        });
-
-      });
+      this.newPhoto = path;
+      this.userPhoto = true;
+    //   let fileTransfer: FileTransferObject = this.transfer.create();
+    //   this.storage.get("token").then((val) =>{
+    //     this.token=val;
+    //     let options: FileUploadOptions = {
+    //       fileKey: 'file',
+    //       fileName:"test.jpg",
+    //       params:{},
+    //       headers:{Authorization: "Bearer "+this.token}
+    //     }
+    //     var loading = this.loading.create({
+    //       content: "Enregistrement de la photo"
+    //     });
+    //     loading.present();
+    //
+    //     fileTransfer.upload(path,
+    //       'http://fiber-app.com/SERVER/updatePhoto.php')
+    //     .then((data)=>{
+    //        loading.dismiss();
+    //        this.idPhoto = data.response;
+    //        let alert = this.alert.create({
+    //           title: 'Enregistrée !',
+    //           subTitle: 'Photo de profil enregistrée',
+    //           buttons: ["OK"]});
+    //
+    //         alert.present();
+    //
+    //         // this.navCtrl.setRoot(ProfilePage);
+    //
+    //     }, (err) => {
+    //       alert("Erreur"+JSON.stringify(err));
+    //     });
+    //
+    //   });
     });
   }
 

@@ -97,6 +97,10 @@ export class ProfilePage implements OnInit {
               this.bio = this.user+" n'a pas encore de biographie";
             }
             this.photoProfil = data[3]["photo"];
+
+            if(this.photoProfil != ""){
+              this.userPhoto = true;
+            }
             //this.photos=image: data[0]; {icon:'checkmark-circle-outline'};
 
             this.suivi = data[2];
