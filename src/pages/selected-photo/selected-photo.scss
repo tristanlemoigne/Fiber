@@ -1,3 +1,113 @@
 page-selected-photo {
+  .stats{
+    color: #cacaca;
+    text-align: right;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
 
+  .overflow{
+    overflow-y: scroll;
+  }
+  .informations{
+    color: #cacaca;
+    margin-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .informations img {
+    width: 20px;
+    float: right;
+  }
+
+
+  .afficheVetements{
+    padding-left: 10px;
+    padding-bottom: 10px;
+    color: #cacaca;
+  }
+
+  .afficheVetement ul{
+    list-style-type: none;
+  }
+  /*J'AI C/C les style de la page d'accueil pour les commentaires */
+  .boxLikes{
+     position: absolute;
+     bottom: 0;
+     margin-left: -11px;
+     width: 100%;
+     flex-wrap: nowrap;
+     align-items: center;
+     justify-content: center;
+  }
+
+  .boxLikes  img{
+     width: 60px;
+     margin: 0 6px;
+  }
+
+  img[alt="comment"]{
+    width: 40px;
+    margin-top: 20px;
+  }
+  .commentaires{
+      position: absolute;
+      background-color: white;
+      width: 100%;
+      height: 55vh;
+      top: 19vh;
+      padding: 0 15px;
+      box-shadow: 0px -5px 20px grey;
+      font-size: 1.7rem;
+    }
+
+    .containerCommentaires{
+       height: 47vh;
+       overflow: scroll;
+    }
+
+    .commentaires span b{
+       font-size: 1.8rem;
+    }
+
+
+    .commentaires input{
+       position: absolute;
+       bottom: 7px;
+       left: 45px;
+       display: block;
+       width: 70vw;
+       height: 40px;
+       margin-left: auto;
+       margin-right: auto;
+
+
+       border: none;
+       background-color: #f8f8f8;
+       border-radius: 50px;
+       padding-left: 20px;
+
+    }
+
+    .commentaires input::-webkit-input-placeholder {
+      color: #cacaca !important;
+    }
+
+    img[alt="envoieCommentaire"]{
+       position: absolute;
+       right: 20px;
+       bottom: 7px;
+       width: 35px;
+       transform: scaleX(-1);
+         filter: FlipH;
+    }
+
+    .noPhotos{
+      color: #cacaca;
+      text-align: center;
+      margin-top: 40vh;
+      font-size: 2em;
+    }
 }

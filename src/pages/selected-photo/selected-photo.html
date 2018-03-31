@@ -19,6 +19,51 @@
 
 <ion-content padding>
   <img [src]="imageSelectionne"   />
+  <p class="stats">{{nbCom}} commentaires &nbsp; &nbsp;{{nbLike}} likes</p>
+  <p class="informations">
+    {{description}}<br /><br />
 
+    <b>{{occasion}}</b> &nbsp;&nbsp;
+    <b>{{saison}}</b> &nbsp;&nbsp;
+    <b>{{style}} </b>
+    <img *ngIf="plusAffiche" src="assets/imgs/plus.png" (click)="afficherVetement()">
+    <img *ngIf="!plusAffiche" src="assets/imgs/moins.png" (click)="afficherVetement()"><br /><br />
+  </p>
+  <div class="afficheVetements" *ngIf="afficheVetement">
+    <b>{{nbVet}} Vetements</b>
+
+    <!--AFFICHAGE DES VETEMENTS -->
+    <ul *ngIf="hasVetement">
+      <li *ngFor="let vet of listeVetement" >
+        <b>Nom :</b> {{vet.name_cloth}}<br />
+        <b>Couleur :</b> {{vet.name_color}}<br />
+        <b>Motif :</b> {{vet.name_pattern}}<br />
+        <b>Prix :</b> {{vet.price_cloth}}<br />
+        <b>Magasin :</b> {{vet.name_store}}
+      </li>
+      <br /><br />
+    </ul>
+  </div>
+
+  <ion-row class="boxLikes">
+<img alt="comment" (click)="commenter()" src="assets/imgs/comment.png">
+</ion-row>
+
+  <div class="commentaires" *ngIf="hasComment">
+   <div class="containerCommentaires">
+     <p *ngIf="commentEmpty">
+       <i style="opacity:0.3"> Pas de commentaires, sois le premier à commenter ce look !</i>
+     </p>
+      <p *ngFor="let comment of commentaires">
+        <span><b>{{comment["login_user"]}} : </b></span>
+        <span>{{comment["text_comment"]}} </span>
+      </p>
+   </div>
+
+ <div class="fixCommentaires">
+    <input type="text" placeholder="Laisser un commentaire" [(ngModel)]="postCom">
+    <img alt="envoieCommentaire" (click)="envoyerCommentaire()" src="assets/imgs/retour.png">
+ </div>
+ </div>
 
 </ion-content>

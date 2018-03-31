@@ -90,7 +90,7 @@ export class AccueilPage  implements OnInit {
       this.storage.get("token").then((val) => {
         this.token = val;
         let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
-        let link = "http://fiber-app.com/SERVER/getPhoto.php";
+        let link = "http://fiber-app.com/SERVER/getPhotos.php";
         this.getDataProvider.getData(link,{headers}).subscribe(data=>{
           this.photoList = data;
           if(data === null || data.byteLength <= 0 || data === undefined || this.photoList.length <= 1){
@@ -350,24 +350,6 @@ export class AccueilPage  implements OnInit {
       else
          this.hasComment=true;
 
-     this.storage.get("token").then((val) => {
-       this.token = val;
-       let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
-       let link = "http://fiber-app.com/SERVER/getToken.php";
-       let req = this.getDataProvider.getData(link,{headers});
-       req.subscribe(data=>{
-         if(data["permissions"]=="Administrateur"){
-           //LAISSER INPUT
-           console.log("admin");
-         } else{
-           //METTRE BOUTON POUR COMMENTAIRES PREDEFINIS
-           console.log("user");
-         }
-         // console.log(data);
-         //data[1] = le token
-       })
-     });
-
     this.storage.get("token").then((val) => {
       this.token = val;
       let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
@@ -388,7 +370,7 @@ export class AccueilPage  implements OnInit {
 
   envoyerCommentaire(){
     if(this.postCom === undefined || this.postCom === ""){
-      console.log("Aucun commentaire écrit")
+      alert("Aucun commentaire écrit");
     } else {
       let mydata = JSON.stringify({com: this.postCom});
 
