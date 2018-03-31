@@ -16,7 +16,7 @@
     <img [src]="imageTaken"  *ngIf="imageTaken"  />
 
     <!-- INFORMATIONS OBLIGATOIRES -->
-    <ion-textarea placeholder="Ajouter une description de votre photo ici..." type="text" maxlength="100" [(ngModel)]="description" name="description" required></ion-textarea>
+    <ion-textarea placeholder="Ajouter une description de votre photo ici..." type="text" maxlength="65" [(ngModel)]="description" name="description" required></ion-textarea>
 
     <ion-card>
       <span>Obligatoire</span>

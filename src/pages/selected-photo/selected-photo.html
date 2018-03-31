@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left start>
+      <button ion-button (click)="popView()">
+        <img alt="menu" height="23" src="assets/imgs/retour.png">
+      </button>
+    </ion-buttons>
+
+    <ion-title>Fiber</ion-title>
+
+    <ion-buttons right end>
+      <button ion-button (click)="supprimerPhoto()">
+        <img alt="remove" height="23" src="assets/imgs/poubelle.png">
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <img [src]="imageSelectionne"   />
+
+
+</ion-content>

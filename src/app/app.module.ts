@@ -18,6 +18,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { ModifProfilPage } from '../pages/modif-profil/modif-profil';
 import { TakePhotoPage } from '../pages/take-photo/take-photo';
 import { EnvoiPhotoPage } from '../pages/envoi-photo/envoi-photo';
+import { SelectedPhotoPage } from '../pages/selected-photo/selected-photo';
 import { ConnexionPage } from '../pages/connexion/connexion';
 import { InscriptionPage } from '../pages/inscription/inscription';
 import { DernieresNouvellesPage } from '../pages/dernieres-nouvelles/dernieres-nouvelles';
@@ -44,7 +45,8 @@ import { AbsoluteDrag } from '../directives/absolute-drag/absolute-drag';
     EnvoiPhotoPage,
     DernieresNouvellesPage,
     ModifProfilPage,
-    AbsoluteDrag
+    AbsoluteDrag,
+    SelectedPhotoPage
   ],
   imports: [
     BrowserModule,
@@ -67,6 +69,7 @@ import { AbsoluteDrag } from '../directives/absolute-drag/absolute-drag';
     EnvoiPhotoPage,
     DernieresNouvellesPage,
     ModifProfilPage,
+    SelectedPhotoPage
 
   ],
   providers: [

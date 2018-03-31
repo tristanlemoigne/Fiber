@@ -46,12 +46,6 @@ export class ModifProfilPage implements OnInit{
     this.navCtrl.setRoot(ProfilePage);
   }
   ngOnInit(){
-    /*let mydata = JSON.stringify({newLogin: this.newLogin,
-                                 newMail: this.newMail,
-                                 newBio: this.newBio,
-                                 newSite: this.newSite,
-                                  newSex: this.newSex});
-    let link = "http://fiber-app.com/SERVER/updateInfo.php";*/
     this.storage.get("token").then((val) => {
         this.token = val;
         let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);

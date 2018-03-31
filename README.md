@@ -48,7 +48,9 @@ ATTENTION : Télécharger les modules suivant :
  - REINSTALLATION COMPLETE :
 
  npm install
- 
+
  ionic cordova prepare
 
  ionic cordova run android
+
+ - If bug build > downgrade to cordova 7.1
