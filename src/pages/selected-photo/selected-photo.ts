@@ -180,11 +180,12 @@ export class SelectedPhotoPage implements OnInit {
                 let link = "http://fiber-app.com/SERVER/deletePhoto.php?idPhoto="+this.idPhoto;
                 let req = this.getDataProvider.getData(link,{headers});
                 req.subscribe(data=>{
-                  console.log("REPONSE DU SERVEUR : "+data);
+                  console.log("REPONSE DU SERVEUR : " + data);
                 });
             });
             console.log("suppression de la photo")    // SUPPRIMER LA PHOTO DE LA BDD (this.imageSelectionne)
-            this.navCtrl.push(ProfilePage);
+            this.popView()
+            this.ngOnInit()
           }
         }
       ]

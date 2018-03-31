@@ -86,7 +86,7 @@ export class EnvoiPhotoPage {
             headers:{Authorization: "Bearer "+this.token}
           }
           var loading = this.loading.create({
-            content: "Envoi des données"
+            content: "Envoi de la photo"
           });
           loading.present();
           fileTransfer.upload(this.imageTaken,
@@ -111,7 +111,7 @@ export class EnvoiPhotoPage {
                } else{
                  let alert = this.alert.create({
                     title: 'Partagée !',
-                    subTitle: 'Photo partagée',
+                    subTitle: 'Photo envoyée',
                     buttons: ["OK"]});
 
                   alert.present();
