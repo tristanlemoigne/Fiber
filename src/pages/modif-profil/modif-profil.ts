@@ -93,6 +93,8 @@ export class ModifProfilPage implements OnInit{
 
     });
   }
+
+
   modifier(){
     this.storage.get("token").then((val) => {
         this.token = val;
@@ -110,7 +112,7 @@ export class ModifProfilPage implements OnInit{
         let link = "http://fiber-app.com/SERVER/updateInfo.php";
         let req = this.postData.postData(link,mydata,{headers});
         var loading = this.loading.create({
-          content: "Envoi des données"
+          content: "Enregistrement des informations"
         });
         loading.present();
         req.subscribe(data => {
@@ -195,9 +197,10 @@ export class ModifProfilPage implements OnInit{
           headers:{Authorization: "Bearer "+this.token}
         }
         var loading = this.loading.create({
-          content: "Envoi des données"
+          content: "Enregistrement de la photo"
         });
         loading.present();
+
         fileTransfer.upload(path,
           'http://fiber-app.com/SERVER/updatePhoto.php')
         .then((data)=>{

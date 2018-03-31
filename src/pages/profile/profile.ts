@@ -17,6 +17,7 @@ import { SelectedPhotoPage } from '../selected-photo/selected-photo';
   selector: 'page-profile',
   templateUrl: 'profile.html',
 })
+
 export class ProfilePage implements OnInit {
   public loaded:boolean = false;
   public user:string;
@@ -56,7 +57,7 @@ export class ProfilePage implements OnInit {
             console.log(data);
             this.loaded = false;
             this.userParams = true;
-            this.photos=data[0];
+            this.photos=data[0].slice().reverse();
             this.bio = data[2]["bio"];
             this.user = data[1]["login"];
             this.photoProfil = data[2]["photo"];
@@ -134,8 +135,6 @@ export class ProfilePage implements OnInit {
   }
 
   selectOne(index){
-    // console.log("Sélection de la photo " + index)
-    // console.log(this.photos[index])
     if(this.userParams === true){
       this.navCtrl.setRoot(SelectedPhotoPage, {
         imageSelectionne: this.photos[index]

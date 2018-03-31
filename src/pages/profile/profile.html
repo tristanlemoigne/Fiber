@@ -23,7 +23,6 @@
   <img *ngIf="!userPhoto" src="assets/imgs/user_profile.png" width=100 alt="">
   <div class="right">
     <div>
-
       <h2>{{user}}</h2>
       <p>{{bio}}</p>
 
@@ -39,7 +38,8 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col  col-4 class="overview" *ngFor="let photo of photos; let i = index">
+      <!-- <ion-col  col-4 class="overview" *ngFor="let photo of photos; let i = index"> -->
+      <ion-col  col-4 class="overview" *ngFor="let photo of photos let i = index;">
         <!-- <ion-icon [name]="visible ? 'checkmark-circle-outline' :'checkmark-circle'" class="selectPictures" *ngIf="selectPictures" (click)="selectOne(i)"></ion-icon> -->
         <img (click)="selectOne(i)" src={{photo}} />
       </ion-col>

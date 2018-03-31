@@ -46,7 +46,7 @@ import { AbsoluteDrag } from '../directives/absolute-drag/absolute-drag';
     DernieresNouvellesPage,
     ModifProfilPage,
     AbsoluteDrag,
-    SelectedPhotoPage
+    SelectedPhotoPage,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +69,8 @@ import { AbsoluteDrag } from '../directives/absolute-drag/absolute-drag';
     EnvoiPhotoPage,
     DernieresNouvellesPage,
     ModifProfilPage,
-    SelectedPhotoPage
+    SelectedPhotoPage,
+
 
   ],
   providers: [
