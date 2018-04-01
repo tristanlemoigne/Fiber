@@ -35,7 +35,7 @@ export class ModifProfilPage implements OnInit{
   public test:any;
   public oldPhoto:any;
   public newPhoto:any;
-
+  public response:any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -86,6 +86,9 @@ export class ModifProfilPage implements OnInit{
           }
           if(this.newBio == ""){
             this.placeholderBio = "Votre biographie";
+          }
+          if(this.newPhoto != ""){
+            this.userPhoto = true;
           }
         });
 
@@ -189,39 +192,47 @@ export class ModifProfilPage implements OnInit{
     .then((path) => {
       this.newPhoto = path;
       this.userPhoto = true;
-    //   let fileTransfer: FileTransferObject = this.transfer.create();
-    //   this.storage.get("token").then((val) =>{
-    //     this.token=val;
-    //     let options: FileUploadOptions = {
-    //       fileKey: 'file',
-    //       fileName:"test.jpg",
-    //       params:{},
-    //       headers:{Authorization: "Bearer "+this.token}
-    //     }
-    //     var loading = this.loading.create({
-    //       content: "Enregistrement de la photo"
-    //     });
-    //     loading.present();
-    //
-    //     fileTransfer.upload(path,
-    //       'http://fiber-app.com/SERVER/updatePhoto.php')
-    //     .then((data)=>{
-    //        loading.dismiss();
-    //        this.idPhoto = data.response;
-    //        let alert = this.alert.create({
-    //           title: 'Enregistrée !',
-    //           subTitle: 'Photo de profil enregistrée',
-    //           buttons: ["OK"]});
-    //
-    //         alert.present();
-    //
-    //         // this.navCtrl.setRoot(ProfilePage);
-    //
-    //     }, (err) => {
-    //       alert("Erreur"+JSON.stringify(err));
-    //     });
-    //
-    //   });
+      let fileTransfer: FileTransferObject = this.transfer.create();
+      this.storage.get("token").then((val) =>{
+        this.token=val;
+        let options: FileUploadOptions = {
+          fileKey: 'file',
+          fileName:"test.jpg",
+          params:{},
+          headers:{Authorization: "Bearer "+this.token}
+        }
+        var loading = this.loading.create({
+          content: "Enregistrement de la photo"
+        });
+        loading.present();
+
+        fileTransfer.upload(path,
+          'http://fiber-app.com/SERVER/updatePhoto.php', options)
+        .then((data)=>{
+           loading.dismiss();
+           this.response = data.response;
+           if(this.response == 1){
+             let alertPanel = this.alert.create({
+                title: 'Enregistrée !',
+                subTitle: 'Photo de profil enregistrée',
+                buttons: ["OK"]});
+
+              alertPanel.present();
+           } else{
+             let alertPanel = this.alert.create({
+                title: 'Erreur',
+                subTitle: 'Une erreur est survenue',
+                buttons: ["OK"]});
+
+              alertPanel.present();
+           }
+            this.navCtrl.setRoot(ProfilePage);
+
+        }, (err) => {
+          alert("Erreur"+JSON.stringify(err));
+        });
+
+      });
     });
   }
 
