@@ -140,12 +140,17 @@ export class ProfilePage implements OnInit {
 
   selectOne(index){
     if(this.userParams === true){
-      this.navCtrl.setRoot(SelectedPhotoPage, {
-        imageSelectionne: this.photos[index]
+      this.navCtrl.push(SelectedPhotoPage, {
+        imageSelectionne: this.photos[index],
+        userParams: true
+      })
+    } else {
+      this.navCtrl.push(SelectedPhotoPage, {
+        imageSelectionne: this.photos[index],
+        userParams: false
       })
     }
   }
-
 
 
 

@@ -72,7 +72,8 @@
 
   <ion-row class="boxLikes">
        <img alt="dislike" (click)="dislike()" src="assets/imgs/dislike.png">
-      <img alt="comment" (click)="commenter()" src="assets/imgs/comment.png">
+      <img alt="comment" *ngIf="!hasComment" (click)="commenter()" src="assets/imgs/comment.png">
+      <img alt="comment" *ngIf="hasComment" (click)="commenter()" src="assets/imgs/unComment.png">
       <img alt="like" (click)="like()" src="assets/imgs/like.png">
   </ion-row>
 

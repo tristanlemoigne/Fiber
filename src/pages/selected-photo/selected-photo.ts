@@ -27,26 +27,22 @@ export class SelectedPhotoPage implements OnInit {
   public saison:any;
 
   public idPhoto:any;
-
-  /*j'ai repris les propriétes de la page d'accueil pour les commentaires et les vêtements mais
-  je sais pas à quoi certains servent mdrr*/
-  public hasComment:boolean = false;
   public commentaires:any;
-  public commentEmpty:any;
+  public listeVetement:any;
+
   public postCom:any;
   public infoCom:any;
 
-  public plusAffiche: boolean = true;
-
-  public listeVetement:any;
+  public activeUser:boolean;
+  public hasComment:boolean = false;
+  public hasDescription:boolean = false;
+  public commentEmpty:boolean = true;
   public hasVetement:boolean = false;
-  public afficheVetement:boolean = false;
-
-  public executed: boolean = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController,
     private getDataProvider:GetDataProvider, private storage:Storage, public postDataProvider: PostDataProvider) {
     this.imageSelectionne = this.navParams.get('imageSelectionne');
+    this.activeUser = this.navParams.get('userParams');
   }
 
   //on récupère les infos de la photo
@@ -66,36 +62,59 @@ export class SelectedPhotoPage implements OnInit {
           this.nbLike = data[1]["nbLike"];
           this.nbCom = data[1]["nbCom"];
           this.nbVet = data[1]["nbVet"];
-        });
-    });
-  }
 
-  popView(){
-    this.navCtrl.setRoot(ProfilePage);
-  }
-  //AFFICHER LES COMMENTAIRES (C/C de la fct de la page d'accueil)
-  commenter(){
-     if(this.hasComment === true)
-         this.hasComment=false;
-      else
-         this.hasComment=true;
+          if(this.description !== "undefined"){
+            this.hasDescription = true
+          }
 
-    this.storage.get("token").then((val) => {
-      this.token = val;
-      let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
-      let link = "http://fiber-app.com/SERVER/getComment.php?id_photo="+this.idPhoto;
-      let req = this.getDataProvider.getData(link,{headers});
-      req.subscribe(data=>{
-        this.commentaires = data;
-        // console.log(this.commentaires);
-        if(this.commentaires == null){
-          this.commentEmpty = true;
+          this.storage.get("token").then((val) => {
+            this.token = val;
+            let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+            let link = "http://fiber-app.com/SERVER/getComment.php?id_photo="+this.idPhoto;
+            let req = this.getDataProvider.getData(link,{headers});
+            req.subscribe(data=>{
+              this.commentaires = data;
+              if(this.commentaires == null){
+                this.commentEmpty = true;
+              } else {
+                this.commentEmpty = false
+              }
+              //data[1] = le token
+            });
+          });
+
+          if(this.nbVet > 0){
+            let link = "http://fiber-app.com/SERVER/getVetement.php?idPhoto="+this.idPhoto;
+            let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+            let req = this.postDataProvider.postData(link,{headers});
+            req.subscribe(data =>{
+              console.log("affichage des vêtements")
+              this.hasVetement = true;
+              this.listeVetement = data;
+              for(let i = 0;i<this.listeVetement.length;i++){
+                if(this.listeVetement[i].price_cloth == null){
+                  this.listeVetement[i].price_cloth = "Prix non renseigné";
+                }
+                if(this.listeVetement[i].name_store == null){
+                  this.listeVetement[i].name_store = "Magasin non renseigné";
+                }
+              }
+              console.log(this.listeVetement);
+            },
+            (err) =>{
+
+            },()=>{
+
+            });
+          }else {
+          this.hasVetement = false;
         }
-        //data[1] = le token
       });
     });
   }
-  //POSTER UN COM (C/C de la fct de la page d'accueil)
+
+
+
   envoyerCommentaire(){
     if(this.postCom === undefined || this.postCom === ""){
       alert("Aucun commentaire écrit");
@@ -124,39 +143,6 @@ export class SelectedPhotoPage implements OnInit {
       });
     }
   }
-  //C/C de la fonction de la page d'accueil
-  afficherVetement(){
-    if (this.plusAffiche === true){
-      this.plusAffiche = false;
-      this.afficheVetement = true;
-      if(this.nbVet > 0){
-        let link = "http://fiber-app.com/SERVER/getVetement.php?idPhoto="+this.idPhoto;
-        let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
-        let req = this.postDataProvider.postData(link,{headers});
-        req.subscribe(data =>{
-          this.hasVetement = true;
-          this.listeVetement = data;
-          for(let i = 0;i<this.listeVetement.length;i++){
-            if(this.listeVetement[i].price_cloth == null){
-              this.listeVetement[i].price_cloth = "Prix non renseigné";
-            }
-            if(this.listeVetement[i].name_store == null){
-              this.listeVetement[i].name_store = "Magasin non renseigné";
-            }
-          }
-          console.log(this.listeVetement);
-        },
-        (err) =>{
-
-        },()=>{
-
-        });
-      }
-    } else {
-      this.plusAffiche = true;
-      this.afficheVetement = false;
-    }
-  }
 
 
   supprimerPhoto(){
@@ -181,11 +167,13 @@ export class SelectedPhotoPage implements OnInit {
                 let req = this.getDataProvider.getData(link,{headers});
                 req.subscribe(data=>{
                   console.log("REPONSE DU SERVEUR : " + data);
+                  // this.navCtrl.pop(SelectedPhotoPage)
+                  this.navCtrl.setRoot(ProfilePage);
                 });
             });
-            console.log("suppression de la photo")    // SUPPRIMER LA PHOTO DE LA BDD (this.imageSelectionne)
-            this.popView()
-            this.ngOnInit()
+            console.log("suppression de la photo")
+
+
           }
         }
       ]
@@ -193,6 +181,9 @@ export class SelectedPhotoPage implements OnInit {
     alert.present();
   }
 
+  popView(){
+    this.navCtrl.setRoot(ProfilePage);
+  }
 
 
 
