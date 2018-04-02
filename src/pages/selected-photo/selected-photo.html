@@ -24,7 +24,6 @@
 
     <img *ngIf="hasliked && !activeUser" alt="like" src="assets/imgs/hasliked.png">
     <img *ngIf="!hasliked && !activeUser" alt="like" (click)="like()" src="assets/imgs/like.png">
-    <!-- <img alt="like" (click)="like()" src="assets/imgs/like.png"> &nbsp; -->
   </div>
 
   <!-- Description -->
@@ -78,7 +77,7 @@
         <b>Couleur :</b> {{vet.name_color}}<br />
         <b>Motif :</b> {{vet.name_pattern}}<br />
         <b>Prix :</b> {{vet.price_cloth}} €<br />
-        <b>Magasin :</b> {{vet.name_store}}
+        <b>Magasin :</b> {{vet.name_store}}<br /><br />
       </li>
     </ul>
   </ion-card>

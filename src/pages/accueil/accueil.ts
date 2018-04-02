@@ -382,6 +382,7 @@ export class AccueilPage  implements OnInit {
     if(this.postCom === undefined || this.postCom === ""){
       alert("Aucun commentaire écrit");
     } else {
+      this.postCom = this.filter(this.postCom, blackList)
       let mydata = JSON.stringify({com: this.postCom});
 
       let link = "http://fiber-app.com/SERVER/postCom.php?id_photo="+this.photoList[0]["id_photo"];
@@ -389,7 +390,6 @@ export class AccueilPage  implements OnInit {
       let req = this.postDataProvider.postData(link,mydata,{headers});
       req.subscribe(data => {
         this.infoCom = data;
-        // console.log(data);
       },
       (err) => {
       },
@@ -400,9 +400,6 @@ export class AccueilPage  implements OnInit {
         if(this.commentaires == null){
           this.commentaires = [this.infoCom];
         } else{
-          this.infoCom['text_comment'] = this.filter(this.infoCom['text_comment'], blackList)
-
-          console.log(this.infoCom['text_comment'])
           this.commentaires.push(this.infoCom);
         }
         this.postCom="";
