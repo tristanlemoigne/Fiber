@@ -407,11 +407,17 @@ export class AccueilPage  implements OnInit {
   }
 
   filter(commentaire, blackList) {
+    // var wordArr = commentaire.match(/|'\w+|\w+'\w+|\w+'|\w+/g),
+    // /[^,]+,\s[^,]+/
+
+    // (^[a-zA-Zéèàêôâ].*$)
+
     var wordArr = commentaire.match(/'\w+|\w+'\w+|\w+'|\w+/g),
         commonObj = {},
         commentaireFiltre = [],
         word, i;
 
+    console.log(wordArr)
     blackList = blackList.split(',');
     for ( i = 0; i < blackList.length; i++ ) {
         commonObj[ blackList[i].trim() ] = true;
