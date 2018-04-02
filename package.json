@@ -38,6 +38,7 @@
         "add": "^2.0.6",
         "com-badrit-base64": "^0.2.0",
         "cordova": "^8.0.0",
+        "cordova-android": "7.0.0",
         "cordova-instagram-plugin": "^0.5.5",
         "cordova-ios": "4.5.4",
         "cordova-plugin-camera": "^3.0.0",
@@ -91,7 +92,8 @@
             "com-badrit-base64": {}
         },
         "platforms": [
-            "ios"
+            "ios",
+            "android"
         ]
     }
 }

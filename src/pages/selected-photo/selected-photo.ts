@@ -207,7 +207,7 @@ export class SelectedPhotoPage implements OnInit {
 
 
   filter(commentaire, blackList) {
-    var wordArr = commentaire.match(/'\w+|\w+'\w+|\w+'|\w+/g),
+    var wordArr = commentaire.match(/[A-Za-z0-9_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]+/g),
         commonObj = {},
         commentaireFiltre = [],
         word, i;
@@ -224,8 +224,13 @@ export class SelectedPhotoPage implements OnInit {
             commentaireFiltre.push(word);
         }
     }
-    return commentaireFiltre.join(' ');
-    // return commentaireFiltre;
+
+    commentaireFiltre = this.capitalizeFirstLetter(commentaireFiltre.join(' '))
+    return commentaireFiltre;
+ }
+
+ capitalizeFirstLetter(string) {
+   return string.charAt(0).toUpperCase() + string.slice(1);
  }
 
 
@@ -233,6 +238,7 @@ export class SelectedPhotoPage implements OnInit {
   popView(){
     this.navCtrl.setRoot(ProfilePage);
   }
+
 
 
 
