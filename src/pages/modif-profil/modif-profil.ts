@@ -226,7 +226,7 @@ export class ModifProfilPage implements OnInit{
 
               alertPanel.present();
            }
-            this.navCtrl.setRoot(ProfilePage);
+            this.navCtrl.setRoot(ModifProfilPage);
 
         }, (err) => {
           alert("Erreur"+JSON.stringify(err));
