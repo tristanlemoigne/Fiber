@@ -360,7 +360,9 @@ export class AccueilPage  implements OnInit {
 
     this.storage.get("token").then((val) => {
       this.token = val;
-      let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+      let headers = new HttpHeaders();
+      headers.append("Authorization","Bearer "+this.token);
+      headers.append("Accept-Charset","UTF-8");
       let link = "http://fiber-app.com/SERVER/getComment.php?id_photo="+this.photoList[0]["id_photo"];
       let req = this.getDataProvider.getData(link,{headers});
       req.subscribe(data=>{
