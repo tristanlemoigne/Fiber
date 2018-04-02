@@ -99,7 +99,7 @@ export class FiltresPage implements OnInit{
       "&couleur="+this.couleur+"&motif="+this.motif+"&vetement="+this.vetement+"&prix="+this.prix;
       let req = this.getDataProvider.getData(link,{headers});
       req.subscribe(data=>{
-        this.navCtrl.push(AccueilPage,{
+        this.navCtrl.setRoot(AccueilPage,{
           photos:data,
           filtres:true,
         });
