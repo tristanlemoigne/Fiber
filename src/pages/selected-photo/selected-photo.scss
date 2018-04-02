@@ -16,7 +16,26 @@ page-selected-photo {
   .nbLikes{
     text-align: right;
     font-size: 1.2em;
+    display: inline-block;
+    margin-bottom: 7px;
+  }
 
+  .infosLike{
+    display: block;
+    margin-right: 0;
+    float: right;
+  }
+
+  img[alt="like"]{
+     width: 25px;
+     display: inline-block;
+     margin-right: 0;
+     float: right;
+  }
+
+  ion-card:nth-of-type(1){
+    width: 100%;
+    float: left;
   }
 
   ion-card, .ion-card, .card-md, .card{
@@ -33,6 +52,55 @@ page-selected-photo {
     max-height: 20vh;
     overflow-y: scroll;
   }
+
+  .text-comment{
+    margin-bottom: 10px;
+  }
+
+  .laisserUnCommentaire{
+    margin-top: 16px;
+    background-color: red;
+  }
+
+  input{
+    display: inline-block;
+    width: 60vw;
+    height: 15px;
+    // margin-left: auto;
+    // margin-right: auto;
+    border: none;
+    background-color: #f8f8f8;
+    border-radius: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding: 15px;
+    font-weight: italic;
+    margin: 0;
+    margin-top: 10px;
+  }
+
+  input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{
+    color: #cacaca !important;
+    font-weight: italic;
+  }
+
+  .arrow{
+    display: inline-block;
+  }
+
+  img[alt="envoieCommentaire"]{
+    position: absolute;
+     width: 25px;
+     transform: scaleX(-1);
+     filter: FlipH;
+     display: inline-block;
+     height: 25px;
+     margin-left: 16px;
+     margin-top: 12px;
+  }
+
+
+
 
   ul{
     list-style-type: none;

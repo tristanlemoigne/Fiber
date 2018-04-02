@@ -19,7 +19,13 @@
 
 <ion-content padding>
   <img [src]="imageSelectionne"/>
-  <p class="nbLikes"><b>{{nbLike}} likes</b></p>
+  <div class="infosLike">
+    <p class="nbLikes"><b>{{nbLike}} likes</b></p><br />
+
+    <img *ngIf="hasliked && !activeUser" alt="like" src="assets/imgs/hasliked.png">
+    <img *ngIf="!hasliked && !activeUser" alt="like" (click)="like()" src="assets/imgs/like.png">
+    <!-- <img alt="like" (click)="like()" src="assets/imgs/like.png"> &nbsp; -->
+  </div>
 
   <!-- Description -->
   <ion-card>
@@ -33,19 +39,24 @@
   </ion-card>
 
   <!-- Commentaires -->
-  <ion-card class="containerCommentaires">
+  <ion-card>
     <b>Commentaires ({{nbCom}})</b><br /><br />
 
     <p *ngIf="commentEmpty">
       Pas de commentaires disponibles
     </p>
 
-    <div *ngIf="!commentEmpty">
-     <p *ngFor="let comment of commentaires">
+    <div *ngIf="!commentEmpty" class="containerCommentaires">
+     <p class="text-comment" *ngFor="let comment of commentaires">
        <b>{{comment["login_user"]}}</b><br />
-       <span>{{comment["text_comment"]}} </span><br />
+       <span>{{comment["text_comment"]}} </span>
      </p>
    </div>
+
+   <!-- <div class="laisserUnCommentaire"> -->
+    <input *ngIf="!activeUser" type="text" placeholder="Laisser un commentaire" [(ngModel)]="postCom">
+    <img *ngIf="!activeUser" alt="envoieCommentaire" (click)="envoyerCommentaire()" src="assets/imgs/retour.png">
+   <!-- </div> -->
   </ion-card>
 
   <!-- Tags -->
@@ -66,7 +77,7 @@
         <b>Nom :</b> {{vet.name_cloth}}<br />
         <b>Couleur :</b> {{vet.name_color}}<br />
         <b>Motif :</b> {{vet.name_pattern}}<br />
-        <b>Prix :</b> {{vet.price_cloth}}<br />
+        <b>Prix :</b> {{vet.price_cloth}} €<br />
         <b>Magasin :</b> {{vet.name_store}}
       </li>
     </ul>
