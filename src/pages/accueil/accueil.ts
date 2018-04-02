@@ -379,6 +379,8 @@ export class AccueilPage  implements OnInit {
   }
 
   envoyerCommentaire(){
+    let blackList = "connard, pute, salope, encule, batard,";
+
     if(this.postCom === undefined || this.postCom === ""){
       alert("Aucun commentaire écrit");
     } else {
@@ -400,12 +402,39 @@ export class AccueilPage  implements OnInit {
         if(this.commentaires == null){
           this.commentaires = [this.infoCom];
         } else{
+          this.infoCom['text_comment'] = this.filter(this.infoCom['text_comment'], blackList)
+
+          console.log(this.infoCom['text_comment'])
           this.commentaires.push(this.infoCom);
         }
         this.postCom="";
       });
     }
   }
+
+  filter(commentaire, blackList) {
+    var wordArr = commentaire.match(/'\w+|\w+'\w+|\w+'|\w+/g),
+        commonObj = {},
+        commentaireFiltre = [],
+        word, i;
+
+    blackList = blackList.split(',');
+    for ( i = 0; i < blackList.length; i++ ) {
+        commonObj[ blackList[i].trim() ] = true;
+    }
+    for ( i = 0; i < wordArr.length; i++ ) {
+        word = wordArr[i].trim().toLowerCase();
+        console.log(word)
+
+        if ( !commonObj[word] ) {
+            commentaireFiltre.push(word);
+        }
+    }
+    return commentaireFiltre.join(' ');
+    // return commentaireFiltre;
+ }
+
+
 
 
 

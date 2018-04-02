@@ -53,6 +53,7 @@ export class EnvoiPhotoPage {
     this.magasin = prop;
     this.propositions=[];
   }
+
   callMaps(){
     if(this.magasin == ""){
       this.propositions=[];
@@ -61,7 +62,7 @@ export class EnvoiPhotoPage {
     let headers = new HttpHeaders().set("Access-Control-Allow-Origin","*");
     let url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+this.lat+","+this.long+
     "&radius=10000&type=clothing_store&keyword="+this.magasin+"&key="+this.key;
-    alert(url);
+    // alert(url);
     let promise = this.getDataProvider.getData(url,{headers});
     promise.subscribe(data=>{
       for(let i =0; i<data["results"].length;i++){

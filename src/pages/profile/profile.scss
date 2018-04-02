@@ -8,13 +8,19 @@ page-profile {
     margin-right : 7vw;
   }
 
+  img[alt="photoProfil"]{
+    width: 90px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-bottom: 12px;
+  }
+
   .right{
     display: inline-block;
-    padding-left: 7vw;
+    padding-left: 9vw;
     position: absolute;
     top: 16px;
     height: 100px;
-
   }
 
   .right > div{
