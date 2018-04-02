@@ -30,6 +30,7 @@ export class ProfilePage implements OnInit {
   public userParams:boolean = false;
   public userPhoto:boolean = false;
   public userBiographie:boolean = false;
+  public gotPhotos:boolean;
   public photoProfil:any;
 
   public filtresPage = FiltresPage;
@@ -68,7 +69,11 @@ export class ProfilePage implements OnInit {
               this.userPhoto = true;
             }
 
-
+            if(this.photos[0] === null){
+              this.gotPhotos = false
+            } else {
+              this.gotPhotos = true
+            }
             //
             // data = data[0].json()
             // // this.photos={image: JSON.stringify(data[0])};
@@ -100,6 +105,12 @@ export class ProfilePage implements OnInit {
 
             if(this.photoProfil != ""){
               this.userPhoto = true;
+            }
+
+            if(this.photos[0] === null){
+              this.gotPhotos = false
+            } else {
+              this.gotPhotos = true
             }
             //this.photos=image: data[0]; {icon:'checkmark-circle-outline'};
 

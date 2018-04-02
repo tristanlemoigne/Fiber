@@ -39,7 +39,7 @@
       <img *ngIf="hasLiked" alt="likeAnimation" src="assets/imgs/like2.png">
 
       <img id="imaage" src={{this.currentPhoto}}/>
-      <p class="stats">{{nbCom}} commentaires &nbsp; &nbsp;{{nbLike}} likes</p>
+      <p class="stats"><span (click)="commenter()">{{nbCom}} commentaires &nbsp; &nbsp;</span>{{nbLike}} likes</p>
 
       <p class="informations">
         {{description}}<br /><br />

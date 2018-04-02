@@ -38,6 +38,7 @@ export class SelectedPhotoPage implements OnInit {
   public hasDescription:boolean = false;
   public commentEmpty:boolean = true;
   public hasVetement:boolean = false;
+  public hasliked:boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController,
     private getDataProvider:GetDataProvider, private storage:Storage, public postDataProvider: PostDataProvider) {
@@ -62,6 +63,12 @@ export class SelectedPhotoPage implements OnInit {
           this.nbLike = data[1]["nbLike"];
           this.nbCom = data[1]["nbCom"];
           this.nbVet = data[1]["nbVet"];
+
+          if(data[2]){
+            this.hasliked = true;
+          } else{
+            this.hasliked = false;
+          }
 
           if(this.description !== "undefined"){
             this.hasDescription = true
@@ -113,38 +120,6 @@ export class SelectedPhotoPage implements OnInit {
     });
   }
 
-
-
-  envoyerCommentaire(){
-    if(this.postCom === undefined || this.postCom === ""){
-      alert("Aucun commentaire écrit");
-    } else {
-      let mydata = JSON.stringify({com: this.postCom});
-
-      let link = "http://fiber-app.com/SERVER/postCom.php?id_photo="+this.idPhoto;
-      let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
-      let req = this.postDataProvider.postData(link,mydata,{headers});
-      req.subscribe(data => {
-        this.infoCom = data;
-        // console.log(data);
-      },
-      (err) => {
-      },
-      () => {
-        this.nbCom = parseInt(this.nbCom[0])+1;
-        //this.nbCom[0] = this.nbCom[0]+1;
-        this.commentEmpty = false;
-        if(this.commentaires == null){
-          this.commentaires = [this.infoCom];
-        } else{
-          this.commentaires.push(this.infoCom);
-        }
-        this.postCom="";
-      });
-    }
-  }
-
-
   supprimerPhoto(){
     let alert = this.alertCtrl.create({
       title: 'Confirmer la suppression',
@@ -180,6 +155,80 @@ export class SelectedPhotoPage implements OnInit {
     });
     alert.present();
   }
+
+
+  like(){
+    this.hasliked = true;
+
+    this.commentaires = [];
+    this.storage.get("token").then((val) => {
+      this.token = val;
+      let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+        let link = "http://fiber-app.com/SERVER/likePhoto.php?id_photo="+this.idPhoto;
+
+        this.getDataProvider.getData(link,{headers}).subscribe(data=>{
+          this.ngOnInit()
+        })
+      })
+  }
+
+
+  envoyerCommentaire(){
+    let blackList = "connard, con, conasse, putain, pute, merde, bite, salaud, salope, encule, enculé, batard, bâtard, bâtarde, batarde, moche, laid, laideron, chienne, chiennasse, pd, tapette, gros, grosse, fdp, ntm, vtff, fils de pute, nique, niqué, niquer, abruti, andouille, attardé, foutre, anus, pénis, andouille, bête, bete, bouffon, bouffonne, boufone, boufon, boulet, bougnoule, bougnoul, nègre, chinetoque, couilles, crétin, débile, ducon, emmerdé, emmerder, enflure, enfoiré, rat, fiotte, fumier, garce, gland, glandu, glandeuse, glandeur, gogol, gouine, gourde, grognasse, gourgandine, imbécile, incapable, kikoo, kikou, lavette, lopette, mauviette, merdeux, merdouillard, minable, minus, misérable, merdouille, michto, naze, négro, nul, ordure, pédé, petite bite, petite merde, porc, pouffiasse, poufiasse, pourriture, poundé, raclure, raté, sale, salop, sauvage, sous-merde, ta gueule, tg, gueule, race, tarlouze, tache, tafiole, tantouze, teubé, thon, tocard, traînée, trouduc, vaurien, vieux, zguègue, avorton, asticot, trisomique, trizo, triso, handicapé, bigleux, blaireau, boloss, bolosse, bourrique, bourrin, bouricot, bouseux, boutonneux, burne, cancrelat, cassos, chieur, cinglé, cloche, cocu, gourde, couillon, crevard, crevure, cul, anal, filou, fion, fiotte, gland, goujat, gueux, has-been, idiot, impuissant, kéké, nabot, nain, neuneu, nigaud, parasite, patate, pervers, plouc, quetard, quiche, tanche, taré, zoulou, juif, feuj, terroriste, dégueu, dégueulasse, cochon, cochonne, porc";
+
+    if(this.postCom === undefined || this.postCom === ""){
+      alert("Aucun commentaire écrit");
+    } else {
+      this.postCom = this.filter(this.postCom, blackList)
+      let mydata = JSON.stringify({com: this.postCom});
+
+      let link = "http://fiber-app.com/SERVER/postCom.php?id_photo="+this.idPhoto;
+      let headers = new HttpHeaders().set("Authorization","Bearer "+this.token);
+      let req = this.postDataProvider.postData(link,mydata,{headers});
+      req.subscribe(data => {
+        this.infoCom = data;
+        // console.log(data);
+      },
+      (err) => {
+      },
+      () => {
+        this.nbCom = parseInt(this.nbCom[0])+1;
+        //this.nbCom[0] = this.nbCom[0]+1;
+        this.commentEmpty = false;
+        if(this.commentaires == null){
+          this.commentaires = [this.infoCom];
+        } else{
+          this.commentaires.push(this.infoCom);
+        }
+        this.postCom="";
+      });
+    }
+  }
+
+
+  filter(commentaire, blackList) {
+    var wordArr = commentaire.match(/'\w+|\w+'\w+|\w+'|\w+/g),
+        commonObj = {},
+        commentaireFiltre = [],
+        word, i;
+
+    blackList = blackList.split(',');
+    for ( i = 0; i < blackList.length; i++ ) {
+        commonObj[ blackList[i].trim() ] = true;
+    }
+    for ( i = 0; i < wordArr.length; i++ ) {
+        word = wordArr[i].trim().toLowerCase();
+        console.log(word)
+
+        if ( !commonObj[word] ) {
+            commentaireFiltre.push(word);
+        }
+    }
+    return commentaireFiltre.join(' ');
+    // return commentaireFiltre;
+ }
+
+
 
   popView(){
     this.navCtrl.setRoot(ProfilePage);

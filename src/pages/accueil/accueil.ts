@@ -379,11 +379,12 @@ export class AccueilPage  implements OnInit {
   }
 
   envoyerCommentaire(){
-    let blackList = "connard, pute, salope, encule, batard,";
+    let blackList = "connard, con, conasse, putain, pute, merde, bite, salaud, salope, encule, enculé, batard, bâtard, bâtarde, batarde, moche, laid, laideron, chienne, chiennasse, pd, tapette, gros, grosse, fdp, ntm, vtff, fils de pute, nique, niqué, niquer, abruti, andouille, attardé, foutre, anus, pénis, andouille, bête, bete, bouffon, bouffonne, boufone, boufon, boulet, bougnoule, bougnoul, nègre, chinetoque, couilles, crétin, débile, ducon, emmerdé, emmerder, enflure, enfoiré, rat, fiotte, fumier, garce, gland, glandu, glandeuse, glandeur, gogol, gouine, gourde, grognasse, gourgandine, imbécile, incapable, kikoo, kikou, lavette, lopette, mauviette, merdeux, merdouillard, minable, minus, misérable, merdouille, michto, naze, négro, nul, ordure, pédé, petite bite, petite merde, porc, pouffiasse, poufiasse, pourriture, poundé, raclure, raté, sale, salop, sauvage, sous-merde, ta gueule, tg, gueule, race, tarlouze, tache, tafiole, tantouze, teubé, thon, tocard, traînée, trouduc, vaurien, vieux, zguègue, avorton, asticot, trisomique, trizo, triso, handicapé, bigleux, blaireau, boloss, bolosse, bourrique, bourrin, bouricot, bouseux, boutonneux, burne, cancrelat, cassos, chieur, cinglé, cloche, cocu, gourde, couillon, crevard, crevure, cul, anal, filou, fion, fiotte, gland, goujat, gueux, has-been, idiot, impuissant, kéké, nabot, nain, neuneu, nigaud, parasite, patate, pervers, plouc, quetard, quiche, tanche, taré, zoulou, juif, feuj, terroriste, dégueu, dégueulasse, cochon, cochonne, porc";
 
     if(this.postCom === undefined || this.postCom === ""){
       alert("Aucun commentaire écrit");
     } else {
+      this.postCom = this.filter(this.postCom, blackList)
       let mydata = JSON.stringify({com: this.postCom});
 
       let link = "http://fiber-app.com/SERVER/postCom.php?id_photo="+this.photoList[0]["id_photo"];
@@ -391,7 +392,6 @@ export class AccueilPage  implements OnInit {
       let req = this.postDataProvider.postData(link,mydata,{headers});
       req.subscribe(data => {
         this.infoCom = data;
-        // console.log(data);
       },
       (err) => {
       },
@@ -402,9 +402,6 @@ export class AccueilPage  implements OnInit {
         if(this.commentaires == null){
           this.commentaires = [this.infoCom];
         } else{
-          this.infoCom['text_comment'] = this.filter(this.infoCom['text_comment'], blackList)
-
-          console.log(this.infoCom['text_comment'])
           this.commentaires.push(this.infoCom);
         }
         this.postCom="";

@@ -37,12 +37,16 @@
   </div>
 
   <ion-grid>
-    <ion-row>
-      <!-- <ion-col  col-4 class="overview" *ngFor="let photo of photos; let i = index"> -->
+    <ion-row *ngIf="gotPhotos">
       <ion-col  col-4 class="overview" *ngFor="let photo of photos let i = index;">
-        <!-- <ion-icon [name]="visible ? 'checkmark-circle-outline' :'checkmark-circle'" class="selectPictures" *ngIf="selectPictures" (click)="selectOne(i)"></ion-icon> -->
         <img (click)="selectOne(i)" src={{photo}} />
       </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="!gotPhotos">
+      <p class="noPhotos">
+        <span *ngIf="userParams">Vous n'avez</span><span *ngIf="!userParams">L'utilisateur n'as</span>&nbsp;pas encore de photos
+      </p>
     </ion-row>
   </ion-grid>
 </ion-content>
