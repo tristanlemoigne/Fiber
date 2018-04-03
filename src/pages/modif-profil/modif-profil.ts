@@ -122,9 +122,11 @@ export class ModifProfilPage implements OnInit{
           loading.dismiss();
           let failTab = [];
           let fail = false;
-          this.test = data;
+          this.test = data[0];
+          this.token = data[1];
+          this.storage.set("token",this.token);
           for(let i=0;i<this.test.length;i++){
-            if(!data[i]){
+            if(!data[0][i]){
               fail = true;
               failTab.push(i);
             }
