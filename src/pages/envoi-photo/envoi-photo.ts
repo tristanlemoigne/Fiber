@@ -147,7 +147,7 @@ export class EnvoiPhotoPage {
   }
 
   ajoutVetement(){
-    if(this.vetement == undefined || this.couleur == undefined || this.motif == undefined){
+    if(this.vetement == undefined || this.couleur == undefined || this.motif == undefined || this.vetement == "" || this.couleur == 0 || this.motif == 0){
       alert("Veuillez rentrer au moins le type de vêtement, sa couleur et son motif");
     } else{
       let vet = {

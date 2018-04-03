@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.fiber.fiber" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Fiber</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <description>A fashionable application</description>
+    <author email="contact@fiber-app.com" href="http://fiber-app.com/">Fiber Team</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -102,5 +102,5 @@
     <plugin name="cordova-sqlite-storage" spec="^2.3.0" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
     <engine name="ios" spec="4.5.4" />
-    <engine name="android" spec="~7.0.0" />
+    <engine name="android" spec="7.0.0" />
 </widget>

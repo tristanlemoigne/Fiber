@@ -207,7 +207,7 @@ export class SelectedPhotoPage implements OnInit {
 
 
   filter(commentaire, blackList) {
-    var wordArr = commentaire.match(/[A-Za-z0-9_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]+/g),
+    var wordArr = commentaire.match(/[A-Za-z0-9_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ!$&();"'*€#.?,-:+/<>]+/g),
         commonObj = {},
         commentaireFiltre = [],
         word, i;

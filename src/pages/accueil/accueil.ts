@@ -126,7 +126,7 @@ export class AccueilPage  implements OnInit {
         this.saison = this.photoListFiltrees[0]["name_season"];
         this.description = this.photoListFiltrees[0]["caption_photo"];
         if(this.description == "undefined"){
-          this.description = "Pas de descritpion";
+          this.description = "Pas de description";
         }
         this.nbLike = this.photoListFiltrees[0]["nbLike"];
         this.nbCom = this.photoListFiltrees[0]["nbCom"];
@@ -196,7 +196,7 @@ export class AccueilPage  implements OnInit {
                 this.nbVet = this.photoList[0]["nbVet"];
                 this.description = this.photoList[0]["caption_photo"];
                 if(this.description == "undefined"){
-                  this.description = "Pas de descritpion";
+                  this.description = "Pas de description";
                 }
                 if(this.nbVet != 0){
                   this.hasVetement = true;
@@ -254,7 +254,7 @@ export class AccueilPage  implements OnInit {
              this.nbVet = this.photoList[0]["nbVet"];
              this.description = this.photoList[0]["caption_photo"];
              if(this.description == "undefined"){
-               this.description = "Pas de descritpion";
+               this.description = "Pas de description";
              }
              if(this.nbVet != 0){
                this.hasVetement = true;
@@ -410,7 +410,7 @@ export class AccueilPage  implements OnInit {
     // var wordArr = commentaire.match(/|'\w+|\w+'\w+|\w+'|\w+/g),
     // \w+|\W/
 
-    var wordArr = commentaire.match(/[A-Za-z0-9_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]+/g),
+    var wordArr = commentaire.match(/[A-Za-z0-9_áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ!$&();"'*€#.?,-:+/<>]+/g),
         commonObj = {},
         commentaireFiltre = [],
         word, i;
@@ -427,7 +427,7 @@ export class AccueilPage  implements OnInit {
             commentaireFiltre.push(word);
         }
     }
-    
+
     commentaireFiltre = this.capitalizeFirstLetter(commentaireFiltre.join(' '))
     return commentaireFiltre;
  }
