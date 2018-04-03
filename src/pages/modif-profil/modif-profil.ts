@@ -160,6 +160,7 @@ export class ModifProfilPage implements OnInit{
              subTitle: message,
              buttons: ["OK"]});
              alert.present();
+
           }
           else{
             let alert = this.alert.create({
@@ -167,6 +168,8 @@ export class ModifProfilPage implements OnInit{
              buttons: ["OK"]});
              alert.present();
           }
+
+          this.navCtrl.setRoot(ProfilePage)
 
         });
     });
