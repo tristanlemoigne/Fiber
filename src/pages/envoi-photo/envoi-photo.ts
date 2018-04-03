@@ -164,6 +164,10 @@ export class EnvoiPhotoPage {
       if(this.magasin != undefined){
         vet.nomMagasin = this.magasin[1],
         vet.adresseMagasin = this.magasin[2]
+        if(vet.adresseMagasin.length<=1){
+          vet.nomMagasin = this.magasin;
+          vet.adresseMagasin = "";
+        }
       }
       this.vetements.push(vet);
       alert("Vêtement ajouté à la photo");
